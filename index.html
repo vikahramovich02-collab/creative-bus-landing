@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Creative Bus — реклама на транспорте в Таганроге</title>
+  <meta name="description" content="Реклама на автобусах и маршрутках в Таганроге и Ростовской области. 120+ единиц транспорта, открытые цены, собственная печать. Работаем с 2007 года.">
+  <meta property="og:title" content="Creative Bus — реклама на транспорте в Таганроге">
+  <meta property="og:description" content="Реклама размером с автобус — её невозможно не заметить. Открытые цены, реальные кейсы.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="top">
+  <img class="hero__bg" src="assets/hero.png" alt="Автобус с брендированной рекламой на трассе" fetchpriority="high">
+  <div class="hero__overlay"></div>
+
+  <header class="header">
+    <div class="container header__inner">
+      <a href="#top" class="header__logo" aria-label="Creative Bus — на главную">
+        <img src="assets/logo.png" alt="Creative Bus" width="196" height="56">
+      </a>
+      <nav class="header__nav" aria-label="Основная навигация">
+        <a href="#about">О Нас</a>
+        <a href="#services">Услуги</a>
+        <a href="#contacts">Контакты</a>
+        <a href="#cases">Партнеры</a>
+        <a href="#routes">Новости</a>
+      </nav>
+      <div class="header__actions">
+        <a href="#contacts" class="btn btn--white">Оставить заявку</a>
+      </div>
+      <button class="header__burger" type="button" aria-label="Открыть меню" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="container hero__content">
+    <p class="hero__badge">Работаем с 2007 г.</p>
+    <h1 class="hero__title">Реклама размером с&nbsp;автобус&nbsp;— её&nbsp;невозможно не&nbsp;заметить</h1>
+    <a href="#contacts" class="hero__cta">
+      <span>Контакты</span>
+      <img src="assets/icon-nakleyka.png" alt="" width="64" height="45">
+    </a>
+  </div>
+
+  <div class="container hero__bottom">
+    <p class="hero__caption">На каждом маршруте Таганрога, каждый день — десятки тысяч контактов с вашим брендом</p>
+    <a class="hero__scroll" href="#services" aria-label="Листать вниз">↓</a>
+    <div class="hero__slider-nav">
+      <div class="hero__arrows">
+        <button class="circle-btn circle-btn--dim" type="button" aria-label="Предыдущий слайд">←</button>
+        <button class="circle-btn circle-btn--ghost" type="button" aria-label="Следующий слайд">→</button>
+      </div>
+      <div class="hero__progress" aria-hidden="true">
+        <span class="is-active"></span><span></span><span></span><span></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== УСЛУГИ ===== -->
+<section class="services section" id="services">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <p class="section-label">Услуги</p>
+        <h2 class="section-title">Форматы рекламы на любой бюджет</h2>
+      </div>
+      <a href="assets/pricing.pdf" class="btn btn--dark" download>
+        Загрузить PDF
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 4v12m0 0l-5-5m5 5l5-5M5 20h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+
+    <ul class="accordion" data-accordion>
+      <!-- Наклейка — раскрыта по умолчанию -->
+      <li class="accordion__item is-open">
+        <button class="accordion__head" type="button" aria-expanded="true">
+          <span class="accordion__icon"><img src="assets/icon-nakleyka.png" alt="" width="200" height="140" loading="lazy"></span>
+          <span class="accordion__name">Рекламная наклейка на транспорте</span>
+          <span class="accordion__toggle" aria-hidden="true"></span>
+        </button>
+        <div class="accordion__body">
+          <div class="accordion__rows">
+            <div class="accordion__row">
+              <span class="accordion__row-name">Заднее окно полностью</span>
+              <span class="accordion__row-price accordion__row-price--dark">от 1 800 ₽/мес</span>
+            </div>
+            <div class="accordion__row">
+              <span class="accordion__row-name">Под задним окном</span>
+              <span class="accordion__row-price">от 1 300 ₽/мес</span>
+            </div>
+            <div class="accordion__row">
+              <span class="accordion__row-name">Окно правого борта</span>
+              <span class="accordion__row-price">от 1 000 ₽/мес</span>
+            </div>
+          </div>
+        </div>
+      </li>
+
+      <li class="accordion__item">
+        <button class="accordion__head" type="button" aria-expanded="false">
+          <span class="accordion__icon"><img src="assets/icon-bort.png" alt="" width="245" height="140" loading="lazy"></span>
+          <span class="accordion__name">Широкоформатная бортовая реклама</span>
+          <span class="accordion__toggle" aria-hidden="true"></span>
+        </button>
+        <div class="accordion__body">
+          <div class="accordion__rows">
+            <div class="accordion__row">
+              <span class="accordion__row-name">Боковой борт</span>
+              <span class="accordion__row-price">от 5 000 ₽/мес</span>
+            </div>
+            <div class="accordion__row">
+              <span class="accordion__row-name">Задняя часть</span>
+              <span class="accordion__row-price">от 3 600 ₽/мес</span>
+            </div>
+          </div>
+        </div>
+      </li>
+
+      <li class="accordion__item">
+        <button class="accordion__head" type="button" aria-expanded="false">
+          <span class="accordion__icon"><img src="assets/icon-spinki.png" alt="" width="251" height="140" loading="lazy"></span>
+          <span class="accordion__name">Реклама на спинках сидений</span>
+          <span class="accordion__toggle" aria-hidden="true"></span>
+        </button>
+        <div class="accordion__body">
+          <div class="accordion__rows">
+            <div class="accordion__row">
+              <span class="accordion__row-name">А4 — комплект 10 шт</span>
+              <span class="accordion__row-price">1 800 ₽/мес</span>
+            </div>
+            <div class="accordion__row">
+              <span class="accordion__row-name">А4 — комплект 20 шт</span>
+              <span class="accordion__row-price">3 300 ₽/мес</span>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== КЕЙСЫ ===== -->
+<section class="cases section" id="cases">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <p class="section-label">Кейсы</p>
+        <h2 class="section-title">Как наша реклама выглядит на улицах</h2>
+      </div>
+      <a href="#cases" class="btn btn--dark">
+        Все
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m0 0l-6-6m6 6l-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+
+    <div class="cases__grid">
+      <figure class="cases__card cases__card--wide">
+        <img src="assets/case-1.png" alt="Полная обклейка микроавтобуса — кейс Ecorium Mobility" loading="lazy">
+      </figure>
+      <figure class="cases__card">
+        <img src="assets/case-2.png" alt="Брендирование борта маршрутки — кейс Достаевский" loading="lazy">
+      </figure>
+      <figure class="cases__card">
+        <img src="assets/case-3.png" alt="Реклама на стёклах автобуса" loading="lazy">
+      </figure>
+      <figure class="cases__card">
+        <img src="assets/case-4.png" alt="Реклама на заднем стекле — кейс Мегахена" loading="lazy">
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ===== О НАС ===== -->
+<section class="about section" id="about">
+  <div class="container about__inner">
+    <div class="about__text">
+      <p class="section-label">О нас</p>
+      <h2 class="section-title">Дизайн внутри команды</h2>
+      <div class="about__desc">
+        <h4>Creative Bus</h4>
+        <p>В штате Creative Bus работает дизайнер, который специализируется именно на рекламе на транспорте.</p>
+        <p>Мы разрабатываем макеты с учетом движения транспорта, расстояния просмотра и городской среды, чтобы реклама выглядела заметно, читалась быстро и работала эффективно.</p>
+      </div>
+    </div>
+    <figure class="about__photo">
+      <img src="assets/about-print.png" alt="УФ-принтер печатает рекламный макет «Движение в будущее»" loading="lazy">
+    </figure>
+  </div>
+  <button class="circle-btn circle-btn--blue about__arrow about__arrow--prev" type="button" aria-label="Назад">←</button>
+  <button class="circle-btn circle-btn--blue about__arrow about__arrow--next" type="button" aria-label="Вперёд">→</button>
+</section>
+
+<!-- ===== МАРШРУТЫ ===== -->
+<section class="routes section" id="routes">
+  <div class="container">
+    <p class="section-label">Маршруты</p>
+    <h2 class="section-title">Где работает реклама</h2>
+
+    <div class="routes__cards">
+      <article class="routes__card">
+        <div class="routes__main">
+          <span class="routes__icon" aria-hidden="true">
+            <svg width="34" height="34" viewBox="0 0 24 24" fill="none"><path d="M4 16V6a2 2 0 012-2h12a2 2 0 012 2v10M4 16h16M4 16v2a1 1 0 001 1h1a1 1 0 001-1v-1m13 0v2a1 1 0 01-1 1h-1a1 1 0 01-1-1v-1M7 8h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          <h3>Город</h3>
+          <p class="routes__sub">Таганрог · ежедневно</p>
+        </div>
+        <div class="routes__col">
+          <p class="routes__label">МАРШРУТКИ</p>
+          <p>Маршруты — №6, 8, 10, 13, 50, 56, 77<br>Маршруты — №13, 50, 56, 77, Греческие Роты</p>
+        </div>
+        <div class="routes__col">
+          <p class="routes__label">АВТОБУСЫ</p>
+          <p>Маршруты — №31, 34/35<br>Маршруты — №35<br>Маршруты — №6, 10, 11, 13, 36, 50, 56, 77<br>Маршруты — №31, 34/35</p>
+        </div>
+      </article>
+
+      <article class="routes__card">
+        <div class="routes__main">
+          <span class="routes__icon" aria-hidden="true">
+            <svg width="34" height="34" viewBox="0 0 24 24" fill="none"><path d="M3 17l4-9 4 6 3-4 5 7H3z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="17" cy="6" r="2" stroke="currentColor" stroke-width="1.6"/></svg>
+          </span>
+          <h3>Пригород</h3>
+          <p class="routes__sub">Таганрог ↔ соседние сёла</p>
+        </div>
+        <div class="routes__col">
+          <p class="routes__label">МАРШРУТЫ</p>
+          <p>Покровское (5 шт.), Самбек (1 шт.)</p>
+        </div>
+        <div class="routes__col">
+          <p class="routes__label">ПАЗ</p>
+          <p>Петрушино (4 шт.), Грузиново, Дарьевка, Вознесенка, Беглица, Лакедемоновка, Ханжоновка, Федоровка, Плодосовхоз, Некрасовка, Каймакчи, Греческие Роты (911, 4 шт.)</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="cta">
+  <div class="container cta__inner">
+    <h2 class="cta__title"><span>Готовы запустить рекламу?</span><br>Менеджер свяжется в течение часа</h2>
+    <a href="#contacts" class="btn btn--dark btn--lg">
+      Оставить заявку
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m0 0l-6-6m6 6l-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section class="faq section" id="faq">
+  <div class="container">
+    <p class="section-label">FAQ</p>
+    <h2 class="section-title">Частые вопросы</h2>
+
+    <ul class="faq__list" data-accordion>
+      <li class="faq__item is-open">
+        <button class="faq__head" type="button" aria-expanded="true">
+          Что входит в стоимость?
+          <span class="accordion__toggle" aria-hidden="true"></span>
+        </button>
+        <div class="faq__body">
+          <p>Всё: печать, монтаж и демонтаж уже включены в цену. Никаких скрытых сборов — стоимость оклейки 1 м² составляет 2 400 ₽.</p>
+        </div>
+      </li>
+      <li class="faq__item">
+        <button class="faq__head" type="button" aria-expanded="false">
+          Какой минимальный срок размещения?
+          <span class="accordion__toggle" aria-hidden="true"></span>
+        </button>
+        <div class="faq__body">
+          <p>Минимальный срок размещения — 1 месяц. Смена изображения внутри месяца оплачивается отдельно.</p>
+        </div>
+      </li>
+      <li class="faq__item">
+        <button class="faq__head" type="button" aria-expanded="false">
+          Вы печатаете материалы сами?
+          <span class="accordion__toggle" aria-hidden="true"></span>
+        </button>
+        <div class="faq__body">
+          <p>Да, у нас полный цикл производства: штатный дизайнер и собственный принтер с УФ-чернилами — реклама держит цвет и не выгорает на солнце.</p>
+        </div>
+      </li>
+      <li class="faq__item">
+        <button class="faq__head" type="button" aria-expanded="false">
+          Сколько у вас транспорта?
+          <span class="accordion__toggle" aria-hidden="true"></span>
+        </button>
+        <div class="faq__body">
+          <p>Более 120 единиц — автобусы и маршрутки на городских и пригородных маршрутах Таганрога.</p>
+        </div>
+      </li>
+      <li class="faq__item">
+        <button class="faq__head" type="button" aria-expanded="false">
+          Можно выбрать конкретные маршруты?
+          <span class="accordion__toggle" aria-hidden="true"></span>
+        </button>
+        <div class="faq__body">
+          <p>Да, подберём транспорт на нужных вам маршрутах — в городе или пригороде.</p>
+        </div>
+      </li>
+      <li class="faq__item">
+        <button class="faq__head" type="button" aria-expanded="false">
+          Как быстро запускается реклама?
+          <span class="accordion__toggle" aria-hidden="true"></span>
+        </button>
+        <div class="faq__body">
+          <p>От согласования макета до выхода транспорта на маршрут обычно проходит несколько рабочих дней.</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== ФОРМА / КОНТАКТЫ ===== -->
+<section class="contacts section" id="contacts">
+  <div class="container">
+    <div class="contacts__grid">
+      <div class="contacts__info">
+        <h2 class="section-title">Свяжитесь с нами</h2>
+        <p class="contacts__desc">Creative Bus занимается рекламой на транспорте в Таганроге и Ростовской области. У нас 120+ автобусов и маршруток</p>
+        <div class="contacts__items">
+          <div class="contacts__item">
+            <p class="contacts__label">Телефон</p>
+            <a href="tel:+79610000000" class="contacts__value">+7 (961) 000-00-00</a>
+          </div>
+          <div class="contacts__item">
+            <p class="contacts__label">Почта</p>
+            <a href="mailto:info@creativebus.ru" class="contacts__value">info@creativebus.ru</a>
+          </div>
+        </div>
+      </div>
+
+      <form class="form" id="lead-form" novalidate>
+        <label class="visually-hidden" for="f-name">ФИО</label>
+        <input class="form__input" id="f-name" name="name" type="text" placeholder="ФИО*" required autocomplete="name">
+        <label class="visually-hidden" for="f-phone">Телефон</label>
+        <input class="form__input" id="f-phone" name="phone" type="tel" placeholder="+7 (9XX) XXX XX XX*" required autocomplete="tel" inputmode="tel">
+        <label class="visually-hidden" for="f-comment">Комментарий</label>
+        <textarea class="form__input form__input--area" id="f-comment" name="comment" placeholder="Комментарий" rows="2"></textarea>
+        <label class="form__check">
+          <input type="checkbox" name="consent" required>
+          <span>Согласен(а) на обработку персональных данных</span>
+        </label>
+        <button class="btn btn--dark form__submit" type="submit">
+          Оставить заявку
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m0 0l-6-6m6 6l-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </form>
+    </div>
+
+    <figure class="contacts__photo">
+      <img src="assets/form-bus.png" alt="Брендированный автобус Creative Bus на трассе" loading="lazy">
+    </figure>
+  </div>
+</section>
+
+<!-- ===== ФУТЕР ===== -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__top">
+      <div class="footer__contact">
+        <a href="tel:+79610000000" class="footer__phone">+7 (961) 000-00-00</a>
+        <span class="footer__line" aria-hidden="true"></span>
+        <p class="footer__about">Реклама на транспорте в Таганроге и Ростовской области с 2015 года.<br>Открытые цены, прозрачные сроки, реальные кейсы.</p>
+      </div>
+      <nav class="footer__col" aria-label="Разделы">
+        <h4>Разделы</h4>
+        <a href="#services">Услуги</a>
+        <a href="assets/pricing.pdf" download>Прайс</a>
+        <a href="#cases">Кейсы</a>
+        <a href="#routes">Маршруты</a>
+        <a href="#contacts">Контакты</a>
+      </nav>
+      <nav class="footer__col" aria-label="Контакты">
+        <h4>Контакты</h4>
+        <a href="tel:+79610000000">+7 (961) 000-00-00</a>
+        <a href="mailto:info@creativebus.ru">info@creativebus.ru</a>
+        <a href="#" rel="noopener">ВКонтакте</a>
+        <a href="#" rel="noopener">Telegram</a>
+      </nav>
+      <div class="footer__col footer__col--last">
+        <nav aria-label="Конфиденциальность">
+          <h4>Конфиденциальность</h4>
+          <a href="#">Политика<br>конфединциальности</a>
+          <a href="#">Согласие на ОДП</a>
+          <a href="#">Реквизиты</a>
+        </nav>
+        <button class="circle-btn circle-btn--blue footer__up" type="button" aria-label="Наверх">↑</button>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <img src="assets/logo-footer.png" alt="Creative Bus" width="109" height="31">
+      <p>© 2026 CreativeBus&nbsp;&nbsp;·&nbsp;&nbsp;Таганрог, Ростовская область</p>
+      <div class="footer__social">
+        <span>Социальные сети</span>
+        <a href="#" aria-label="ВКонтакте"><img src="assets/vk.png" alt="" width="28" height="28"></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
