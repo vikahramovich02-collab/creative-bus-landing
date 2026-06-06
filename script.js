@@ -35,6 +35,34 @@ if (burger) {
   );
 }
 
+// --- Карусель «О нас» ---
+const aboutSlider = document.querySelector('[data-about-slider]');
+if (aboutSlider) {
+  const slides = Array.from(aboutSlider.querySelectorAll('.about__slide'));
+  let idx = 0;
+  const show = (n) => {
+    idx = (n + slides.length) % slides.length;
+    slides.forEach((s, i) => s.classList.toggle('is-active', i === idx));
+  };
+  const about = aboutSlider.closest('.about');
+  about.querySelector('.about__arrow--prev').addEventListener('click', () => show(idx - 1));
+  about.querySelector('.about__arrow--next').addEventListener('click', () => show(idx + 1));
+}
+
+// --- Фильтрация кейсов (cases.html) ---
+const filterBar = document.querySelector('.cases-page__filters');
+if (filterBar) {
+  const cards = document.querySelectorAll('.case-card');
+  filterBar.addEventListener('click', (e) => {
+    const chip = e.target.closest('.filter-chip');
+    if (!chip) return;
+    filterBar.querySelectorAll('.filter-chip').forEach((c) => c.classList.remove('is-active'));
+    chip.classList.add('is-active');
+    const f = chip.dataset.filter;
+    cards.forEach((card) => card.classList.toggle('is-hidden', f !== 'all' && card.dataset.cat !== f));
+  });
+}
+
 // --- Кнопка «наверх» ---
 const upBtn = document.querySelector('.footer__up');
 if (upBtn) upBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));

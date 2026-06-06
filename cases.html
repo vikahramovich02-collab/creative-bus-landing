@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Кейсы — Creative Bus | Реклама на транспорте в Таганроге</title>
+  <meta name="description" content="Реальные размещения рекламы на автобусах и маршрутках Таганрога: бортовая реклама, наклейки, листовки, реклама в салоне.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="header header--solid">
+  <div class="container header__inner">
+    <a href="index.html" class="header__logo" aria-label="Creative Bus — на главную">
+      <img src="assets/logo.png" alt="Creative Bus" width="196" height="56">
+    </a>
+    <nav class="header__nav" aria-label="Основная навигация">
+      <a href="index.html#about">О Нас</a>
+      <a href="index.html#services">Услуги</a>
+      <a href="index.html#contacts">Контакты</a>
+      <a href="cases.html">Партнеры</a>
+      <a href="index.html#routes">Новости</a>
+    </nav>
+    <div class="header__actions">
+      <a href="index.html#contacts" class="btn btn--white">Оставить заявку</a>
+    </div>
+    <button class="header__burger" type="button" aria-label="Открыть меню" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main class="cases-page">
+  <div class="container">
+    <h1 class="section-title cases-page__title">Кейсы, которые ездят по городу</h1>
+
+    <div class="cases-page__filters" role="tablist" aria-label="Фильтр по формату">
+      <button class="filter-chip is-active" type="button" data-filter="all">Все</button>
+      <button class="filter-chip" type="button" data-filter="bortovaya">Бортовая</button>
+      <button class="filter-chip" type="button" data-filter="nakleyki">Наклейки</button>
+      <button class="filter-chip" type="button" data-filter="listovki">Листовки</button>
+      <button class="filter-chip" type="button" data-filter="salon">Салон</button>
+    </div>
+
+    <div class="cases-page__grid">
+      <figure class="case-card" data-cat="bortovaya">
+        <img src="assets/kp-01.png" alt="Бортовая реклама на жёлтом автобусе" loading="lazy">
+        <figcaption><span class="case-card__route">Маршрут №31</span><span class="case-card__cat">Бортовая</span></figcaption>
+      </figure>
+      <figure class="case-card" data-cat="nakleyki">
+        <img src="assets/kp-02.png" alt="Наклейки на борту автобуса" loading="lazy">
+        <figcaption><span class="case-card__route">Маршрут №6</span><span class="case-card__cat">Наклейки</span></figcaption>
+      </figure>
+      <figure class="case-card" data-cat="listovki">
+        <img src="assets/kp-03.png" alt="Листовки над окнами в салоне" loading="lazy">
+        <figcaption><span class="case-card__route">Маршрут №50</span><span class="case-card__cat">Листовки</span></figcaption>
+      </figure>
+      <figure class="case-card" data-cat="bortovaya">
+        <img src="assets/kp-04.png" alt="Широкоформатная бортовая реклама" loading="lazy">
+        <figcaption><span class="case-card__route">Маршрут №13</span><span class="case-card__cat">Бортовая</span></figcaption>
+      </figure>
+      <figure class="case-card" data-cat="nakleyki">
+        <img src="assets/kp-05.png" alt="Рекламная наклейка на маршрутке" loading="lazy">
+        <figcaption><span class="case-card__route">Маршрут №56</span><span class="case-card__cat">Наклейки</span></figcaption>
+      </figure>
+      <figure class="case-card" data-cat="salon">
+        <img src="assets/kp-06.png" alt="Реклама в салоне автобуса" loading="lazy">
+        <figcaption><span class="case-card__route">Маршрут №77</span><span class="case-card__cat">Салон</span></figcaption>
+      </figure>
+      <figure class="case-card" data-cat="salon">
+        <img src="assets/kp-07.png" alt="Потолочная реклама в салоне" loading="lazy">
+        <figcaption><span class="case-card__route">Маршрут №10</span><span class="case-card__cat">Салон</span></figcaption>
+      </figure>
+      <figure class="case-card" data-cat="nakleyki">
+        <img src="assets/kp-08.png" alt="Наклейки на микроавтобусе" loading="lazy">
+        <figcaption><span class="case-card__route">Маршрут №8</span><span class="case-card__cat">Наклейки</span></figcaption>
+      </figure>
+      <figure class="case-card" data-cat="nakleyki">
+        <img src="assets/kp-09.png" alt="Наклейка на заднем стекле — Мегахена" loading="lazy">
+        <figcaption><span class="case-card__route">Маршрут №26</span><span class="case-card__cat">Наклейки</span></figcaption>
+      </figure>
+      <figure class="case-card" data-cat="listovki">
+        <img src="assets/kp-10.png" alt="Листовки в карманах сидений" loading="lazy">
+        <figcaption><span class="case-card__route">Маршрут №34/35</span><span class="case-card__cat">Листовки</span></figcaption>
+      </figure>
+      <figure class="case-card" data-cat="bortovaya">
+        <img src="assets/kp-11.png" alt="Бортовая реклама FreshUp" loading="lazy">
+        <figcaption><span class="case-card__route">Маршрут №56</span><span class="case-card__cat">Бортовая</span></figcaption>
+      </figure>
+      <figure class="case-card" data-cat="bortovaya">
+        <img src="assets/kp-12.png" alt="Бортовая реклама TEBA" loading="lazy">
+        <figcaption><span class="case-card__route">Маршрут №13</span><span class="case-card__cat">Бортовая</span></figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <section class="cta">
+    <div class="container cta__inner">
+      <h2 class="cta__title"><span>Хотите так же?</span><br>Менеджер свяжется в течение часа</h2>
+      <a href="index.html#contacts" class="btn btn--dark btn--lg">
+        Оставить заявку
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m0 0l-6-6m6 6l-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__bottom" style="padding-top:0">
+      <img src="assets/logo-footer.png" alt="Creative Bus" width="109" height="31">
+      <p>© 2026 CreativeBus&nbsp;&nbsp;·&nbsp;&nbsp;Таганрог, Ростовская область</p>
+      <a href="index.html" class="footer__back">← На главную</a>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

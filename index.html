@@ -156,7 +156,7 @@
         <p class="section-label">Кейсы</p>
         <h2 class="section-title">Как наша реклама выглядит на улицах</h2>
       </div>
-      <a href="#cases" class="btn btn--dark">
+      <a href="cases.html" class="btn btn--dark">
         Все
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m0 0l-6-6m6 6l-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
@@ -179,24 +179,62 @@
   </div>
 </section>
 
-<!-- ===== О НАС ===== -->
+<!-- ===== О НАС (карусель) ===== -->
 <section class="about section" id="about">
-  <div class="container about__inner">
-    <div class="about__text">
-      <p class="section-label">О нас</p>
-      <h2 class="section-title">Дизайн внутри команды</h2>
-      <div class="about__desc">
-        <h4>Creative Bus</h4>
-        <p>В штате Creative Bus работает дизайнер, который специализируется именно на рекламе на транспорте.</p>
-        <p>Мы разрабатываем макеты с учетом движения транспорта, расстояния просмотра и городской среды, чтобы реклама выглядела заметно, читалась быстро и работала эффективно.</p>
+  <div class="container about__viewport" data-about-slider>
+    <div class="about__slide is-active">
+      <div class="about__inner">
+        <div class="about__text">
+          <p class="section-label">О нас</p>
+          <h2 class="section-title">Дизайн внутри команды</h2>
+          <div class="about__desc">
+            <h4>Creative Bus</h4>
+            <p>В штате Creative Bus работает дизайнер, который специализируется именно на рекламе на транспорте.</p>
+            <p>Мы разрабатываем макеты с учетом движения транспорта, расстояния просмотра и городской среды, чтобы реклама выглядела заметно, читалась быстро и работала эффективно.</p>
+          </div>
+        </div>
+        <figure class="about__photo">
+          <img src="assets/about-print.png" alt="УФ-принтер печатает рекламный макет «Движение в будущее»" loading="lazy">
+        </figure>
       </div>
     </div>
-    <figure class="about__photo">
-      <img src="assets/about-print.png" alt="УФ-принтер печатает рекламный макет «Движение в будущее»" loading="lazy">
-    </figure>
+
+    <div class="about__slide">
+      <div class="about__inner">
+        <div class="about__text">
+          <p class="section-label">О нас</p>
+          <h2 class="section-title">Собственная печать</h2>
+          <div class="about__desc">
+            <h4>Creative Bus</h4>
+            <p>Печать выполняется на собственном широкоформатном принтере без передачи работы подрядчикам.</p>
+            <p>Это позволяет нам контролировать качество, соблюдать сроки и добиваться четкой, насыщенной печати с высокой детализацией на каждом проекте.</p>
+          </div>
+        </div>
+        <figure class="about__photo">
+          <img src="assets/about-van.png" alt="Микроавтобус с полной обклейкой, напечатанной в Creative Bus" loading="lazy">
+        </figure>
+      </div>
+    </div>
+
+    <div class="about__slide">
+      <div class="about__inner">
+        <div class="about__text">
+          <p class="section-label">О нас</p>
+          <h2 class="section-title">УФ-чернила</h2>
+          <div class="about__desc">
+            <h4>Creative Bus</h4>
+            <p>Мы используем современные УФ-чернила, устойчивые к солнцу, влаге и перепадам температуры.</p>
+            <p>Благодаря этому реклама долго не выгорает, не теряет яркость и сохраняет аккуратный внешний вид даже при постоянной эксплуатации транспорта на маршрутах.</p>
+          </div>
+        </div>
+        <figure class="about__photo">
+          <img src="assets/about-uvink.png" alt="УФ-чернила UV INK для широкоформатной печати" loading="lazy">
+        </figure>
+      </div>
+    </div>
   </div>
-  <button class="circle-btn circle-btn--blue about__arrow about__arrow--prev" type="button" aria-label="Назад">←</button>
-  <button class="circle-btn circle-btn--blue about__arrow about__arrow--next" type="button" aria-label="Вперёд">→</button>
+  <button class="circle-btn about__arrow about__arrow--prev" type="button" aria-label="Предыдущий слайд">←</button>
+  <button class="circle-btn about__arrow about__arrow--next" type="button" aria-label="Следующий слайд">→</button>
 </section>
 
 <!-- ===== МАРШРУТЫ ===== -->
@@ -377,7 +415,7 @@
         <h4>Разделы</h4>
         <a href="#services">Услуги</a>
         <a href="assets/pricing.pdf" download>Прайс</a>
-        <a href="#cases">Кейсы</a>
+        <a href="cases.html">Кейсы</a>
         <a href="#routes">Маршруты</a>
         <a href="#contacts">Контакты</a>
       </nav>

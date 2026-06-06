@@ -335,8 +335,21 @@ img { display: block; max-width: 100%; }
 }
 .cases__card:hover img { transform: scale(1.04); }
 
-/* ============ О НАС ============ */
+/* ============ О НАС (карусель) ============ */
 .about { position: relative; }
+.about__viewport { display: grid; }
+.about__slide {
+  grid-area: 1 / 1;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(24px);
+  transition: opacity .45s ease, transform .45s ease, visibility .45s;
+}
+.about__slide.is-active {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+}
 .about__inner {
   display: flex;
   gap: 0;
@@ -571,6 +584,80 @@ img { display: block; max-width: 100%; }
 .footer__social { display: flex; align-items: center; gap: 18px; }
 .footer__social span { font: 400 14px/1 'Inter', sans-serif; color: var(--dark); }
 
+/* ============ СТРАНИЦА КЕЙСОВ ============ */
+.header--solid {
+  background: var(--dark);
+  padding-bottom: 28px;
+}
+.header--solid .header__nav a,
+.header--solid .header__burger span { color: var(--white); }
+
+.cases-page { padding: 64px 0 0; }
+.cases-page__title { margin-bottom: 36px; }
+.cases-page__filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 48px;
+}
+.filter-chip {
+  padding: 12px 22px;
+  border-radius: 50px;
+  border: 1px solid var(--border);
+  background: var(--white);
+  color: var(--text);
+  font: 500 14px/1 'Inter', sans-serif;
+  cursor: pointer;
+  transition: background .15s ease, color .15s ease;
+}
+.filter-chip:hover { border-color: var(--gray); }
+.filter-chip.is-active {
+  background: var(--dark);
+  border-color: var(--dark);
+  color: var(--white);
+}
+.cases-page__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px 20px;
+}
+.case-card {
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+  height: 400px;
+}
+.case-card.is-hidden { display: none; }
+.case-card img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform .35s ease;
+}
+.case-card:hover img { transform: scale(1.04); }
+.case-card::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(2,8,20,0) 50%, rgba(2,8,20,.72) 100%);
+  pointer-events: none;
+}
+.case-card figcaption {
+  position: absolute;
+  left: 28px; bottom: 24px;
+  z-index: 1;
+  color: var(--white);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.case-card__route { font: 400 13px/1 'Inter', sans-serif; opacity: .8; }
+.case-card__cat { font: 500 20px/1.2 'Inter', sans-serif; }
+.footer__back {
+  font: 400 14px/1 'Inter', sans-serif;
+  color: var(--dark);
+  text-decoration: none;
+}
+.footer__back:hover { color: var(--blue); }
+
 /* ============ АДАПТИВ ============ */
 @media (max-width: 1280px) {
   .hero__title { font-size: 56px; }
@@ -611,6 +698,8 @@ img { display: block; max-width: 100%; }
   .cases__grid { grid-template-columns: 1fr 1fr; }
   .cases__card--wide { grid-column: 1 / -1; }
   .cases__card { height: 280px; }
+  .cases-page__grid { grid-template-columns: 1fr; }
+  .case-card { height: 300px; }
   .about__inner { flex-direction: column; gap: 32px; }
   .about__text { padding-right: 0; }
   .about__desc { padding-top: 32px; }
