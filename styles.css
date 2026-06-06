@@ -715,15 +715,16 @@ img { display: block; max-width: 100%; }
 }
 .lightbox.is-open { opacity: 1; visibility: visible; }
 .lightbox__body {
-  max-width: min(1100px, 86vw);
-  max-height: 84vh;
+  max-width: min(1280px, 88vw);
+  max-height: 90vh;
   display: flex;
   flex-direction: column;
   gap: 16px;
 }
 .lightbox__body img {
-  max-width: 100%;
-  max-height: 76vh;
+  width: min(1280px, 88vw);
+  height: auto;
+  max-height: 82vh;
   object-fit: contain;
   border-radius: 12px;
 }
