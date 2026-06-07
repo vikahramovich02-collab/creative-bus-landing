@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=9">
+  <link rel="stylesheet" href="styles.css?v=10">
 </head>
 <body>
 
@@ -188,7 +188,43 @@
     <p class="section-label">Исследование</p>
     <h2 class="section-title research__title">Каким видом общественного транспорта вы&nbsp;чаще всего пользуетесь?</h2>
 
-    <div class="research__grid">
+    <!-- рисованная диаграмма (desktop) -->
+    <div class="research__draw" role="img" aria-label="Диаграмма опроса: автобусы и маршрутки 36%, электрический транспорт 33%, пользуюсь обоими 31%">
+      <svg viewBox="0 0 1320 680" fill="none" xmlns="http://www.w3.org/2000/svg" font-family="Inter, sans-serif">
+        <!-- круг -->
+        <circle cx="620" cy="320" r="200" stroke="#1091EB" stroke-width="2"/>
+        <!-- деления секторов (не доходят до центра) -->
+        <line x1="620" y1="220" x2="620" y2="120" stroke="#1091EB" stroke-width="1.6"/>
+        <line x1="697" y1="384" x2="774" y2="448" stroke="#1091EB" stroke-width="1.6"/>
+        <line x1="527" y1="357" x2="434" y2="394" stroke="#1091EB" stroke-width="1.6"/>
+
+        <!-- центр: белая «дырка» + иконка + подпись -->
+        <circle cx="620" cy="320" r="97" fill="#FFFFFF"/>
+        <image href="assets/icon-nakleyka.png" x="555" y="225" width="130" height="91"/>
+        <text x="620" y="352" text-anchor="middle" font-size="13" fill="#64748B">Опрос более</text>
+        <text x="620" y="372" text-anchor="middle" font-size="15" font-weight="600" fill="#182238">900 жителей города</text>
+
+        <!-- выноска 1: 36% автобусы (право-верх) -->
+        <polyline points="801,235 900,165 1240,165" stroke="#1091EB" stroke-width="1.2" opacity=".7"/>
+        <text x="902" y="128" font-size="24" font-weight="600" fill="#1091EB">36%<tspan dx="10" font-size="16" font-weight="500" fill="#182238">Автобусы и маршрутки</tspan></text>
+        <text x="902" y="152" font-size="13" fill="#64748B">основной транспорт города</text>
+
+        <!-- выноска 2: 33% электрический (право-низ) -->
+        <polyline points="589,518 700,592 1040,592" stroke="#1091EB" stroke-width="1.2" opacity=".7"/>
+        <text x="702" y="555" font-size="24" font-weight="600" fill="#1091EB">33%<tspan dx="10" font-size="16" font-weight="500" fill="#182238">Электрический транспорт</tspan></text>
+        <text x="702" y="579" font-size="13" fill="#64748B">трамвай или троллейбус</text>
+
+        <!-- выноска 3: 31% обоими (лево-верх) -->
+        <polyline points="455,208 350,140 60,140" stroke="#1091EB" stroke-width="1.2" opacity=".7"/>
+        <text x="62" y="103" font-size="24" font-weight="600" fill="#1091EB">31%<tspan dx="10" font-size="16" font-weight="500" fill="#182238">Пользуюсь обоими одинаково</tspan></text>
+        <text x="62" y="127" font-size="13" fill="#64748B">электрический и автобусный транспорт</text>
+
+        <!-- сноска -->
+        <text x="620" y="660" text-anchor="middle" font-size="14" font-weight="500" fill="#64748B">📅 Данные актуальны на май 2026 года</text>
+      </svg>
+    </div>
+
+    <div class="research__grid research__grid--mobile">
       <div class="research__chart-wrap">
         <div class="research__chart" role="img" aria-label="Диаграмма: автобусы и маршрутки 36%, электрический транспорт 33%, одинаково 31%">
           <div class="research__hole">
@@ -526,6 +562,6 @@
   </div>
 </footer>
 
-<script src="script.js?v=9"></script>
+<script src="script.js?v=10"></script>
 </body>
 </html>

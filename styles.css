@@ -367,7 +367,13 @@ img { display: block; max-width: 100%; }
 
 /* ============ ИНФОГРАФИКА ============ */
 .research { background: var(--bg-gray); }
-.research__title { max-width: 760px; margin-bottom: 64px; }
+.research__title { max-width: 760px; margin-bottom: 40px; }
+.research__draw svg { width: 100%; height: auto; display: block; }
+.research__grid.research__grid--mobile { display: none; }
+@media (max-width: 860px) {
+  .research__draw { display: none; }
+  .research__grid.research__grid--mobile { display: grid; }
+}
 .research__grid {
   display: grid;
   grid-template-columns: 1fr 1.2fr;
