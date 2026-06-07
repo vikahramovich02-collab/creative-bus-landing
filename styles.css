@@ -365,6 +365,86 @@ img { display: block; max-width: 100%; }
 .accordion__row-price { font: 500 15px/1.5 'Inter', sans-serif; color: var(--sky); }
 .accordion__row-price--dark { color: var(--dark); }
 
+/* ============ ИНФОГРАФИКА ============ */
+.research { background: var(--bg-gray); }
+.research__title { max-width: 760px; margin-bottom: 64px; }
+.research__grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 80px;
+  align-items: center;
+}
+.research__chart-wrap { display: flex; justify-content: center; }
+.research__chart {
+  width: 380px;
+  height: 380px;
+  border-radius: 50%;
+  background: conic-gradient(
+    var(--blue) 0deg 129.6deg,
+    #8ECDF7 129.6deg 248.4deg,
+    var(--dark) 248.4deg 360deg
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.research__hole {
+  width: 210px;
+  height: 210px;
+  border-radius: 50%;
+  background: var(--bg-gray);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.research__hole span {
+  font: 400 15px/1.45 'Inter', sans-serif;
+  color: var(--gray);
+}
+.research__hole b { font-weight: 600; color: var(--dark); font-size: 17px; }
+.research__rows { display: flex; flex-direction: column; }
+.research__row {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 22px 28px;
+  margin-bottom: 14px;
+}
+.research__dot {
+  flex: 0 0 48px;
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+}
+.research__dot--blue { background: var(--blue); }
+.research__dot--sky  { background: #8ECDF7; }
+.research__dot--dark { background: var(--dark); }
+.research__name {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font: 500 17px/1.25 'Inter', sans-serif;
+  color: var(--dark);
+}
+.research__name small { font: 400 13px/1.3 'Inter', sans-serif; color: var(--gray); }
+.research__pct { font: 600 36px/1 'Inter', sans-serif; letter-spacing: -0.01em; }
+.research__pct--blue { color: var(--blue); }
+.research__pct--sky  { color: #5FB4EF; }
+.research__pct--dark { color: var(--dark); }
+.research__note {
+  margin-top: 14px;
+  font: 500 14px/1.3 'Inter', sans-serif;
+  color: var(--gray);
+}
+
 /* ============ КЕЙСЫ ============ */
 .cases__grid {
   display: grid;
@@ -860,6 +940,10 @@ img { display: block; max-width: 100%; }
   .case-card { height: 300px; }
   .stats__grid { grid-template-columns: 1fr; gap: 48px; }
   .stats__num { flex-basis: 200px; font-size: 56px; }
+  .research__grid { grid-template-columns: 1fr; gap: 48px; }
+  .research__chart { width: 300px; height: 300px; }
+  .research__hole { width: 170px; height: 170px; }
+  .research__pct { font-size: 28px; }
   .about__inner { flex-direction: column; gap: 32px; }
   .about__text { padding-right: 0; }
   .about__desc { padding-top: 32px; }
