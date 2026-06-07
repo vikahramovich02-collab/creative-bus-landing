@@ -242,17 +242,24 @@ img { display: block; max-width: 100%; }
   display: grid;
   grid-template-columns: 1fr 1.15fr;
   gap: 80px;
-  align-items: start;
+  align-items: stretch;
 }
 .stats__left { display: flex; flex-direction: column; }
+.stats__left .stats__photo { margin-top: auto; }
+.stats__rows {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
 .stats__row {
+  flex: 1;
   display: flex;
   align-items: center;
   gap: 36px;
-  padding: 34px 0;
+  padding: 8px 0;
   border-bottom: 1px solid var(--border);
 }
-.stats__row:first-child { border-top: 1px solid var(--border); }
+.stats__row:last-child { border-bottom: none; }
 .stats__num {
   flex: 0 0 280px;
   font: 600 84px/1 'Inter', sans-serif;
