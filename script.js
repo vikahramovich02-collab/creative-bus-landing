@@ -44,7 +44,7 @@
   const go = (n) => { show(n); restart(); };
   const restart = () => {
     clearInterval(timer);
-    timer = setInterval(() => show(idx + 1), 3000);
+    timer = setInterval(() => show(idx + 1), 5000);
   };
 
   if (prev) prev.addEventListener('click', () => go(idx - 1));
@@ -52,6 +52,18 @@
   dots.forEach((d, i) => d.addEventListener('click', () => go(i)));
   show(0);
   restart();
+})();
+
+// --- Кейсы: раскрывающаяся галерея (расширение по наведению) ---
+(() => {
+  const wrap = document.querySelector('.cases__expand');
+  if (!wrap) return;
+  const cards = Array.from(wrap.querySelectorAll('.cases__card'));
+  cards.forEach((card) => {
+    card.addEventListener('mouseenter', () => {
+      cards.forEach((c) => c.classList.toggle('is-active', c === card));
+    });
+  });
 })();
 
 // --- Аккордеоны (услуги + FAQ) ---

@@ -71,13 +71,20 @@ img { display: block; max-width: 100%; }
   display: inline-flex; align-items: center; justify-content: center;
   font-size: 18px;
   cursor: pointer;
-  transition: opacity .15s ease;
+  transition: background .2s ease, border-color .2s ease, color .2s ease;
 }
-.circle-btn:hover { opacity: .8; }
-.circle-btn--ghost {
-  background: rgba(255,255,255,.14);
-  border: 1px solid rgba(255,255,255,.45);
+.circle-btn--ghost,
+.circle-btn--dim {
+  background: rgba(255,255,255,.12);
+  border: 1px solid rgba(255,255,255,.5);
   color: var(--white);
+}
+/* осветление на ховере */
+.circle-btn--ghost:hover,
+.circle-btn--dim:hover {
+  background: var(--white);
+  border-color: var(--white);
+  color: var(--dark);
 }
 .circle-btn--blue {
   background: var(--blue);
@@ -212,8 +219,11 @@ img.header__logo-dark { display: none; }
 /* hero content */
 .hero__content {
   width: 100%;
-  margin-top: 88px;
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 40px;
 }
 .hero__badge {
   font: 500 14.9px/1 'Inter', sans-serif;
@@ -277,11 +287,6 @@ img.header__logo-dark { display: none; }
   display: flex;
   gap: 14px;
   margin-right: 26px;
-}
-.circle-btn--dim {
-  background: transparent;
-  border: 1px solid rgba(255,255,255,.18);
-  color: rgba(255,255,255,.45);
 }
 .hero__progress {
   display: flex;
@@ -510,23 +515,52 @@ img.header__logo-dark { display: none; }
   color: var(--gray);
 }
 
-/* ============ КЕЙСЫ ============ */
-.cases__grid {
-  display: grid;
-  grid-template-columns: 580fr 232fr 232fr 232fr;
+/* ============ КЕЙСЫ (раскрывающаяся галерея) ============ */
+.cases__expand {
+  display: flex;
   gap: 14px;
+  height: 420px;
 }
 .cases__card {
-  border-radius: 12px;
+  position: relative;
+  flex: 1;
+  border-radius: 16px;
   overflow: hidden;
-  height: 360px;
+  display: block;
+  text-decoration: none;
+  cursor: pointer;
+  transition: flex .55s cubic-bezier(.22,.61,.36,1);
 }
+/* активная — расширяется (переключается по наведению через JS) */
+.cases__card.is-active { flex: 3.2; }
 .cases__card img {
+  position: absolute; inset: 0;
   width: 100%; height: 100%;
   object-fit: cover;
-  transition: transform .35s ease;
+  transition: transform .6s ease;
 }
-.cases__card:hover img { transform: scale(1.04); }
+.cases__card:hover img,
+.cases__card.is-active img { transform: scale(1.04); }
+.cases__card::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(2,8,20,0) 45%, rgba(2,8,20,.72) 100%);
+}
+.cases__cap {
+  position: absolute;
+  left: 28px; bottom: 26px; right: 28px;
+  z-index: 1;
+  color: var(--white);
+  font: 600 22px/1.25 'Inter', sans-serif;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity .4s ease .1s, transform .4s ease .1s;
+}
+.cases__card.is-active .cases__cap,
+.cases__card:hover .cases__cap { opacity: 1; transform: none; }
 
 /* ============ О НАС (карусель) ============ */
 .about { position: relative; }
