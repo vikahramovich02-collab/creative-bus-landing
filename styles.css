@@ -422,6 +422,33 @@ img.header__logo-dark { display: none; }
 .accordion__item.is-open .accordion__toggle::before { transform: translate(-50%, -50%) rotate(45deg); }
 .accordion__item.is-open .accordion__toggle::after  { transform: translate(-50%, -50%) rotate(-45deg); }
 
+/* услуги: стрелка-шеврон вместо плюса */
+.services .accordion__toggle::after { display: none; }
+.services .accordion__toggle::before {
+  width: 11px; height: 11px;
+  background: none;
+  border-right: 2px solid var(--body);
+  border-bottom: 2px solid var(--body);
+  transform: translate(-50%, -70%) rotate(45deg);
+}
+.services .accordion__item.is-open .accordion__toggle::before {
+  transform: translate(-50%, -30%) rotate(225deg);
+}
+/* ссылка на кейсы внутри раскрытой услуги */
+.accordion__cases {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 18px 14px 4px;
+  color: var(--blue);
+  font: 600 15px/1 'Inter', sans-serif;
+  text-decoration: none;
+  transition: gap .2s ease;
+}
+.accordion__cases svg { transition: transform .2s ease; }
+.accordion__cases:hover { gap: 12px; }
+.accordion__cases:hover svg { transform: translateX(4px); }
+
 .accordion__body {
   display: grid;
   grid-template-rows: 0fr;

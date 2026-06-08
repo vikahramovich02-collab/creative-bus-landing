@@ -167,14 +167,21 @@ if (aboutSlider) {
 const filterBar = document.querySelector('.cases-page__filters');
 if (filterBar) {
   const cards = document.querySelectorAll('.case-card');
-  filterBar.addEventListener('click', (e) => {
-    const chip = e.target.closest('.filter-chip');
+  const applyFilter = (f) => {
+    const chip = filterBar.querySelector(`.filter-chip[data-filter="${f}"]`);
     if (!chip) return;
     filterBar.querySelectorAll('.filter-chip').forEach((c) => c.classList.remove('is-active'));
     chip.classList.add('is-active');
-    const f = chip.dataset.filter;
     cards.forEach((card) => card.classList.toggle('is-hidden', f !== 'all' && card.dataset.cat !== f));
+  };
+  filterBar.addEventListener('click', (e) => {
+    const chip = e.target.closest('.filter-chip');
+    if (!chip) return;
+    applyFilter(chip.dataset.filter);
   });
+  // фильтр из ссылки услуги: cases.html?filter=nakleyki
+  const wanted = new URLSearchParams(location.search).get('filter');
+  if (wanted) applyFilter(wanted);
 }
 
 // --- Лайтбокс для кейсов ---
