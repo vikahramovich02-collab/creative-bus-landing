@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=12">
+  <link rel="stylesheet" href="styles.css?v=13">
 </head>
 <body>
 
@@ -23,7 +23,8 @@
   <header class="header">
     <div class="container header__inner">
       <a href="#top" class="header__logo" aria-label="Creative Bus — на главную">
-        <img src="assets/logo.svg" alt="Creative Bus" width="196" height="56">
+        <img class="header__logo-light" src="assets/logo.svg" alt="Creative Bus" width="196" height="56">
+        <img class="header__logo-dark" src="assets/logo-dark.svg" alt="Creative Bus" width="196" height="56">
       </a>
       <nav class="header__nav" aria-label="Основная навигация">
         <a href="#about">О нас</a>
@@ -42,11 +43,11 @@
   </header>
 
   <div class="container hero__content">
-    <p class="hero__badge">Работаем с 2007 г.</p>
+    <p class="hero__badge" style="opacity:.5">Работаем с 2007 г.</p>
     <h1 class="hero__title">Реклама размером с&nbsp;автобус&nbsp;— её&nbsp;невозможно не&nbsp;заметить</h1>
     <a href="#contacts" class="hero__cta">
       <span>Контакты</span>
-      <img src="assets/icon-nakleyka.png" alt="" width="64" height="45">
+      <img class="hero__cta-bus" src="assets/bus-btn.svg" alt="" width="64" height="63">
     </a>
   </div>
 
@@ -562,6 +563,6 @@
   </div>
 </footer>
 
-<script src="script.js?v=12"></script>
+<script src="script.js?v=13"></script>
 </body>
 </html>

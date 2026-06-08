@@ -1,5 +1,30 @@
 // ===== Creative Bus — лендинг =====
 
+// --- Sticky-шапка: прячется при скролле вниз, выезжает при скролле вверх ---
+(() => {
+  const header = document.querySelector('.header');
+  if (!header) return;
+  const isSolid = header.classList.contains('header--solid'); // страница без hero
+  let lastY = window.scrollY;
+  let ticking = false;
+
+  const update = () => {
+    const y = window.scrollY;
+    // белая подложка, когда ушли от верха (на странице без hero — всегда)
+    if (!isSolid) header.classList.toggle('header--scrolled', y > 60);
+    // прячем при движении вниз, показываем при движении вверх
+    if (y > lastY && y > 160) header.classList.add('header--hidden');
+    else header.classList.remove('header--hidden');
+    lastY = y;
+    ticking = false;
+  };
+
+  window.addEventListener('scroll', () => {
+    if (!ticking) { requestAnimationFrame(update); ticking = true; }
+  }, { passive: true });
+  update();
+})();
+
 // --- Аккордеоны (услуги + FAQ) ---
 document.querySelectorAll('[data-accordion]').forEach((list) => {
   list.addEventListener('click', (e) => {
