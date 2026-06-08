@@ -11,14 +11,15 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=19">
+  <link rel="stylesheet" href="styles.css?v=21">
 </head>
 <body>
 
 <!-- ===== HERO ===== -->
 <section class="hero" id="top">
   <div class="hero__slides" data-hero-slider>
-    <img class="hero__bg is-active" src="assets/hero-1.webp" alt="Автобус с рекламой «Время открывать новые высоты»" fetchpriority="high">
+    <img class="hero__bg is-active" src="assets/hero-aerolux.webp" alt="Двухэтажный автобус AERO-LUX с брендированием в потоке" fetchpriority="high">
+    <img class="hero__bg" src="assets/hero-1.webp" alt="Автобус с рекламой «Время открывать новые высоты»" loading="lazy">
     <img class="hero__bg" src="assets/hero-2.webp" alt="Автобус с рекламой фитнес-клуба ENERGY" loading="lazy">
     <img class="hero__bg" src="assets/hero-3.webp" alt="Реклама на спинках сидений в салоне" loading="lazy">
     <img class="hero__bg" src="assets/hero-4.webp" alt="Автобус с рекламой ПИК" loading="lazy">
@@ -66,7 +67,7 @@
         <button class="circle-btn circle-btn--ghost" type="button" aria-label="Следующий слайд">→</button>
       </div>
       <div class="hero__progress" aria-hidden="true">
-        <span class="is-active"></span><span></span><span></span><span></span><span></span>
+        <span class="is-active"></span><span></span><span></span><span></span><span></span><span></span>
       </div>
     </div>
   </div>
@@ -372,7 +373,7 @@
       <article class="routes__card">
         <div class="routes__main">
           <span class="routes__icon" aria-hidden="true">
-            <svg width="34" height="34" viewBox="0 0 24 24" fill="none"><path d="M4 16V6a2 2 0 012-2h12a2 2 0 012 2v10M4 16h16M4 16v2a1 1 0 001 1h1a1 1 0 001-1v-1m13 0v2a1 1 0 01-1 1h-1a1 1 0 01-1-1v-1M7 8h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <img src="assets/icon-city.svg" alt="" width="50" height="50" loading="lazy">
           </span>
           <h3>Город</h3>
           <p class="routes__sub">Таганрог · ежедневно</p>
@@ -390,7 +391,7 @@
       <article class="routes__card">
         <div class="routes__main">
           <span class="routes__icon" aria-hidden="true">
-            <svg width="34" height="34" viewBox="0 0 24 24" fill="none"><path d="M3 17l4-9 4 6 3-4 5 7H3z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="17" cy="6" r="2" stroke="currentColor" stroke-width="1.6"/></svg>
+            <img src="assets/icon-suburb.svg" alt="" width="50" height="50" loading="lazy">
           </span>
           <h3>Пригород</h3>
           <p class="routes__sub">Таганрог ↔ соседние сёла</p>
@@ -511,7 +512,7 @@
         <label class="visually-hidden" for="f-comment">Комментарий</label>
         <textarea class="form__input form__input--area" id="f-comment" name="comment" placeholder="Комментарий" rows="2"></textarea>
         <label class="form__check">
-          <input type="checkbox" name="consent" required>
+          <input type="checkbox" name="consent" checked required>
           <span>Согласен(а) на обработку персональных данных</span>
         </label>
         <button class="btn btn--dark form__submit" type="submit">
@@ -534,7 +535,7 @@
       <div class="footer__contact">
         <a href="tel:+79610000000" class="footer__phone">+7 (961) 000-00-00</a>
         <span class="footer__line" aria-hidden="true"></span>
-        <p class="footer__about">Реклама на транспорте в Таганроге и Ростовской области с 2015 года.<br>Открытые цены, прозрачные сроки, реальные кейсы.</p>
+        <p class="footer__about">Реклама на транспорте в Таганроге и Ростовской области с 2007 года.</p>
       </div>
       <nav class="footer__col" aria-label="Разделы">
         <h4>Разделы</h4>
@@ -563,7 +564,7 @@
     </div>
 
     <div class="footer__bottom">
-      <img src="assets/logo-footer.webp" alt="Creative Bus" width="109" height="31">
+      <img src="assets/logo-dark.svg" alt="Creative Bus" width="109" height="31">
       <p>© 2026 CreativeBus&nbsp;&nbsp;·&nbsp;&nbsp;Таганрог, Ростовская область</p>
       <div class="footer__social">
         <span>Социальные сети</span>
@@ -573,6 +574,6 @@
   </div>
 </footer>
 
-<script src="script.js?v=19"></script>
+<script src="script.js?v=21"></script>
 </body>
 </html>

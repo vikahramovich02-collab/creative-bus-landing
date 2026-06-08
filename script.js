@@ -45,6 +45,8 @@
   const UTP = [
     { format: 'Бортовая реклама',
       title: 'Реклама размером с&nbsp;автобус&nbsp;— её&nbsp;невозможно не&nbsp;заметить' },
+    { format: 'Реклама на маршрутах',
+      title: 'Ваш бренд&nbsp;— на&nbsp;20+ маршрутах Таганрога и&nbsp;пригорода' },
     { format: 'Полное брендирование',
       title: 'Полная обклейка&nbsp;— ваш бренд едет по&nbsp;всему городу' },
     { format: 'Реклама на спинках сидений',
@@ -56,16 +58,22 @@
   ];
   const titleEl = document.querySelector('[data-hero-title]');
   const formatEl = document.querySelector('[data-hero-format]');
-  const fade = (el, html) => {
+  // плавная смена: текст уезжает вниз и растворяется, новый — выезжает снизу вверх
+  const fade = (el, html, delay) => {
     if (!el || el.innerHTML === html) return;
     el.style.opacity = '0';
-    setTimeout(() => { el.innerHTML = html; el.style.opacity = '1'; }, 220);
+    el.style.transform = 'translateY(14px)';
+    setTimeout(() => {
+      el.innerHTML = html;
+      el.style.opacity = '1';
+      el.style.transform = 'translateY(0)';
+    }, 240 + (delay || 0));
   };
   const setUtp = (i) => {
     const u = UTP[i];
     if (!u) return;
-    fade(formatEl, u.format);
-    fade(titleEl, u.title);
+    fade(formatEl, u.format, 0);
+    fade(titleEl, u.title, 80);
   };
 
   const show = (n) => {
@@ -225,6 +233,17 @@ if (filterBar) {
   });
 })();
 
+// --- Кнопка «Назад» на подстраницах (возврат на предыдущую страницу) ---
+document.querySelectorAll('[data-back]').forEach((link) => {
+  link.addEventListener('click', (e) => {
+    // если есть куда вернуться — возвращаемся, иначе переходим по href (на главную)
+    if (history.length > 1 && document.referrer) {
+      e.preventDefault();
+      history.back();
+    }
+  });
+});
+
 // --- Кнопка «наверх» ---
 const upBtn = document.querySelector('.footer__up');
 if (upBtn) upBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
@@ -279,7 +298,7 @@ document.querySelectorAll('form.form').forEach(initLeadForm);
     '<input class="form__input" name="name" type="text" placeholder="ФИО*" required autocomplete="name">' +
     '<input class="form__input" name="phone" type="tel" placeholder="+7 (9XX) XXX XX XX*" required autocomplete="tel" inputmode="tel">' +
     '<textarea class="form__input form__input--area" name="comment" placeholder="Комментарий" rows="2"></textarea>' +
-    '<label class="form__check"><input type="checkbox" name="consent" required><span>Согласен(а) на обработку персональных данных</span></label>' +
+    '<label class="form__check"><input type="checkbox" name="consent" checked required><span>Согласен(а) на обработку персональных данных</span></label>' +
     '<button class="btn btn--dark form__submit" type="submit">Оставить заявку' +
     '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m0 0l-6-6m6 6l-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>';
 

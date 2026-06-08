@@ -225,6 +225,7 @@ img.header__logo-dark { display: none; }
   flex-direction: column;
   justify-content: center;
   padding-top: 40px;
+  padding-bottom: 11vh;
 }
 .hero__badge {
   font: 500 14.9px/1 'Inter', sans-serif;
@@ -247,7 +248,10 @@ img.header__logo-dark { display: none; }
   border-radius: 50%;
   background: var(--blue);
 }
-.hero__format, .hero__title, .hero__caption { transition: opacity .25s ease; }
+.hero__format, .hero__title, .hero__caption {
+  transition: opacity .4s ease, transform .4s cubic-bezier(.22,.61,.36,1);
+  will-change: opacity, transform;
+}
 .hero__title {
   font: 500 74px/1.2 'Inter', sans-serif;
   letter-spacing: -0.02em;
@@ -622,13 +626,17 @@ img.header__logo-dark { display: none; }
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: var(--white);
-  color: var(--gray);
-  border: none;
-  box-shadow: 0 6px 18px rgba(15, 23, 42, .12);
+  background: transparent;
+  color: var(--dark);
+  border: 1.5px solid var(--dark);
 }
-.about__arrow--prev { left: 183px; }
-.about__arrow--next { right: 149px; }
+.about__arrow:hover {
+  background: var(--blue);
+  border-color: var(--blue);
+  color: var(--white);
+}
+.about__arrow--prev { left: 40px; }
+.about__arrow--next { right: 40px; }
 
 /* ============ МАРШРУТЫ ============ */
 .routes { background: var(--white); }
@@ -750,7 +758,7 @@ img.header__logo-dark { display: none; }
 .form__input {
   width: 100%;
   border: 1px solid var(--border);
-  border-radius: 10px;
+  border-radius: 16px;
   padding: 15px 18px;
   font: 400 14px/1.4 'Inter', sans-serif;
   color: var(--text);
@@ -770,7 +778,7 @@ img.header__logo-dark { display: none; }
   padding: 4px 2px;
 }
 .form__check input { width: 16px; height: 16px; accent-color: var(--dark); }
-.form__submit { width: 100%; padding: 22px; }
+.form__submit { width: 100%; padding: 15px 22px; }
 .form__success {
   text-align: center;
   padding: 40px 16px;
@@ -1092,6 +1100,21 @@ img.header__logo-dark { display: none; }
   .legal__title { font-size: 30px; }
   .legal__body { font-size: 15px; }
 }
+
+/* ===== Кнопка «Назад» на подстраницах ===== */
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--gray);
+  text-decoration: none;
+  font: 500 15px/1 'Inter', sans-serif;
+  margin-bottom: 22px;
+  transition: color .2s ease, gap .2s ease;
+}
+.back-link svg { transition: transform .2s ease; }
+.back-link:hover { color: var(--dark); gap: 12px; }
+.back-link:hover svg { transform: translateX(-3px); }
 
 /* ===== Юридические страницы (политика, согласие, реквизиты) ===== */
 .legal { padding: 144px 0 96px; }
