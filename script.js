@@ -258,6 +258,22 @@ document.querySelectorAll('[data-back]').forEach((link) => {
   });
 });
 
+// --- Анимации проявления при заходе в блок (повторяются при каждом входе) ---
+(() => {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (!('IntersectionObserver' in window)) return;
+  const targets = document.querySelectorAll(
+    '.section-label, .section-title, [data-reveal], .research__draw, .stats__rows, ' +
+    '.accordion, .cases__expand, .routes__card, .faq, .contacts__info, .form, .cta__title'
+  );
+  if (!targets.length) return;
+  targets.forEach((el) => el.classList.add('reveal'));
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => e.target.classList.toggle('is-visible', e.isIntersecting));
+  }, { threshold: 0.12 });
+  targets.forEach((el) => io.observe(el));
+})();
+
 // --- Кнопка «наверх» ---
 const upBtn = document.querySelector('.footer__up');
 if (upBtn) upBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));

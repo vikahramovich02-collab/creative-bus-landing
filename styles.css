@@ -481,8 +481,38 @@ img.header__logo-dark { display: none; }
 .accordion__row-price--dark { color: var(--dark); }
 
 /* ============ ИНФОГРАФИКА ============ */
-.research { background: var(--bg-gray); }
+.research { background: var(--white); }
 .research__title { max-width: 760px; margin-bottom: 40px; }
+.research__cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+  padding: 34px 40px;
+  background: var(--bg-gray);
+  border-radius: 24px;
+}
+.research__insight {
+  font: 400 19px/1.5 'Inter', sans-serif;
+  color: var(--dark);
+  max-width: 760px;
+}
+.research__insight b { color: var(--blue); font-weight: 700; }
+.research__cta .btn { flex-shrink: 0; }
+
+/* ===== Анимации проявления при заходе в блок ===== */
+@media (prefers-reduced-motion: no-preference) {
+  .reveal {
+    opacity: 0;
+    transform: translateY(26px);
+    transition: opacity .6s cubic-bezier(.22,.61,.36,1), transform .6s cubic-bezier(.22,.61,.36,1);
+  }
+  .reveal.is-visible { opacity: 1; transform: none; }
+  /* лёгкая лесенка: заголовок чуть позже подписи */
+  .section-title.reveal { transition-delay: .09s; }
+}
 .research__draw svg { width: 100%; height: auto; display: block; }
 .research__grid.research__grid--mobile { display: none; }
 @media (max-width: 860px) {

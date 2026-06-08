@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=25">
+  <link rel="stylesheet" href="styles.css?v=27">
 </head>
 <body>
 
@@ -106,10 +106,55 @@
   <section class="cta">
     <div class="container cta__inner">
       <h2 class="cta__title"><span>Хотите так же?</span><br>Менеджер свяжется в течение часа</h2>
-      <a href="index.html#contacts" class="btn btn--dark btn--lg">
+      <a href="#contacts" class="btn btn--dark btn--lg">
         Оставить заявку
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m0 0l-6-6m6 6l-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
+    </div>
+  </section>
+
+  <!-- ===== ФОРМА / КОНТАКТЫ ===== -->
+  <section class="contacts section" id="contacts">
+    <div class="container">
+      <div class="contacts__grid">
+        <div class="contacts__info">
+          <h2 class="section-title">Свяжитесь с нами</h2>
+          <p class="contacts__desc">Creative Bus занимается рекламой на транспорте в Таганроге и Ростовской области. У нас 120+ автобусов и маршруток</p>
+          <div class="contacts__items">
+            <div class="contacts__item">
+              <p class="contacts__label">Телефон</p>
+              <a href="tel:+79610000000" class="contacts__value">+7 (961) 000-00-00</a>
+            </div>
+            <div class="contacts__item">
+              <p class="contacts__label">Почта</p>
+              <a href="mailto:info@creativebus.ru" class="contacts__value">info@creativebus.ru</a>
+            </div>
+          </div>
+        </div>
+
+        <form class="form form--bare" id="lead-form" novalidate>
+          <div class="form__field">
+            <label class="form__label" for="f-name">Имя</label>
+            <input class="form__input" id="f-name" name="name" type="text" placeholder="Ваше имя" required autocomplete="name">
+          </div>
+          <div class="form__field">
+            <label class="form__label" for="f-phone">Телефон</label>
+            <input class="form__input" id="f-phone" name="phone" type="tel" placeholder="+7 (9XX) XXX XX XX" required autocomplete="tel" inputmode="tel">
+          </div>
+          <div class="form__field">
+            <label class="form__label" for="f-comment">Сообщение</label>
+            <textarea class="form__input form__input--area" id="f-comment" name="comment" placeholder="Ваше сообщение" rows="3"></textarea>
+          </div>
+          <label class="form__check">
+            <input type="checkbox" name="consent" checked required>
+            <span>Согласен(а) на обработку персональных данных</span>
+          </label>
+          <button class="btn btn--dark form__submit" type="submit">
+            Оставить заявку
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m0 0l-6-6m6 6l-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </form>
+      </div>
     </div>
   </section>
 </main>
@@ -159,6 +204,6 @@
   </div>
 </footer>
 
-<script src="script.js?v=25"></script>
+<script src="script.js?v=27"></script>
 </body>
 </html>
