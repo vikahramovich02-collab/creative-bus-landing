@@ -237,6 +237,7 @@ img.header__logo-dark { display: none; }
 }
 .hero__cta {
   display: inline-flex;
+  align-self: flex-start;
   align-items: center;
   gap: 18px;
   background: var(--white);
