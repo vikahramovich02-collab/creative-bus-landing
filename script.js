@@ -152,8 +152,15 @@ if (aboutSlider) {
     slides.forEach((s, i) => s.classList.toggle('is-active', i === idx));
   };
   const about = aboutSlider.closest('.about');
-  about.querySelector('.about__arrow--prev').addEventListener('click', () => show(idx - 1));
-  about.querySelector('.about__arrow--next').addEventListener('click', () => show(idx + 1));
+  let timer;
+  const restart = () => {
+    clearInterval(timer);
+    timer = setInterval(() => show(idx + 1), 5000);
+  };
+  const go = (n) => { show(n); restart(); };
+  about.querySelector('.about__arrow--prev').addEventListener('click', () => go(idx - 1));
+  about.querySelector('.about__arrow--next').addEventListener('click', () => go(idx + 1));
+  restart();
 }
 
 // --- Фильтрация кейсов (cases.html) ---
