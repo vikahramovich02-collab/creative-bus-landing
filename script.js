@@ -5,13 +5,17 @@
   const header = document.querySelector('.header');
   if (!header) return;
   const isSolid = header.classList.contains('header--solid'); // страница без hero
+  const hero = document.querySelector('.hero');
   let lastY = window.scrollY;
   let ticking = false;
 
   const update = () => {
     const y = window.scrollY;
-    // белая подложка, когда ушли от верха (на странице без hero — всегда)
-    if (!isSolid) header.classList.toggle('header--scrolled', y > 60);
+    // белая подложка — только когда ушли с главного экрана (на странице без hero — всегда)
+    if (!isSolid) {
+      const past = hero ? hero.offsetHeight - 80 : 60;
+      header.classList.toggle('header--scrolled', y > past);
+    }
     // прячем при движении вниз, показываем при движении вверх
     if (y > lastY && y > 160) header.classList.add('header--hidden');
     else header.classList.remove('header--hidden');
@@ -36,26 +40,21 @@
   const next = hero.querySelector('.circle-btn--ghost');
   let idx = 0, timer;
 
-  // УТП под каждый кадр — формат услуги меняется вместе с фото
+  // УТП под каждый кадр — формат услуги и заголовок меняются вместе с фото
+  // (описание внизу — общее для всех слайдов, не меняется)
   const UTP = [
     { format: 'Бортовая реклама',
-      title: 'Реклама размером с&nbsp;автобус&nbsp;— её&nbsp;невозможно не&nbsp;заметить',
-      caption: 'На каждом маршруте Таганрога, каждый день — десятки тысяч контактов с вашим брендом' },
+      title: 'Реклама размером с&nbsp;автобус&nbsp;— её&nbsp;невозможно не&nbsp;заметить' },
     { format: 'Полное брендирование',
-      title: 'Полная обклейка&nbsp;— ваш бренд едет по&nbsp;всему городу',
-      caption: 'Брендируем транспорт целиком: борта, корма и&nbsp;стёкла — максимум внимания' },
+      title: 'Полная обклейка&nbsp;— ваш бренд едет по&nbsp;всему городу' },
     { format: 'Реклама на спинках сидений',
-      title: 'Реклама на&nbsp;спинках сидений — её&nbsp;рассматривают всю&nbsp;поездку',
-      caption: 'Перед глазами пассажира 15–40 минут поездки — внимание обеспечено' },
+      title: 'Реклама на&nbsp;спинках сидений — её&nbsp;рассматривают всю&nbsp;поездку' },
     { format: 'Широкоформатная реклама',
-      title: 'Широкий формат&nbsp;— крупно, ярко, на&nbsp;весь&nbsp;борт',
-      caption: 'До 120 м² рекламной площади на одном автобусе — видно издалека' },
+      title: 'Широкий формат&nbsp;— крупно, ярко, на&nbsp;весь&nbsp;борт' },
     { format: 'Реклама в салоне',
-      title: 'Реклама в&nbsp;салоне — работает, пока человек едет',
-      caption: 'Стикеры и постеры в салоне — контакт с пассажиром каждую минуту поездки' },
+      title: 'Реклама в&nbsp;салоне — работает, пока человек едет' },
   ];
   const titleEl = document.querySelector('[data-hero-title]');
-  const captionEl = document.querySelector('[data-hero-caption]');
   const formatEl = document.querySelector('[data-hero-format]');
   const fade = (el, html) => {
     if (!el || el.innerHTML === html) return;
@@ -67,7 +66,6 @@
     if (!u) return;
     fade(formatEl, u.format);
     fade(titleEl, u.title);
-    fade(captionEl, u.caption);
   };
 
   const show = (n) => {
