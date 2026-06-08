@@ -229,6 +229,24 @@ img.header__logo-dark { display: none; }
   font: 500 14.9px/1 'Inter', sans-serif;
   margin-bottom: 10px;
 }
+.hero__format {
+  display: inline-flex;
+  align-self: flex-start;
+  align-items: center;
+  gap: 9px;
+  font: 600 13px/1 'Inter', sans-serif;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+.hero__format::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--blue);
+}
+.hero__format, .hero__title, .hero__caption { transition: opacity .25s ease; }
 .hero__title {
   font: 500 74px/1.2 'Inter', sans-serif;
   letter-spacing: -0.02em;

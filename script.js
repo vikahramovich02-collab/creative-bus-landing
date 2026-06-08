@@ -36,10 +36,45 @@
   const next = hero.querySelector('.circle-btn--ghost');
   let idx = 0, timer;
 
+  // УТП под каждый кадр — формат услуги меняется вместе с фото
+  const UTP = [
+    { format: 'Бортовая реклама',
+      title: 'Реклама размером с&nbsp;автобус&nbsp;— её&nbsp;невозможно не&nbsp;заметить',
+      caption: 'На каждом маршруте Таганрога, каждый день — десятки тысяч контактов с вашим брендом' },
+    { format: 'Полное брендирование',
+      title: 'Полная обклейка&nbsp;— ваш бренд едет по&nbsp;всему городу',
+      caption: 'Брендируем транспорт целиком: борта, корма и&nbsp;стёкла — максимум внимания' },
+    { format: 'Реклама на спинках сидений',
+      title: 'Реклама на&nbsp;спинках сидений — её&nbsp;рассматривают всю&nbsp;поездку',
+      caption: 'Перед глазами пассажира 15–40 минут поездки — внимание обеспечено' },
+    { format: 'Широкоформатная реклама',
+      title: 'Широкий формат&nbsp;— крупно, ярко, на&nbsp;весь&nbsp;борт',
+      caption: 'До 120 м² рекламной площади на одном автобусе — видно издалека' },
+    { format: 'Реклама в салоне',
+      title: 'Реклама в&nbsp;салоне — работает, пока человек едет',
+      caption: 'Стикеры и постеры в салоне — контакт с пассажиром каждую минуту поездки' },
+  ];
+  const titleEl = document.querySelector('[data-hero-title]');
+  const captionEl = document.querySelector('[data-hero-caption]');
+  const formatEl = document.querySelector('[data-hero-format]');
+  const fade = (el, html) => {
+    if (!el || el.innerHTML === html) return;
+    el.style.opacity = '0';
+    setTimeout(() => { el.innerHTML = html; el.style.opacity = '1'; }, 220);
+  };
+  const setUtp = (i) => {
+    const u = UTP[i];
+    if (!u) return;
+    fade(formatEl, u.format);
+    fade(titleEl, u.title);
+    fade(captionEl, u.caption);
+  };
+
   const show = (n) => {
     idx = (n + slides.length) % slides.length;
     slides.forEach((s, i) => s.classList.toggle('is-active', i === idx));
     dots.forEach((d, i) => d.classList.toggle('is-active', i === idx));
+    setUtp(idx);
   };
   const go = (n) => { show(n); restart(); };
   const restart = () => {
