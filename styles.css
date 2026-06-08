@@ -163,8 +163,8 @@ img { display: block; max-width: 100%; }
   margin-bottom: 10px;
 }
 .hero__title {
-  font: 600 74px/1.2 'Inter', sans-serif;
-  letter-spacing: -0.015em;
+  font: 500 74px/1.2 'Inter', sans-serif;
+  letter-spacing: -0.02em;
   max-width: 1253px;
   margin-bottom: 56px;
 }
