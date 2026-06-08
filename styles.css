@@ -133,7 +133,7 @@ img { display: block; max-width: 100%; }
 .hero__bg.is-active { opacity: 1; }
 .hero__overlay {
   position: absolute; inset: 0;
-  background: linear-gradient(180deg, rgba(10,16,32,.45) 0%, rgba(10,16,32,.15) 45%, rgba(10,16,32,.5) 100%);
+  background: linear-gradient(180deg, rgba(10,16,32,.66) 0%, rgba(10,16,32,.5) 45%, rgba(10,16,32,.72) 100%);
   z-index: -1;
 }
 
