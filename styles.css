@@ -754,8 +754,8 @@ img.header__logo-dark { display: none; }
 .contacts { padding-top: 72px; }
 .contacts__grid {
   display: grid;
-  grid-template-columns: 1fr 520px;
-  gap: 120px;
+  grid-template-columns: 1fr 660px;
+  gap: 80px;
   margin-bottom: 46px;
 }
 .contacts__desc {
@@ -782,6 +782,10 @@ img.header__logo-dark { display: none; }
   gap: 14px;
   align-self: start;
 }
+/* форма контактов — без карточки-обводки */
+.form--bare { border: none; padding: 0; gap: 18px; }
+.form__field { display: flex; flex-direction: column; gap: 8px; }
+.form__label { font: 500 15px/1 'Inter', sans-serif; color: var(--dark); }
 .form__input {
   width: 100%;
   border: 1px solid var(--border);

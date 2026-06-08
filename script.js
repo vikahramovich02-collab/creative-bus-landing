@@ -297,6 +297,8 @@ function initLeadForm(form) {
     // TODO: подключить отправку (email / Telegram-бот), когда будут доступы
     console.log('Заявка:', {
       name: name.value.trim(),
+      email: form.elements.email ? form.elements.email.value.trim() : '',
+      company: form.elements.company ? form.elements.company.value.trim() : '',
       phone: phone.value,
       comment: form.elements.comment.value.trim(),
     });

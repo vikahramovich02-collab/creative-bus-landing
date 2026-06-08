@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=24">
+  <link rel="stylesheet" href="styles.css?v=25">
 </head>
 <body>
 
@@ -513,13 +513,27 @@
         </div>
       </div>
 
-      <form class="form" id="lead-form" novalidate>
-        <label class="visually-hidden" for="f-name">ФИО</label>
-        <input class="form__input" id="f-name" name="name" type="text" placeholder="ФИО*" required autocomplete="name">
-        <label class="visually-hidden" for="f-phone">Телефон</label>
-        <input class="form__input" id="f-phone" name="phone" type="tel" placeholder="+7 (9XX) XXX XX XX*" required autocomplete="tel" inputmode="tel">
-        <label class="visually-hidden" for="f-comment">Комментарий</label>
-        <textarea class="form__input form__input--area" id="f-comment" name="comment" placeholder="Комментарий" rows="2"></textarea>
+      <form class="form form--bare" id="lead-form" novalidate>
+        <div class="form__field">
+          <label class="form__label" for="f-name">Имя</label>
+          <input class="form__input" id="f-name" name="name" type="text" placeholder="Ваше имя" required autocomplete="name">
+        </div>
+        <div class="form__field">
+          <label class="form__label" for="f-email">Почта</label>
+          <input class="form__input" id="f-email" name="email" type="email" placeholder="example@mail.ru" autocomplete="email">
+        </div>
+        <div class="form__field">
+          <label class="form__label" for="f-company">Компания</label>
+          <input class="form__input" id="f-company" name="company" type="text" placeholder="Название компании" autocomplete="organization">
+        </div>
+        <div class="form__field">
+          <label class="form__label" for="f-phone">Телефон</label>
+          <input class="form__input" id="f-phone" name="phone" type="tel" placeholder="+7 (9XX) XXX XX XX" required autocomplete="tel" inputmode="tel">
+        </div>
+        <div class="form__field">
+          <label class="form__label" for="f-comment">Сообщение</label>
+          <textarea class="form__input form__input--area" id="f-comment" name="comment" placeholder="Ваше сообщение" rows="3"></textarea>
+        </div>
         <label class="form__check">
           <input type="checkbox" name="consent" checked required>
           <span>Согласен(а) на обработку персональных данных</span>
@@ -583,6 +597,6 @@
   </div>
 </footer>
 
-<script src="script.js?v=24"></script>
+<script src="script.js?v=25"></script>
 </body>
 </html>
