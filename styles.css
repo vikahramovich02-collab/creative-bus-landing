@@ -438,15 +438,18 @@ img.header__logo-dark { display: none; }
 .accordion__cases {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  margin: 18px 14px 4px;
+  gap: 9px;
+  margin: 22px 0 6px 14px;
+  padding: 12px 22px;
+  background: rgba(16, 145, 235, .08);
   color: var(--blue);
-  font: 600 15px/1 'Inter', sans-serif;
+  font: 600 14px/1 'Inter', sans-serif;
+  border-radius: 30px;
   text-decoration: none;
-  transition: gap .2s ease;
+  transition: background .22s ease, color .22s ease, gap .2s ease;
 }
 .accordion__cases svg { transition: transform .2s ease; }
-.accordion__cases:hover { gap: 12px; }
+.accordion__cases:hover { background: var(--blue); color: var(--white); gap: 13px; }
 .accordion__cases:hover svg { transform: translateX(4px); }
 
 .accordion__body {
