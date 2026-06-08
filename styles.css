@@ -495,11 +495,11 @@ img.header__logo-dark { display: none; }
   margin-top: 56px;
 }
 .research__insight {
-  font: 400 16px/1.55 'Inter', sans-serif;
+  font: 500 30px/1.35 'Inter', sans-serif;
   color: var(--dark);
-  max-width: 680px;
+  max-width: 720px;
 }
-.research__insight b { color: var(--blue); font-weight: 700; }
+.research__insight span { color: var(--blue); }
 .research__cta .btn { flex-shrink: 0; }
 
 /* ===== Анимации проявления при заходе в блок ===== */
