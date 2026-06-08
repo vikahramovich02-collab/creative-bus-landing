@@ -25,6 +25,35 @@
   update();
 })();
 
+// --- Карусель hero: 5 фото, стрелки + индикаторы + автосмена 3с ---
+(() => {
+  const slider = document.querySelector('[data-hero-slider]');
+  if (!slider) return;
+  const slides = Array.from(slider.querySelectorAll('.hero__bg'));
+  const dots = Array.from(document.querySelectorAll('.hero__progress span'));
+  const hero = slider.closest('.hero');
+  const prev = hero.querySelector('.circle-btn--dim');
+  const next = hero.querySelector('.circle-btn--ghost');
+  let idx = 0, timer;
+
+  const show = (n) => {
+    idx = (n + slides.length) % slides.length;
+    slides.forEach((s, i) => s.classList.toggle('is-active', i === idx));
+    dots.forEach((d, i) => d.classList.toggle('is-active', i === idx));
+  };
+  const go = (n) => { show(n); restart(); };
+  const restart = () => {
+    clearInterval(timer);
+    timer = setInterval(() => show(idx + 1), 3000);
+  };
+
+  if (prev) prev.addEventListener('click', () => go(idx - 1));
+  if (next) next.addEventListener('click', () => go(idx + 1));
+  dots.forEach((d, i) => d.addEventListener('click', () => go(i)));
+  show(0);
+  restart();
+})();
+
 // --- Аккордеоны (услуги + FAQ) ---
 document.querySelectorAll('[data-accordion]').forEach((list) => {
   list.addEventListener('click', (e) => {

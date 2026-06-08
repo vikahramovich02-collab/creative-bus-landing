@@ -11,13 +11,19 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=13">
+  <link rel="stylesheet" href="styles.css?v=14">
 </head>
 <body>
 
 <!-- ===== HERO ===== -->
 <section class="hero" id="top">
-  <img class="hero__bg" src="assets/hero.png" alt="Автобус с брендированной рекламой на трассе" fetchpriority="high">
+  <div class="hero__slides" data-hero-slider>
+    <img class="hero__bg is-active" src="assets/hero-1.png" alt="Автобус с рекламой «Время открывать новые высоты»" fetchpriority="high">
+    <img class="hero__bg" src="assets/hero-2.png" alt="Автобус с рекламой фитнес-клуба ENERGY" loading="lazy">
+    <img class="hero__bg" src="assets/hero-3.png" alt="Реклама на спинках сидений в салоне" loading="lazy">
+    <img class="hero__bg" src="assets/hero-4.png" alt="Автобус с рекламой ПИК" loading="lazy">
+    <img class="hero__bg" src="assets/hero-5.png" alt="Реклама в салоне автобуса" loading="lazy">
+  </div>
   <div class="hero__overlay"></div>
 
   <header class="header">
@@ -60,7 +66,7 @@
         <button class="circle-btn circle-btn--ghost" type="button" aria-label="Следующий слайд">→</button>
       </div>
       <div class="hero__progress" aria-hidden="true">
-        <span class="is-active"></span><span></span><span></span><span></span>
+        <span class="is-active"></span><span></span><span></span><span></span><span></span>
       </div>
     </div>
   </div>
@@ -563,6 +569,6 @@
   </div>
 </footer>
 
-<script src="script.js?v=13"></script>
+<script src="script.js?v=14"></script>
 </body>
 </html>

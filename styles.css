@@ -115,12 +115,15 @@ img { display: block; max-width: 100%; }
   overflow: hidden;
   color: var(--white);
 }
+.hero__slides { position: absolute; inset: 0; z-index: -2; }
 .hero__bg {
   position: absolute; inset: 0;
   width: 100%; height: 100%;
   object-fit: cover;
-  z-index: -2;
+  opacity: 0;
+  transition: opacity 1s ease;
 }
+.hero__bg.is-active { opacity: 1; }
 .hero__overlay {
   position: absolute; inset: 0;
   background: linear-gradient(180deg, rgba(10,16,32,.45) 0%, rgba(10,16,32,.15) 45%, rgba(10,16,32,.5) 100%);
@@ -139,7 +142,6 @@ img { display: block; max-width: 100%; }
 .header--scrolled,
 .header--solid {
   background: var(--white);
-  box-shadow: 0 6px 24px rgba(15,23,42,.07);
   padding: 14px 0;
 }
 .header__inner {
@@ -188,7 +190,14 @@ img.header__logo-dark { display: none; }
   align-items: center;
   gap: 16px;
 }
-.header__actions .btn { padding: 16px 30px; }
+.header__actions .btn {
+  padding: 15px 32px;
+  font-size: 15px;
+  border-radius: 40px;
+  box-shadow: 0 8px 20px rgba(15,23,42,.14);
+  transition: background .25s ease, color .25s ease, transform .2s ease, box-shadow .25s ease;
+}
+.header__actions .btn:hover { transform: translateY(-2px); box-shadow: 0 12px 26px rgba(15,23,42,.2); }
 /* над hero кнопка белая; на белой подложке — тёмная */
 .header--scrolled .header__actions .btn--white,
 .header--solid .header__actions .btn--white {
@@ -227,9 +236,7 @@ img.header__logo-dark { display: none; }
   font: 700 16px/1 'Inter', sans-serif;
   color: var(--dark);
   overflow: hidden;
-  transition: background .25s ease, color .25s ease;
 }
-.hero__cta:hover { background: var(--dark); color: var(--white); }
 .hero__cta-bus { height: 46px; width: auto; transition: transform .3s ease; }
 .hero__cta:hover .hero__cta-bus { transform: translateX(14px); }
 
@@ -281,8 +288,10 @@ img.header__logo-dark { display: none; }
   gap: 7px;
 }
 .hero__progress span {
-  width: 118px; height: 2px;
+  width: 96px; height: 2px;
   background: rgba(255,255,255,.35);
+  cursor: pointer;
+  transition: background .3s ease;
 }
 .hero__progress span.is-active { background: var(--white); }
 
