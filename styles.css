@@ -317,7 +317,7 @@ img.header__logo-dark { display: none; }
   gap: 7px;
 }
 .hero__progress span {
-  width: 96px; height: 2px;
+  width: 56px; height: 2px;
   background: rgba(255,255,255,.35);
   cursor: pointer;
   transition: background .3s ease;
@@ -495,9 +495,9 @@ img.header__logo-dark { display: none; }
   margin-top: 56px;
 }
 .research__insight {
-  font: 500 30px/1.35 'Inter', sans-serif;
+  font: 500 38px/1.35 'Inter', sans-serif;
   color: var(--dark);
-  max-width: 720px;
+  max-width: 760px;
 }
 .research__insight span { color: var(--blue); }
 .research__cta .btn { flex-shrink: 0; }
@@ -1153,7 +1153,7 @@ img.header__logo-dark { display: none; }
   .accordion__row { margin-left: 0; height: auto; padding: 12px 14px; gap: 8px; flex-wrap: wrap; }
   .cases__grid { grid-template-columns: 1fr; }
   .routes__card { padding: 24px; }
-  .cta__title { font-size: 26px; }
+  .cta__title, .research__insight { font-size: 26px; }
   .btn--lg { padding: 20px 36px; }
   .footer__top { grid-template-columns: 1fr; gap: 32px; padding-bottom: 40px; }
   .footer__bottom { flex-direction: column; align-items: flex-start; }
