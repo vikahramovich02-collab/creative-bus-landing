@@ -189,6 +189,30 @@ img.header__logo-dark { display: none; }
 .header--scrolled .header__nav a.is-active,
 .header--solid .header__nav a.is-active { color: var(--blue); }
 
+/* выпадающий список «Услуги» */
+.nav-drop { position: relative; display: inline-flex; align-items: center; }
+.nav-drop::after { content: ''; position: absolute; top: 100%; left: -20px; right: -20px; height: 22px; }
+.nav-drop__menu {
+  position: absolute; top: calc(100% + 16px); left: 50%;
+  transform: translateX(-50%) translateY(8px);
+  min-width: 300px; background: #fff; border-radius: 16px;
+  box-shadow: 0 20px 54px rgba(15,23,42,.16); border: 1px solid var(--border);
+  padding: 10px; display: flex; flex-direction: column; gap: 2px;
+  opacity: 0; visibility: hidden; pointer-events: none;
+  transition: opacity .2s ease, transform .2s ease, visibility .2s;
+  z-index: 60;
+}
+.nav-drop:hover .nav-drop__menu { opacity: 1; visibility: visible; pointer-events: auto; transform: translateX(-50%) translateY(0); }
+.nav-drop__menu a,
+.header--scrolled .nav-drop__menu a,
+.header--solid .nav-drop__menu a {
+  display: block; padding: 11px 16px; border-radius: 10px;
+  font-size: 15px; font-weight: 500; color: var(--text); white-space: nowrap;
+}
+.nav-drop__menu a:hover,
+.header--scrolled .nav-drop__menu a:hover,
+.header--solid .nav-drop__menu a:hover { background: var(--bg-gray); color: var(--blue); }
+
 .header__actions {
   margin-left: auto;
   display: flex;
