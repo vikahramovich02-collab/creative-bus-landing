@@ -323,16 +323,16 @@ img.header__logo-dark { display: none; }
   display: inline-flex;
   align-self: flex-start;
   align-items: center;
-  gap: 18px;
+  gap: 19px;
   background: var(--white);
   border-radius: 50px;
-  padding: 12px 22px 12px 40px;
+  padding: 8px 20px 8px 40px;
   text-decoration: none;
   font: 700 16px/1 'Inter', sans-serif;
   color: var(--dark);
   overflow: hidden;
 }
-.hero__cta-bus { height: 34px; width: auto; transition: transform .3s ease; }
+.hero__cta-bus { height: 56px; width: auto; transition: transform .3s ease; }
 .hero__cta:hover .hero__cta-bus { transform: translateX(14px); }
 
 .hero__bottom {
