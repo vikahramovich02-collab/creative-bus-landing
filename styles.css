@@ -1288,6 +1288,11 @@ body::before {
   grid-template-columns: 1fr 1fr;
   gap: 24px;
 }
+.svc-group { margin-bottom: 56px; }
+.svc-group:last-child { margin-bottom: 0; }
+.svc-group__head { margin-bottom: 24px; }
+.svc-group__title { font: 600 28px/1.2 'Inter', sans-serif; color: var(--text); margin: 0; }
+.svc-group__sub { margin: 8px 0 0; font: 400 16px/1.5 'Inter', sans-serif; color: var(--gray); }
 .svc-card {
   position: relative;
   display: block;
