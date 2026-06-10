@@ -941,15 +941,19 @@ img.header__logo-dark { display: none; }
 .cases-page { padding: 144px 0 0; }
 .cases-page__head {
   display: flex; align-items: center; justify-content: space-between;
-  gap: 24px; flex-wrap: wrap; margin-bottom: 48px;
+  gap: 32px; flex-wrap: nowrap; margin-bottom: 48px;
 }
-.cases-page__title { margin-bottom: 0; font-size: 48px; line-height: 1.12; }
+.cases-page__title { margin-bottom: 0; font-size: 48px; line-height: 1.12; flex: 1 1 auto; min-width: 0; }
 .page-title { font-size: 48px; line-height: 1.12; }
 .cases-page__filters {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
   margin-bottom: 0;
+  flex-shrink: 0;
+}
+@media (max-width: 860px) {
+  .cases-page__head { flex-wrap: wrap; gap: 20px; }
 }
 .filter-chip {
   padding: 12px 22px;
