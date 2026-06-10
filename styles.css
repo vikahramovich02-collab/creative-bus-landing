@@ -1396,7 +1396,8 @@ body::before {
 .svc-card:hover .svc-card__arrow { background: #fff; border-color: #fff; color: var(--dark); }
 
 /* ===== Детальная страница услуги ===== */
-.svc-detail__title { font: 600 52px/1.12 'Inter', sans-serif; letter-spacing: -.02em; color: var(--dark); margin-bottom: 32px; max-width: 900px; }
+.svc-detail__title { font: 600 38px/1.15 'Inter', sans-serif; letter-spacing: -.02em; color: var(--dark); margin-bottom: 28px; max-width: 1000px; }
+@media (min-width: 861px) { .svc-detail__title { white-space: nowrap; } }
 .svc-detail__hero-img { width: 100%; border-radius: 24px; overflow: hidden; aspect-ratio: 16 / 7; margin-bottom: 80px; }
 .svc-detail__hero-img img { width: 100%; height: 100%; object-fit: cover; }
 .svc-prices__head { margin-bottom: 28px; }
