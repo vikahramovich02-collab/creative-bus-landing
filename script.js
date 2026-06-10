@@ -1,5 +1,21 @@
 // ===== Creative Bus — лендинг =====
 
+// --- Прелоудер: голубая линия проезжает по верху при загрузке ---
+(() => {
+  const bar = document.createElement('div');
+  bar.className = 'page-loader';
+  bar.innerHTML = '<span></span>';
+  document.body.appendChild(bar);
+  const start = (window.performance && performance.now) ? performance.now() : 0;
+  const finish = () => { bar.classList.add('is-done'); setTimeout(() => bar.remove(), 400); };
+  const onReady = () => {
+    const elapsed = ((window.performance && performance.now) ? performance.now() : 0) - start;
+    setTimeout(finish, Math.max(0, 700 - elapsed));
+  };
+  if (document.readyState === 'complete') onReady();
+  else window.addEventListener('load', onReady);
+})();
+
 // --- Sticky-шапка: прячется при скролле вниз, выезжает при скролле вверх ---
 (() => {
   const header = document.querySelector('.header');

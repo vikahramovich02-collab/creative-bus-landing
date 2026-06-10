@@ -75,7 +75,7 @@ img { display: block; max-width: 100%; }
 }
 .circle-btn--ghost,
 .circle-btn--dim {
-  background: rgba(255,255,255,.12);
+  background: transparent;
   border: 1px solid rgba(255,255,255,.5);
   color: var(--white);
 }
@@ -467,15 +467,7 @@ img.header__logo-dark { display: none; }
   align-items: center;
   justify-content: space-between;
   height: 52px;
-  background: #F8FAFC;
   padding: 0 30px 0 87px;
-}
-.accordion__row::before {
-  content: '';
-  position: absolute;
-  left: 70px; top: 0;
-  width: 3px; height: 100%;
-  background: var(--sky);
 }
 .accordion__row + .accordion__row { border-top: 1px solid rgba(226,232,240,.6); }
 .accordion__row-name { font: 400 15px/1.5 'Inter', sans-serif; color: var(--text); }
@@ -1163,6 +1155,35 @@ img.header__logo-dark { display: none; }
   .legal__title { font-size: 30px; }
   .legal__body { font-size: 15px; }
 }
+
+/* ===== Прелоудер: голубая линия по верху страницы ===== */
+.page-loader {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  z-index: 300;
+  overflow: hidden;
+  pointer-events: none;
+  transition: opacity .35s ease;
+}
+.page-loader span {
+  position: absolute;
+  top: 0; left: 0;
+  height: 100%;
+  width: 40%;
+  border-radius: 0 3px 3px 0;
+  background: linear-gradient(90deg, rgba(16,145,235,0), var(--blue) 60%, var(--sky));
+  animation: loaderSweep .9s cubic-bezier(.4,0,.2,1) infinite;
+}
+@keyframes loaderSweep {
+  0%   { transform: translateX(-110%); }
+  100% { transform: translateX(360%); }
+}
+.page-loader.is-done { opacity: 0; }
+
+/* ===== Внутренние страницы (О нас, Услуги, Контакты) ===== */
+.subpage { padding-top: 112px; }
+.subpage > .container:first-child { padding-top: 24px; }
 
 /* ===== Кнопка «Назад» на подстраницах ===== */
 .back-link {
