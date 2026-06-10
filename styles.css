@@ -952,7 +952,7 @@ img.header__logo-dark { display: none; }
 .footer__vk:hover { color: var(--blue); }
 
 /* ============ СТРАНИЦА КЕЙСОВ ============ */
-.cases-page { padding: 144px 0 0; }
+.cases-page { padding: 104px 0 0; }
 .cases-page__head {
   display: flex; align-items: center; justify-content: space-between;
   gap: 32px; flex-wrap: nowrap; margin-bottom: 48px;
@@ -1262,7 +1262,7 @@ body::before {
 .page-loader.is-done { opacity: 0; transition: opacity .35s ease .22s; }
 
 /* ===== Внутренние страницы (О нас, Услуги, Контакты) ===== */
-.subpage { padding-top: 144px; }
+.subpage { padding-top: 104px; }
 .subpage > .container:first-child { padding-top: 0; }
 .subpage > section:first-child { padding-top: 0; }
 
@@ -1442,7 +1442,7 @@ body::before {
   color: var(--gray);
   text-decoration: none;
   font: 500 13px/1 'Inter', sans-serif;
-  margin: -56px 0 18px;
+  margin: 0 0 14px;
   transition: color .2s ease, gap .2s ease;
 }
 .back-link svg { transition: transform .2s ease; }
