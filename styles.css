@@ -1348,7 +1348,7 @@ body::before {
 .svc-card::after {
   content: '';
   position: absolute; inset: 0;
-  background: linear-gradient(180deg, rgba(0,0,0,.66) 0%, rgba(0,0,0,.34) 26%, rgba(0,0,0,.22) 50%, rgba(0,0,0,.82) 100%);
+  background: linear-gradient(180deg, rgba(0,0,0,.28) 0%, rgba(0,0,0,.14) 40%, rgba(0,0,0,.8) 100%);
 }
 .svc-card:hover img { transform: scale(1.05); }
 .svc-card__body {
@@ -1357,7 +1357,7 @@ body::before {
   display: flex; flex-direction: column; justify-content: flex-end;
   padding: 34px;
 }
-.svc-card__tags { position: absolute; top: 26px; left: 26px; right: 26px; display: flex; flex-wrap: wrap; gap: 8px; }
+.svc-card__tags { position: absolute; z-index: 2; top: 26px; left: 26px; right: 26px; display: flex; flex-wrap: wrap; gap: 8px; }
 .svc-card__tag {
   font: 600 13px/1 'Inter', sans-serif;
   padding: 8px 14px;
@@ -1369,7 +1369,7 @@ body::before {
 }
 .svc-card__title { font: 700 26px/1.2 'Inter', sans-serif; text-transform: uppercase; max-width: 76%; }
 .svc-card__arrow {
-  position: absolute; right: 30px; bottom: 30px;
+  position: absolute; z-index: 2; right: 30px; bottom: 30px;
   width: 54px; height: 54px;
   border-radius: 50%;
   border: 2px solid #fff;
