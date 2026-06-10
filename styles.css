@@ -341,7 +341,7 @@ img.header__logo-dark { display: none; }
   align-items: flex-end;
   justify-content: space-between;
   gap: 24px;
-  padding-bottom: 44px;
+  padding-bottom: 72px;
   position: relative;
 }
 .hero__caption {
