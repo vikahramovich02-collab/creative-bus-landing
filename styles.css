@@ -474,7 +474,7 @@ img.header__logo-dark { display: none; }
 .accordion__row + .accordion__row { border-top: 1px solid rgba(226,232,240,.6); }
 .accordion__row-name { font: 400 15px/1.5 'Inter', sans-serif; color: var(--text); }
 .accordion__row-price { font: 500 15px/1.5 'Inter', sans-serif; color: var(--sky); }
-.accordion__row-price--dark { color: var(--dark); }
+.accordion__row-price--dark { color: var(--sky); }
 
 /* ============ ИНФОГРАФИКА ============ */
 .research { background: var(--white); }
@@ -792,7 +792,7 @@ img.header__logo-dark { display: none; }
   max-width: 496px;
   margin-top: 14px;
 }
-.contacts__items { margin-top: 96px; display: flex; flex-direction: column; gap: 40px; }
+.contacts__items { margin-top: 40px; display: flex; flex-direction: column; gap: 40px; }
 .contacts__label { font: 500 16px/1 'Inter', sans-serif; color: #BDBDBD; margin-bottom: 8px; }
 .contacts__value {
   font: 500 28px/1.2 'Inter', sans-serif;
@@ -1216,7 +1216,7 @@ body::before {
 /* ===== О нас — интро-баннер ===== */
 .about-hero {
   position: relative;
-  min-height: 78vh;
+  min-height: 90vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -1350,7 +1350,7 @@ body::before {
 .svc-price__num { flex: 0 0 28px; color: #B8C4D4; font: 500 16px/1.5 'Inter', sans-serif; }
 .svc-price__name { flex: 1; font: 400 18px/1.5 'Inter', sans-serif; color: var(--text); }
 .svc-price__cost { font: 600 18px/1.5 'Inter', sans-serif; color: var(--blue); white-space: nowrap; }
-.svc-price__cost--dark { color: var(--dark); }
+.svc-price__cost--dark { color: var(--blue); }
 
 /* услуги — кейсы с горизонтальным скроллом */
 .svc-cases { background: var(--white); }

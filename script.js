@@ -257,8 +257,8 @@ if (filterBar) {
     const list = visibleCards();
     const card = list[current];
     if (!card) return;
-    const src = card.querySelector('img').src;
-    img.src = src;
+    const cardImg = card.querySelector('img');
+    img.src = cardImg.dataset.full || cardImg.src;
     const route = card.querySelector('.case-card__route');
     const cat = card.querySelector('.case-card__cat');
     cap.textContent = cat ? `${cat.textContent} · ${route ? route.textContent : ''}` : (card.querySelector('img').alt || '');
