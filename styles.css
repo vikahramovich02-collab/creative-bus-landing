@@ -90,7 +90,15 @@ img { display: block; max-width: 100%; }
   background: var(--blue);
   border: none;
   color: var(--white);
+  transition: background .25s ease, transform .25s ease, box-shadow .25s ease;
 }
+.footer__up { transition: background .25s ease, transform .25s ease, box-shadow .25s ease; }
+.footer__up:hover {
+  background: var(--sky);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 22px rgba(16,145,235,.4);
+}
+.footer__up:active { transform: translateY(-1px); }
 
 /* ---------- заголовки секций ---------- */
 .section-label {
