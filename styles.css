@@ -65,12 +65,13 @@ img { display: block; max-width: 100%; }
 .btn svg { transition: transform .25s ease; }
 .btn:hover svg { transform: translateX(6px); }
 
-/* пульсирующая «точка-сигнал» на кнопке заявки */
-.header__actions .btn { position: relative; overflow: visible; }
+/* пульсирующая «точка-сигнал» на кнопке заявки — внутри, рядом с текстом */
+.header__actions .btn { overflow: visible; }
 .btn-ping {
-  position: absolute;
-  top: -3px; right: -3px;
-  width: 10px; height: 10px;
+  position: relative;
+  display: inline-block;
+  flex: 0 0 auto;
+  width: 8px; height: 8px;
   border-radius: 50%;
   background: var(--blue);
   pointer-events: none;
@@ -241,8 +242,8 @@ img.header__logo-dark { display: none; }
 .nav-drop__menu a,
 .header--scrolled .nav-drop__menu a,
 .header--solid .nav-drop__menu a {
-  display: block; padding: 11px 16px; border-radius: 10px;
-  font-size: 15px; font-weight: 500; color: var(--text); white-space: nowrap;
+  display: block; padding: 9px 16px; border-radius: 10px;
+  font-size: 13.5px; font-weight: 500; color: var(--text); white-space: nowrap;
 }
 .nav-drop__menu a:hover,
 .header--scrolled .nav-drop__menu a:hover,
