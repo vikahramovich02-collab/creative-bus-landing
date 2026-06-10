@@ -158,7 +158,7 @@ img { display: block; max-width: 100%; }
   gap: 32px;
 }
 .header__logo { position: relative; display: inline-flex; }
-.header__logo img { width: 164px; height: auto; display: block; }
+.header__logo img { width: 200px; height: auto; display: block; }
 img.header__logo-dark { display: none; }
 .header--scrolled .header__logo-light,
 .header--solid .header__logo-light { display: none; }
@@ -1227,7 +1227,8 @@ body::before {
 }
 .about-hero__bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .about-hero__overlay { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(10,16,32,.72) 0%, rgba(10,16,32,.4) 55%, rgba(10,16,32,.12) 100%); }
-.about-hero__content { position: relative; max-width: 760px; padding: 96px 0 56px; }
+.about-hero__wrap { position: relative; width: 100%; padding: 0 24px 0 6%; }
+.about-hero__content { position: relative; max-width: 720px; padding: 96px 0 56px; }
 .about-hero__social { display: flex; align-items: center; gap: 12px; margin-bottom: 30px; }
 .about-hero__social a {
   width: 38px; height: 38px;
