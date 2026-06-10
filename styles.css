@@ -350,9 +350,9 @@ img.header__logo-dark { display: none; }
 }
 .stats__row:last-child { border-bottom: none; }
 .stats__num {
-  flex: 0 0 280px;
-  font: 600 84px/1 'Inter', sans-serif;
-  letter-spacing: -0.02em;
+  flex: 0 0 210px;
+  font: 600 60px/1 'Inter', sans-serif;
+  letter-spacing: -0.04em;
   color: var(--blue);
   white-space: nowrap;
 }
