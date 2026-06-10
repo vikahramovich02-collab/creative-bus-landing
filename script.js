@@ -275,7 +275,7 @@ if (filterBar) {
 
   cards.forEach((card) => {
     card.style.cursor = 'zoom-in';
-    card.addEventListener('click', () => open(card));
+    card.addEventListener('click', (e) => { e.preventDefault(); open(card); });
   });
   lb.querySelector('.lightbox__close').addEventListener('click', close);
   lb.querySelector('.lightbox__nav--prev').addEventListener('click', (e) => { e.stopPropagation(); step(-1); });
