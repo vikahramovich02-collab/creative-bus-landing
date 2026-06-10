@@ -123,6 +123,20 @@
   });
 })();
 
+// --- Авто-смена фото в full-width баннере (стр. О нас) ---
+(() => {
+  const banner = document.querySelector('[data-photo-rotator]');
+  if (!banner) return;
+  const imgs = Array.from(banner.querySelectorAll('img'));
+  if (imgs.length < 2) return;
+  let i = 0;
+  setInterval(() => {
+    imgs[i].classList.remove('is-active');
+    i = (i + 1) % imgs.length;
+    imgs[i].classList.add('is-active');
+  }, 4000);
+})();
+
 // --- Аккордеоны (услуги + FAQ) ---
 document.querySelectorAll('[data-accordion]').forEach((list) => {
   list.addEventListener('click', (e) => {

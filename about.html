@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=40">
+  <link rel="stylesheet" href="styles.css?v=41">
 </head>
 <body>
 
@@ -57,21 +57,71 @@
 </section>
 
 <main>
-  <!-- ===== Блок «полный цикл» ===== -->
-  <section class="section feature">
-    <div class="container feature__inner">
-      <div class="feature__text">
-        <p class="section-label">О нас</p>
-        <h2 class="section-title">Полный цикл — от&nbsp;макета до&nbsp;выхода на&nbsp;маршрут</h2>
-        <div class="feature__desc">
-          <h4>Creative Bus</h4>
-          <p>Мы берём проект под ключ: разрабатываем макет с учётом скорости движения и расстояния просмотра, печатаем на собственном широкоформатном принтере стойкими УФ-чернилами, монтируем на транспорт и снимаем по окончании размещения. Вам не нужно искать подрядчиков — всё в одних руках, а реклама держит цвет и не выгорает на солнце.</p>
+  <!-- ===== Full-width меняющееся фото ===== -->
+  <div class="container">
+    <div class="photo-banner" data-photo-rotator>
+      <img class="is-active" src="assets/hero-2.webp" alt="Брендированный автобус ENERGY на улице" loading="lazy">
+      <img src="assets/hero-4.webp" alt="Автобус с рекламой ПИК в городе" loading="lazy">
+      <img src="assets/stats-bus.webp" alt="Брендированный автобус Creative Bus" loading="lazy">
+    </div>
+  </div>
+
+  <!-- ===== О НАС (карусель со скроллом) ===== -->
+  <section class="about section" id="about">
+    <div class="container about__viewport" data-about-slider>
+      <div class="about__slide is-active">
+        <div class="about__inner">
+          <div class="about__text">
+            <p class="section-label">О нас</p>
+            <h2 class="section-title">Дизайн внутри команды</h2>
+            <div class="about__desc">
+              <h4>Creative Bus</h4>
+              <p>В штате Creative Bus работает дизайнер, который специализируется именно на рекламе на транспорте.</p>
+              <p>Мы разрабатываем макеты с учетом движения транспорта, расстояния просмотра и городской среды, чтобы реклама выглядела заметно, читалась быстро и работала эффективно.</p>
+            </div>
+          </div>
+          <figure class="about__photo">
+            <img src="assets/about-print.webp" alt="УФ-принтер печатает рекламный макет «Движение в будущее»" loading="lazy">
+          </figure>
         </div>
       </div>
-      <figure class="feature__photo">
-        <img src="assets/about-print.webp" alt="УФ-принтер Creative Bus печатает рекламный макет" loading="lazy">
-      </figure>
+
+      <div class="about__slide">
+        <div class="about__inner">
+          <div class="about__text">
+            <p class="section-label">О нас</p>
+            <h2 class="section-title">Собственная печать</h2>
+            <div class="about__desc">
+              <h4>Creative Bus</h4>
+              <p>Печать выполняется на собственном широкоформатном принтере без передачи работы подрядчикам.</p>
+              <p>Это позволяет нам контролировать качество, соблюдать сроки и добиваться четкой, насыщенной печати с высокой детализацией на каждом проекте.</p>
+            </div>
+          </div>
+          <figure class="about__photo">
+            <img src="assets/about-van.webp" alt="Микроавтобус с полной обклейкой, напечатанной в Creative Bus" loading="lazy">
+          </figure>
+        </div>
+      </div>
+
+      <div class="about__slide">
+        <div class="about__inner">
+          <div class="about__text">
+            <p class="section-label">О нас</p>
+            <h2 class="section-title">УФ-чернила</h2>
+            <div class="about__desc">
+              <h4>Creative Bus</h4>
+              <p>Мы используем современные УФ-чернила, устойчивые к солнцу, влаге и перепадам температуры.</p>
+              <p>Благодаря этому реклама долго не выгорает, не теряет яркость и сохраняет аккуратный внешний вид даже при постоянной эксплуатации транспорта на маршрутах.</p>
+            </div>
+          </div>
+          <figure class="about__photo">
+            <img src="assets/about-uvink.webp" alt="УФ-чернила UV INK для широкоформатной печати" loading="lazy">
+          </figure>
+        </div>
+      </div>
     </div>
+    <button class="circle-btn about__arrow about__arrow--prev" type="button" aria-label="Предыдущий слайд">←</button>
+    <button class="circle-btn about__arrow about__arrow--next" type="button" aria-label="Следующий слайд">→</button>
   </section>
 
   <!-- ===== СТАТИСТИКА / О КОМПАНИИ ===== -->
@@ -164,6 +214,6 @@
   </div>
 </footer>
 
-<script src="script.js?v=40"></script>
+<script src="script.js?v=41"></script>
 </body>
 </html>
