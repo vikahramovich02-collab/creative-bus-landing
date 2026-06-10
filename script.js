@@ -353,8 +353,9 @@ document.querySelectorAll('[data-back]').forEach((link) => {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   if (!('IntersectionObserver' in window)) return;
   const targets = document.querySelectorAll(
-    '.section-label, .section-title, [data-reveal], .research__draw, .stats__row, ' +
-    '.accordion, .cases__expand, .routes__card, .faq, .contacts__info, .form, .cta__title'
+    '.section-label, .section-title, [data-reveal], .research__draw, .research__lead, .stats__row, .stats__photo, ' +
+    '.svc-card, .accordion, .cases__expand, .case-card, .routes__card, .faq, .contacts__info, .contacts__photo, .form, .cta__title, ' +
+    '.svc-detail__hero-img, .svc-price, .photo-banner'
   );
   if (!targets.length) return;
   targets.forEach((el) => el.classList.add('reveal'));
