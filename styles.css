@@ -1280,6 +1280,95 @@ body::before {
   .feature__desc { padding-top: 20px; }
 }
 
+/* ===== Услуги — карточки типов ===== */
+.svc-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+.svc-card {
+  position: relative;
+  display: block;
+  min-height: 380px;
+  border-radius: 22px;
+  overflow: hidden;
+  color: var(--white);
+  text-decoration: none;
+}
+.svc-card img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform .6s cubic-bezier(.22,.61,.36,1);
+}
+.svc-card::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(10,16,32,.25) 0%, rgba(10,16,32,.78) 100%);
+}
+.svc-card:hover img { transform: scale(1.05); }
+.svc-card__body {
+  position: relative; z-index: 1;
+  min-height: 380px;
+  display: flex; flex-direction: column; justify-content: flex-end;
+  padding: 34px;
+}
+.svc-card__tags { position: absolute; top: 26px; left: 26px; right: 26px; display: flex; flex-wrap: wrap; gap: 8px; }
+.svc-card__tag {
+  font: 500 13px/1 'Inter', sans-serif;
+  padding: 8px 14px;
+  border: 1px solid rgba(255,255,255,.5);
+  border-radius: 20px;
+}
+.svc-card__title { font: 700 26px/1.2 'Inter', sans-serif; text-transform: uppercase; max-width: 76%; }
+.svc-card__arrow {
+  position: absolute; right: 30px; bottom: 30px;
+  width: 54px; height: 54px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,.6);
+  display: flex; align-items: center; justify-content: center;
+  transition: background .25s ease, border-color .25s ease;
+}
+.svc-card:hover .svc-card__arrow { background: var(--blue); border-color: var(--blue); }
+
+/* ===== Детальная страница услуги ===== */
+.svc-detail__title { font: 600 52px/1.12 'Inter', sans-serif; letter-spacing: -.02em; color: var(--dark); margin-bottom: 32px; max-width: 900px; }
+.svc-detail__hero-img { width: 100%; border-radius: 24px; overflow: hidden; aspect-ratio: 16 / 7; margin-bottom: 80px; }
+.svc-detail__hero-img img { width: 100%; height: 100%; object-fit: cover; }
+.svc-prices__head { margin-bottom: 28px; }
+.svc-price-list { display: block; }
+.svc-price {
+  display: flex;
+  align-items: baseline;
+  gap: 18px;
+  padding: 22px 0;
+  border-top: 1px solid var(--border);
+}
+.svc-price:last-child { border-bottom: 1px solid var(--border); }
+.svc-price__num { flex: 0 0 28px; color: #B8C4D4; font: 500 16px/1.5 'Inter', sans-serif; }
+.svc-price__name { flex: 1; font: 400 18px/1.5 'Inter', sans-serif; color: var(--text); }
+.svc-price__cost { font: 600 18px/1.5 'Inter', sans-serif; color: var(--blue); white-space: nowrap; }
+.svc-price__cost--dark { color: var(--dark); }
+
+/* услуги — кейсы с горизонтальным скроллом */
+.svc-cases { background: var(--bg-gray); }
+.svc-cases__track {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 10px;
+  scrollbar-width: thin;
+}
+.svc-cases__track .case-card { flex: 0 0 340px; scroll-snap-align: start; }
+.svc-cases__track .case-card img { height: 240px; }
+
+@media (max-width: 860px) {
+  .svc-cards { grid-template-columns: 1fr; }
+  .svc-detail__title { font-size: 32px; }
+  .svc-price-list { grid-template-columns: 1fr; column-gap: 0; }
+}
+
 /* ===== Кнопка «Назад» на подстраницах ===== */
 .back-link {
   display: inline-flex;

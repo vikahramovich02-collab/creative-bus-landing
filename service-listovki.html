@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Листовки в салоне — Creative Bus</title>
+  <meta name="description" content="Листовки в салоне в Таганроге — Creative Bus. Открытые цены, печать и монтаж включены.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=44">
+</head>
+<body>
+
+<header class="header header--solid">
+  <div class="container header__inner">
+    <a href="index.html" class="header__logo" aria-label="Creative Bus — на главную">
+      <img class="header__logo-light" src="assets/logo.svg" alt="Creative Bus" width="196" height="56">
+      <img class="header__logo-dark" src="assets/logo-dark.svg" alt="Creative Bus" width="196" height="56">
+    </a>
+    <nav class="header__nav" aria-label="Основная навигация">
+      <a href="about.html">О нас</a>
+      <a href="services.html">Услуги</a>
+      <a href="cases.html">Кейсы</a>
+      <a href="contacts.html">Контакты</a>
+    </nav>
+    <div class="header__actions">
+      <a href="contacts.html" class="btn btn--white">Оставить заявку</a>
+    </div>
+    <button class="header__burger" type="button" aria-label="Открыть меню" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main class="subpage">
+  <div class="container">
+    <a href="services.html" class="back-link" data-back>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M19 12H5m0 0l6-6m-6 6l6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Назад к услугам
+    </a>
+
+    <section class="svc-detail">
+      <p class="section-label">Услуга</p>
+      <h1 class="svc-detail__title">Листовки в салоне</h1>
+      <div class="svc-detail__hero-img">
+        <img src="assets/hero-3.webp" alt="Листовки в салоне" fetchpriority="high">
+      </div>
+
+      <div class="svc-prices">
+        <div class="section-head svc-prices__head">
+          <h2 class="section-title">Стоимость размещения</h2>
+          <a href="assets/pricing.pdf" class="btn btn--dark" download>Загрузить PDF
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 4v12m0 0l-5-5m5 5l5-5M5 20h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+        <p class="research__lead" style="margin-bottom:24px">Листовки А4 и А3 в салоне — ваше предложение прямо перед глазами пассажира всю поездку.</p>
+        <div class="svc-price-list">
+        <div class="svc-price">
+          <span class="svc-price__num">01</span>
+          <span class="svc-price__name">Листовка А4</span>
+          <span class="svc-price__cost svc-price__cost--dark">по запросу</span>
+        </div>
+        <div class="svc-price">
+          <span class="svc-price__num">02</span>
+          <span class="svc-price__name">Листовка А3</span>
+          <span class="svc-price__cost">по запросу</span>
+        </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ===== Кейсы (горизонтальный скролл) ===== -->
+  <section class="svc-cases section">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <p class="section-label">Кейсы</p>
+          <h2 class="section-title">Как это выглядит на улицах</h2>
+        </div>
+        <a href="cases.html?filter=listovki" class="btn btn--dark">Все кейсы <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m0 0l-6-6m6 6l-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+      <div class="svc-cases__track">
+          <figure class="case-card">
+            <img src="assets/kp-03.webp" alt="Листовки — Маршрут №50" loading="lazy">
+            <figcaption><span class="case-card__route">Маршрут №50</span><span class="case-card__cat">Листовки</span></figcaption>
+          </figure>
+          <figure class="case-card">
+            <img src="assets/kp-10.webp" alt="Листовки — Маршрут №34/35" loading="lazy">
+            <figcaption><span class="case-card__route">Маршрут №34/35</span><span class="case-card__cat">Листовки</span></figcaption>
+          </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA ===== -->
+  <section class="cta">
+    <div class="container cta__inner">
+      <h2 class="cta__title"><span>Готовы запустить рекламу?</span><br>Менеджер свяжется в течение часа</h2>
+      <a href="contacts.html" class="btn btn--dark btn--lg">Оставить заявку <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m0 0l-6-6m6 6l-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__top">
+      <div class="footer__contact">
+        <a href="tel:+79610000000" class="footer__phone">+7 (961) 000-00-00</a>
+        <span class="footer__line" aria-hidden="true"></span>
+        <p class="footer__about">Реклама на транспорте в Таганроге и Ростовской области с 2007 года.</p>
+      </div>
+      <nav class="footer__col" aria-label="Разделы">
+        <h4>Разделы</h4>
+        <a href="about.html">О нас</a>
+        <a href="services.html">Услуги</a>
+        <a href="cases.html">Кейсы</a>
+        <a href="contacts.html">Контакты</a>
+      </nav>
+      <nav class="footer__col" aria-label="Контакты">
+        <h4>Контакты</h4>
+        <a href="tel:+79610000000">+7 (961) 000-00-00</a>
+        <a href="mailto:info@creativebus.ru">info@creativebus.ru</a>
+        <a href="#" rel="noopener">ВКонтакте</a>
+        <a href="#" rel="noopener">Telegram</a>
+      </nav>
+      <div class="footer__col footer__col--last">
+        <nav aria-label="Конфиденциальность">
+          <h4>Конфиденциальность</h4>
+          <a href="privacy.html">Политика<br>конфиденциальности</a>
+          <a href="consent.html">Согласие на ОДП</a>
+          <a href="requisites.html">Реквизиты</a>
+        </nav>
+        <button class="circle-btn circle-btn--blue footer__up" type="button" aria-label="Наверх">↑</button>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <img src="assets/logo-dark.svg" alt="Creative Bus" width="109" height="31">
+      <p>© 2026 CreativeBus&nbsp;&nbsp;·&nbsp;&nbsp;Таганрог, Ростовская область</p>
+      <div class="footer__social">
+        <span>Социальные сети</span>
+        <a href="#" aria-label="ВКонтакте"><img src="assets/vk.webp" alt="" width="28" height="28"></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js?v=44"></script>
+</body>
+</html>
