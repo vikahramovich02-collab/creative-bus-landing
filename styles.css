@@ -332,7 +332,7 @@ img.header__logo-dark { display: none; }
   color: var(--dark);
   overflow: hidden;
 }
-.hero__cta-bus { height: 44px; width: auto; transition: transform .3s ease; }
+.hero__cta-bus { height: 34px; width: auto; transition: transform .3s ease; }
 .hero__cta:hover .hero__cta-bus { transform: translateX(14px); }
 
 .hero__bottom {
