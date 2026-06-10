@@ -485,9 +485,10 @@ img.header__logo-dark { display: none; }
   margin-top: 56px;
 }
 .research__insight {
-  font: 500 38px/1.32 'Inter', sans-serif;
+  font: 500 36px/1.32 'Inter', sans-serif;
   color: var(--dark);
-  max-width: 760px;
+  max-width: 900px;
+  flex: 1 1 560px;
 }
 .research__insight span { color: var(--blue); }
 .research__cta .btn { flex-shrink: 0; }
