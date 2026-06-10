@@ -353,7 +353,7 @@ document.querySelectorAll('[data-back]').forEach((link) => {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   if (!('IntersectionObserver' in window)) return;
   const targets = document.querySelectorAll(
-    '.section-label, .section-title, [data-reveal], .research__draw, .stats__rows, ' +
+    '.section-label, .section-title, [data-reveal], .research__draw, .stats__row, ' +
     '.accordion, .cases__expand, .routes__card, .faq, .contacts__info, .form, .cta__title'
   );
   if (!targets.length) return;
