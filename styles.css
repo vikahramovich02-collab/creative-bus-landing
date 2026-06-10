@@ -326,7 +326,7 @@ img.header__logo-dark { display: none; }
   gap: 19px;
   background: var(--white);
   border-radius: 50px;
-  padding: 8px 20px 8px 40px;
+  padding: 12px 22px 12px 40px;
   text-decoration: none;
   font: 700 16px/1 'Inter', sans-serif;
   color: var(--dark);
