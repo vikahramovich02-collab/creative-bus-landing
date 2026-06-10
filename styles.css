@@ -1379,7 +1379,7 @@ body::before {
   padding: 8px 14px;
   color: #fff;
   background: transparent;
-  border: 1.5px solid #fff;
+  border: 1.5px solid rgba(255,255,255,.55);
   border-radius: 20px;
   text-shadow: 0 1px 6px rgba(0,0,0,.35);
 }
