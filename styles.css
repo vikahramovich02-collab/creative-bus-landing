@@ -1379,7 +1379,7 @@ body::before {
   padding: 8px 14px;
   color: #fff;
   background: transparent;
-  border: 1.5px solid rgba(255,255,255,.55);
+  border: 1px solid rgba(255,255,255,.5);
   border-radius: 20px;
   text-shadow: 0 1px 6px rgba(0,0,0,.35);
 }
@@ -1388,7 +1388,7 @@ body::before {
   position: absolute; z-index: 2; right: 30px; bottom: 30px;
   width: 54px; height: 54px;
   border-radius: 50%;
-  border: 1.5px solid rgba(255,255,255,.55);
+  border: 1px solid rgba(255,255,255,.5);
   color: #fff;
   display: flex; align-items: center; justify-content: center;
   transition: background .25s ease, border-color .25s ease, color .25s ease;
