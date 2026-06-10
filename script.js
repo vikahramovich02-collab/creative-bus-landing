@@ -21,7 +21,7 @@
   const header = document.querySelector('.header');
   if (!header) return;
   const isSolid = header.classList.contains('header--solid'); // страница без hero
-  const hero = document.querySelector('.hero');
+  const hero = document.querySelector('.hero, .about-hero');
   let lastY = window.scrollY;
   let ticking = false;
 

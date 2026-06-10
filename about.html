@@ -8,59 +8,55 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=39">
+  <link rel="stylesheet" href="styles.css?v=40">
 </head>
 <body>
 
-<header class="header header--solid">
-  <div class="container header__inner">
-    <a href="index.html" class="header__logo" aria-label="Creative Bus — на главную">
-      <img class="header__logo-light" src="assets/logo.svg" alt="Creative Bus" width="196" height="56">
-      <img class="header__logo-dark" src="assets/logo-dark.svg" alt="Creative Bus" width="196" height="56">
-    </a>
-    <nav class="header__nav" aria-label="Основная навигация">
-      <a href="about.html">О нас</a>
-      <a href="services.html">Услуги</a>
-      <a href="cases.html">Кейсы</a>
-      <a href="contacts.html">Контакты</a>
-    </nav>
-    <div class="header__actions">
-      <a href="contacts.html" class="btn btn--white">Оставить заявку</a>
-    </div>
-    <button class="header__burger" type="button" aria-label="Открыть меню" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-</header>
+<!-- ===== Интро-баннер (full-bleed hero) ===== -->
+<section class="about-hero">
+  <img class="about-hero__bg" src="assets/hero-1.webp" alt="" fetchpriority="high">
+  <div class="about-hero__overlay"></div>
 
-<main class="subpage">
-  <div class="container">
-    <a href="index.html" class="back-link" data-back>
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M19 12H5m0 0l6-6m-6 6l6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      Назад
-    </a>
-
-    <!-- ===== Интро-баннер ===== -->
-    <section class="about-hero">
-      <img class="about-hero__bg" src="assets/hero-1.webp" alt="" loading="lazy">
-      <div class="about-hero__overlay"></div>
-      <div class="about-hero__content">
-        <div class="about-hero__social">
-          <a href="#" aria-label="ВКонтакте"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12.8 16.3c-5.5 0-8.9-3.8-9-10.1h2.8c.1 4.6 2.2 6.5 3.8 6.9V6.2h2.6v3.9c1.6-.2 3.3-2 3.9-3.9h2.6c-.5 2.3-2 4.1-3.2 4.8 1.2.6 3 2.2 3.7 5.3h-2.9c-.5-2-2.1-3.5-4.1-3.7v3.7h-1z"/></svg></a>
-          <a href="#" aria-label="Telegram"><svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor"><path d="M21.9 4.3l-3.3 15.6c-.2 1-.9 1.3-1.8.8l-4.9-3.6-2.4 2.3c-.3.3-.5.5-1 .5l.3-5 9.1-8.2c.4-.3-.1-.5-.6-.2L6.4 13.3l-4.8-1.5c-1-.3-1-1 .2-1.5l18.7-7.2c.9-.3 1.6.2 1.4 1.2z"/></svg></a>
-          <span>Следите за нами в&nbsp;социальных сетях</span>
-        </div>
-        <h1 class="about-hero__title">Creative Bus — реклама,<br>которую видит весь город</h1>
-        <p class="about-hero__since">Работаем с 2007 г.</p>
-        <p class="about-hero__desc">Размещаем рекламу на автобусах и маршрутках Таганрога и пригорода. Берём проект под ключ: дизайн макета, печать на собственном оборудовании, монтаж и демонтаж.</p>
-        <a href="contacts.html" class="hero__cta">
-          <span>Контакты</span>
-          <img class="hero__cta-bus" src="assets/bus-btn.svg" alt="" width="64" height="63">
-        </a>
+  <header class="header">
+    <div class="container header__inner">
+      <a href="index.html" class="header__logo" aria-label="Creative Bus — на главную">
+        <img class="header__logo-light" src="assets/logo.svg" alt="Creative Bus" width="196" height="56">
+        <img class="header__logo-dark" src="assets/logo-dark.svg" alt="Creative Bus" width="196" height="56">
+      </a>
+      <nav class="header__nav" aria-label="Основная навигация">
+        <a href="about.html">О нас</a>
+        <a href="services.html">Услуги</a>
+        <a href="cases.html">Кейсы</a>
+        <a href="contacts.html">Контакты</a>
+      </nav>
+      <div class="header__actions">
+        <a href="contacts.html" class="btn btn--white">Оставить заявку</a>
       </div>
-    </section>
-  </div>
+      <button class="header__burger" type="button" aria-label="Открыть меню" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
 
+  <div class="container">
+    <div class="about-hero__content">
+      <div class="about-hero__social">
+        <a href="#" aria-label="ВКонтакте"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12.8 16.3c-5.5 0-8.9-3.8-9-10.1h2.8c.1 4.6 2.2 6.5 3.8 6.9V6.2h2.6v3.9c1.6-.2 3.3-2 3.9-3.9h2.6c-.5 2.3-2 4.1-3.2 4.8 1.2.6 3 2.2 3.7 5.3h-2.9c-.5-2-2.1-3.5-4.1-3.7v3.7h-1z"/></svg></a>
+        <a href="#" aria-label="Telegram"><svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor"><path d="M21.9 4.3l-3.3 15.6c-.2 1-.9 1.3-1.8.8l-4.9-3.6-2.4 2.3c-.3.3-.5.5-1 .5l.3-5 9.1-8.2c.4-.3-.1-.5-.6-.2L6.4 13.3l-4.8-1.5c-1-.3-1-1 .2-1.5l18.7-7.2c.9-.3 1.6.2 1.4 1.2z"/></svg></a>
+        <span>Следите за нами в&nbsp;социальных сетях</span>
+      </div>
+      <h1 class="about-hero__title">Creative Bus — реклама,<br>которую видит весь город</h1>
+      <p class="about-hero__since">Работаем с 2007 г.</p>
+      <p class="about-hero__desc">Размещаем рекламу на автобусах и маршрутках Таганрога и пригорода. Берём проект под ключ: дизайн макета, печать на собственном оборудовании, монтаж и демонтаж.</p>
+      <a href="contacts.html" class="hero__cta">
+        <span>Контакты</span>
+        <img class="hero__cta-bus" src="assets/bus-btn.svg" alt="" width="64" height="63">
+      </a>
+    </div>
+  </div>
+</section>
+
+<main>
   <!-- ===== Блок «полный цикл» ===== -->
   <section class="section feature">
     <div class="container feature__inner">
@@ -168,6 +164,6 @@
   </div>
 </footer>
 
-<script src="script.js?v=39"></script>
+<script src="script.js?v=40"></script>
 </body>
 </html>
