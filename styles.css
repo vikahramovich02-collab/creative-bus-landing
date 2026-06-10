@@ -220,7 +220,7 @@ img.header__logo-dark { display: none; }
   gap: 16px;
 }
 .header__actions .btn {
-  padding: 16px 36px;
+  padding: 20px 36px;
   font-size: 14.5px;
   font-weight: 600;
   border-radius: 40px;
