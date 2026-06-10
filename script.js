@@ -208,22 +208,71 @@ if (aboutSlider) {
 // --- Фильтрация кейсов (cases.html) ---
 const filterBar = document.querySelector('.cases-page__filters');
 if (filterBar) {
-  const cards = document.querySelectorAll('.case-card');
-  const applyFilter = (f) => {
+  const cards = Array.from(document.querySelectorAll('.case-card'));
+  const pager = document.querySelector('.cases-pager');
+  const PAGE_SIZE = 10; // 5 рядов по 2 карточки
+  let activeFilter = 'all';
+  let page = 1;
+
+  const matched = () => cards.filter((c) => activeFilter === 'all' || c.dataset.cat === activeFilter);
+
+  const renderPager = (total) => {
+    if (!pager) return;
+    const pages = Math.ceil(total / PAGE_SIZE);
+    if (pages <= 1) { pager.innerHTML = ''; pager.hidden = true; return; }
+    pager.hidden = false;
+    let html = `<button class="cases-pager__btn cases-pager__arrow" data-page="prev" aria-label="Назад"${page === 1 ? ' disabled' : ''}>←</button>`;
+    for (let i = 1; i <= pages; i++) {
+      html += `<button class="cases-pager__btn${i === page ? ' is-active' : ''}" data-page="${i}">${i}</button>`;
+    }
+    html += `<button class="cases-pager__btn cases-pager__arrow" data-page="next" aria-label="Вперёд"${page === pages ? ' disabled' : ''}>→</button>`;
+    pager.innerHTML = html;
+  };
+
+  const apply = () => {
+    const list = matched();
+    const pages = Math.max(1, Math.ceil(list.length / PAGE_SIZE));
+    if (page > pages) page = pages;
+    const start = (page - 1) * PAGE_SIZE;
+    const pageSet = new Set(list.slice(start, start + PAGE_SIZE));
+    cards.forEach((c) => c.classList.toggle('is-hidden', !pageSet.has(c)));
+    renderPager(list.length);
+  };
+
+  const setFilter = (f) => {
     const chip = filterBar.querySelector(`.filter-chip[data-filter="${f}"]`);
     if (!chip) return;
     filterBar.querySelectorAll('.filter-chip').forEach((c) => c.classList.remove('is-active'));
     chip.classList.add('is-active');
-    cards.forEach((card) => card.classList.toggle('is-hidden', f !== 'all' && card.dataset.cat !== f));
+    activeFilter = f;
+    page = 1;
+    apply();
   };
+
   filterBar.addEventListener('click', (e) => {
     const chip = e.target.closest('.filter-chip');
     if (!chip) return;
-    applyFilter(chip.dataset.filter);
+    setFilter(chip.dataset.filter);
   });
+
+  if (pager) {
+    pager.addEventListener('click', (e) => {
+      const btn = e.target.closest('.cases-pager__btn');
+      if (!btn || btn.disabled) return;
+      const pages = Math.max(1, Math.ceil(matched().length / PAGE_SIZE));
+      const v = btn.dataset.page;
+      if (v === 'prev') page = Math.max(1, page - 1);
+      else if (v === 'next') page = Math.min(pages, page + 1);
+      else page = parseInt(v, 10);
+      apply();
+      const head = document.querySelector('.cases-page__head');
+      if (head) head.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  }
+
   // фильтр из ссылки услуги: cases.html?filter=nakleyki
   const wanted = new URLSearchParams(location.search).get('filter');
-  if (wanted) applyFilter(wanted);
+  setFilter(wanted || 'all');
 }
 
 // --- Лайтбокс для кейсов ---
