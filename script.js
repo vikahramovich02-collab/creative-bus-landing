@@ -143,6 +143,18 @@ document.querySelectorAll('[data-accordion]').forEach((list) => {
   });
 });
 
+// --- Активный пункт меню (голубым на текущей странице) ---
+(() => {
+  const page = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
+  document.querySelectorAll('.header__nav a').forEach((a) => {
+    const href = (a.getAttribute('href') || '').split('#')[0].split('/').pop().toLowerCase();
+    if (href && href === page) {
+      a.classList.add('is-active');
+      a.setAttribute('aria-current', 'page');
+    }
+  });
+})();
+
 // --- Мобильное меню ---
 const burger = document.querySelector('.header__burger');
 if (burger) {
@@ -335,7 +347,22 @@ function initLeadForm(form) {
       comment: form.elements.comment.value.trim(),
     });
 
-    form.innerHTML = '<p class="form__success"><span>Спасибо!</span><br>Заявка отправлена — свяжемся с вами в течение рабочего дня.</p>';
+    form.innerHTML =
+      '<div class="form__success">' +
+        '<span class="form__success-ic" aria-hidden="true">' +
+          '<svg width="34" height="34" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>' +
+        '</span>' +
+        '<strong>Спасибо!</strong>' +
+        '<p>Заявка отправлена — свяжемся с вами в&nbsp;течение рабочего дня.</p>' +
+        '<button class="btn btn--dark" type="button" data-form-done>Хорошо</button>' +
+      '</div>';
+    const modalCard = form.closest('.modal');
+    if (modalCard) modalCard.classList.add('is-success');
+    const doneBtn = form.querySelector('[data-form-done]');
+    if (doneBtn) doneBtn.addEventListener('click', () => {
+      if (modalCard) { modalCard.classList.remove('is-open', 'is-success'); document.body.style.overflow = ''; }
+      else window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
   });
 }
 document.querySelectorAll('form.form').forEach(initLeadForm);
