@@ -1353,7 +1353,7 @@ body::before {
 .svc-price__cost--dark { color: var(--dark); }
 
 /* услуги — кейсы с горизонтальным скроллом */
-.svc-cases { background: var(--bg-gray); }
+.svc-cases { background: var(--white); }
 .svc-cases__track {
   display: flex;
   gap: 20px;
