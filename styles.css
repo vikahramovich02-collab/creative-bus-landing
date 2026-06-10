@@ -133,7 +133,7 @@ img { display: block; max-width: 100%; }
 .hero__bg.is-active { opacity: 1; }
 .hero__overlay {
   position: absolute; inset: 0;
-  background: linear-gradient(180deg, rgba(10,16,32,.66) 0%, rgba(10,16,32,.5) 45%, rgba(10,16,32,.72) 100%);
+  background: linear-gradient(180deg, rgba(0,0,0,.66) 0%, rgba(0,0,0,.5) 45%, rgba(0,0,0,.72) 100%);
   z-index: -1;
 }
 
@@ -620,7 +620,7 @@ img.header__logo-dark { display: none; }
 .cases__card::after {
   content: '';
   position: absolute; inset: 0;
-  background: linear-gradient(180deg, rgba(2,8,20,0) 45%, rgba(2,8,20,.72) 100%);
+  background: linear-gradient(180deg, rgba(0,0,0,0) 45%, rgba(0,0,0,.72) 100%);
 }
 .cases__cap {
   position: absolute;
@@ -958,8 +958,8 @@ img.header__logo-dark { display: none; }
   content: '';
   position: absolute; inset: 0;
   background:
-    linear-gradient(rgba(2,8,20,.22), rgba(2,8,20,.22)),
-    linear-gradient(180deg, rgba(2,8,20,0) 50%, rgba(2,8,20,.66) 100%);
+    linear-gradient(rgba(0,0,0,.22), rgba(0,0,0,.22)),
+    linear-gradient(180deg, rgba(0,0,0,0) 50%, rgba(0,0,0,.66) 100%);
   pointer-events: none;
 }
 .case-card figcaption {
@@ -1226,7 +1226,7 @@ body::before {
   margin-bottom: 36px;
 }
 .about-hero__bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-.about-hero__overlay { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(10,16,32,.72) 0%, rgba(10,16,32,.4) 55%, rgba(10,16,32,.12) 100%); }
+.about-hero__overlay { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(0,0,0,.72) 0%, rgba(0,0,0,.4) 55%, rgba(0,0,0,.12) 100%); }
 .about-hero__wrap { position: relative; width: 100%; padding: 0 24px 0 6%; }
 .about-hero__content { position: relative; max-width: 720px; padding: 96px 0 56px; }
 .about-hero__social { display: flex; align-items: center; gap: 12px; margin-bottom: 30px; }
@@ -1311,7 +1311,7 @@ body::before {
 .svc-card::after {
   content: '';
   position: absolute; inset: 0;
-  background: linear-gradient(180deg, rgba(10,16,32,.25) 0%, rgba(10,16,32,.78) 100%);
+  background: linear-gradient(180deg, rgba(0,0,0,.25) 0%, rgba(0,0,0,.78) 100%);
 }
 .svc-card:hover img { transform: scale(1.05); }
 .svc-card__body {
@@ -1324,7 +1324,11 @@ body::before {
 .svc-card__tag {
   font: 500 13px/1 'Inter', sans-serif;
   padding: 8px 14px;
-  border: 1px solid rgba(255,255,255,.5);
+  color: #fff;
+  background: rgba(0,0,0,.42);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid rgba(255,255,255,.9);
   border-radius: 20px;
 }
 .svc-card__title { font: 700 26px/1.2 'Inter', sans-serif; text-transform: uppercase; max-width: 76%; }
@@ -1332,11 +1336,12 @@ body::before {
   position: absolute; right: 30px; bottom: 30px;
   width: 54px; height: 54px;
   border-radius: 50%;
-  border: 1px solid rgba(255,255,255,.6);
+  border: 1.5px solid rgba(255,255,255,.9);
+  color: #fff;
   display: flex; align-items: center; justify-content: center;
-  transition: background .25s ease, border-color .25s ease;
+  transition: background .25s ease, border-color .25s ease, color .25s ease;
 }
-.svc-card:hover .svc-card__arrow { background: var(--blue); border-color: var(--blue); }
+.svc-card:hover .svc-card__arrow { background: #fff; border-color: #fff; color: var(--dark); }
 
 /* ===== Детальная страница услуги ===== */
 .svc-detail__title { font: 600 52px/1.12 'Inter', sans-serif; letter-spacing: -.02em; color: var(--dark); margin-bottom: 32px; max-width: 900px; }
