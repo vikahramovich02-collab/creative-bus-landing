@@ -259,9 +259,8 @@ if (filterBar) {
     if (!card) return;
     const cardImg = card.querySelector('img');
     img.src = cardImg.dataset.full || cardImg.src;
-    const route = card.querySelector('.case-card__route');
-    const cat = card.querySelector('.case-card__cat');
-    cap.textContent = cat ? `${cat.textContent} · ${route ? route.textContent : ''}` : (card.querySelector('img').alt || '');
+    const cat = card.querySelector('.case-card__cat') || card.querySelector('.cases__cap');
+    cap.textContent = cat ? cat.textContent : (card.querySelector('img').alt || '');
   };
   const close = () => {
     lb.classList.remove('is-open');

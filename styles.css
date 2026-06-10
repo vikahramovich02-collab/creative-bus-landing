@@ -1020,7 +1020,7 @@ img.header__logo-dark { display: none; }
   flex-direction: column;
   gap: 6px;
 }
-.case-card__route { font: 400 13px/1 'Inter', sans-serif; opacity: .8; }
+.case-card__route { display: none; }
 .case-card__cat { font: 500 20px/1.2 'Inter', sans-serif; }
 .footer__back {
   font: 400 14px/1 'Inter', sans-serif;
