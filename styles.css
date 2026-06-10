@@ -744,13 +744,11 @@ img.header__logo-dark { display: none; }
   grid-area: 1 / 1;
   opacity: 0;
   visibility: hidden;
-  transform: translateX(24px);
-  transition: opacity .45s ease, transform .45s ease, visibility .45s;
+  transition: opacity .7s ease, visibility .7s;
 }
 .about__slide.is-active {
   opacity: 1;
   visibility: visible;
-  transform: none;
 }
 .about__inner {
   display: flex;
