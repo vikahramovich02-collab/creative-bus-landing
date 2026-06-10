@@ -333,7 +333,7 @@ img.header__logo-dark { display: none; }
   align-items: stretch;
 }
 .stats__left { display: flex; flex-direction: column; }
-.stats__left .stats__photo { margin-top: auto; }
+.stats__left .stats__photo { flex: 1; margin-top: 12px; min-height: 360px; }
 .stats__rows {
   display: flex;
   flex-direction: column;
@@ -344,7 +344,7 @@ img.header__logo-dark { display: none; }
   display: flex;
   align-items: center;
   gap: 36px;
-  padding: 8px 0;
+  padding: 18px 0;
   border-bottom: 1px solid var(--border);
 }
 .stats__row:last-child { border-bottom: none; }
@@ -370,7 +370,7 @@ img.header__logo-dark { display: none; }
   border-radius: 12px;
   overflow: hidden;
 }
-.stats__photo img { width: 100%; height: auto; }
+.stats__photo img { width: 100%; height: 100%; object-fit: cover; }
 
 /* ============ УСЛУГИ (аккордеон) ============ */
 .services .section-head { margin-bottom: 56px; }
@@ -685,12 +685,15 @@ img.header__logo-dark { display: none; }
   transform: translateY(-50%);
   background: transparent;
   color: var(--dark);
-  border: 1.5px solid var(--dark);
+  border: 1px solid var(--dark);
+  opacity: .5;
+  transition: opacity .2s ease, background .2s ease, border-color .2s ease, color .2s ease;
 }
 .about__arrow:hover {
   background: var(--blue);
   border-color: var(--blue);
   color: var(--white);
+  opacity: 1;
 }
 .about__arrow--prev { left: 40px; }
 .about__arrow--next { right: 40px; }
