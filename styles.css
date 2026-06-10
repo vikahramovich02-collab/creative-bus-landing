@@ -1210,8 +1210,9 @@ body::before {
 .page-loader.is-done { opacity: 0; }
 
 /* ===== Внутренние страницы (О нас, Услуги, Контакты) ===== */
-.subpage { padding-top: 112px; }
-.subpage > .container:first-child { padding-top: 24px; }
+.subpage { padding-top: 144px; }
+.subpage > .container:first-child { padding-top: 0; }
+.subpage > section:first-child { padding-top: 0; }
 
 /* ===== О нас — интро-баннер ===== */
 .about-hero {
