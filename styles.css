@@ -1581,9 +1581,8 @@ body::before {
   width: 51px;
   height: 51px;
   border-radius: 50%;
-  border: 1px solid var(--dark);
-  color: var(--dark);
-  opacity: .5;
+  border: 1px solid var(--border);
+  color: var(--border);
   text-decoration: none;
   margin: 0 0 18px;
   transition: opacity .2s ease, background .2s ease, border-color .2s ease, color .2s ease;
