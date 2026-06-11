@@ -1629,6 +1629,7 @@ body::before {
 mark.legal__fill { background: #FFF3C4; color: var(--text); padding: 0 4px; border-radius: 3px; }
 
 /* ===== Страница прайс-листа ===== */
+.pricing { padding-top: 44px; }
 .pricing__head {
   display: flex; align-items: flex-start; justify-content: space-between;
   gap: 32px; flex-wrap: wrap; margin-bottom: 44px;
