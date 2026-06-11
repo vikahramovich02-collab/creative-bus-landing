@@ -1655,7 +1655,8 @@ mark.legal__fill { background: #FFF3C4; color: var(--text); padding: 0 4px; bord
 }
 .price-card__title { display: flex; align-items: center; gap: 14px; font: 500 30px/1.25 'Inter', sans-serif; letter-spacing: -0.01em; color: var(--dark); }
 .price-card__icon { display: inline-flex; color: var(--blue); flex-shrink: 0; }
-.price-card__icon img, .price-card__icon svg { width: 80px; height: 80px; object-fit: contain; }
+.price-card__icon { width: 82px; justify-content: center; }
+.price-card__icon img, .price-card__icon svg { width: 82px; height: 82px; object-fit: contain; }
 .price-badge {
   flex-shrink: 0; color: var(--blue); background: rgba(16,145,235,.08);
   font: 600 12px/1 'Inter', sans-serif; text-transform: uppercase; letter-spacing: .04em;
