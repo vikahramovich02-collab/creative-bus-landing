@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Прайс-лист — Creative Bus</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--dark:#182238;--blue:#1091EB;--text:#0F172A;--gray:#64748B;--border:#E2E8F0;--bg-gray:#F4F7FB;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  @page{size:A4;margin:16mm 14mm;}
+  html,body{font-family:'Inter',sans-serif;color:var(--text);-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  .doc{width:100%;}
+  .doc__top{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);padding-bottom:18px;margin-bottom:26px;}
+  .doc__logo{height:40px;width:auto;}
+  .doc__label{font:600 12px/1 'Inter';text-transform:uppercase;letter-spacing:.12em;color:var(--blue);}
+  .doc__title{font:500 34px/1.2 'Inter';letter-spacing:-.01em;color:var(--dark);margin-bottom:6px;}
+  .doc__note{font:400 13px/1.5 'Inter';color:var(--gray);margin-bottom:30px;}
+  .sec{margin-bottom:26px;break-inside:avoid;}
+  .sec__title{display:flex;align-items:center;gap:12px;font:500 21px/1.2 'Inter';letter-spacing:-.01em;color:var(--dark);margin-bottom:12px;}
+  .sec__title img,.sec__title svg{width:34px;height:34px;object-fit:contain;}
+  table{width:100%;border-collapse:separate;border-spacing:0;}
+  thead th{text-align:left;text-transform:uppercase;letter-spacing:.05em;font:600 10px/1.2 'Inter';color:var(--gray);padding:9px 14px;border-bottom:1px solid var(--border);}
+  thead th:not(:first-child),tbody td:not(:first-child){text-align:right;}
+  tbody td{padding:11px 14px;font:400 13px/1.3 'Inter';color:var(--gray);}
+  tbody td:first-child{font-weight:600;color:var(--dark);}
+  tbody td.acc{color:var(--blue);font-weight:600;white-space:nowrap;}
+  tbody tr:nth-child(even){background:var(--bg-gray);}
+  tbody tr:nth-child(even) td:first-child{border-top-left-radius:12px;border-bottom-left-radius:12px;}
+  tbody tr:nth-child(even) td:last-child{border-top-right-radius:12px;border-bottom-right-radius:12px;}
+  .doc__foot{display:flex;gap:12px;margin-top:24px;padding-top:16px;border-top:1px solid var(--border);font:400 12px/1.5 'Inter';color:var(--gray);}
+  .doc__foot::before{content:'';flex:0 0 3px;background:var(--blue);border-radius:3px;}
+</style>
+</head>
+<body>
+<div class="doc">
+  <div class="doc__top">
+    <img class="doc__logo" src="assets/logo.png" alt="Creative Bus">
+    <span class="doc__label">Прайс-лист</span>
+  </div>
+
+  <h1 class="doc__title">Стоимость размещения</h1>
+  <p class="doc__note">Без скрытых сборов. Печать, монтаж и демонтаж включены. Реклама на транспорте в Таганроге и Ростовской области. Цены актуальны на май 2026 года.</p>
+
+  <div class="sec">
+    <div class="sec__title"><img src="assets/pr-bus.png" alt="">Широкоформатная бортовая реклама</div>
+    <table>
+      <thead><tr><th>Транспорт</th><th>Оформление</th><th>Аренда / мес</th><th>Площадь оклейки</th></tr></thead>
+      <tbody>
+        <tr><td>Автобус</td><td>Боковой борт (полный)</td><td>8 000 ₽</td><td class="acc">37 м²</td></tr>
+        <tr><td>Автобус</td><td>Боковой борт + крыша</td><td>8 000 ₽</td><td class="acc">66 м²</td></tr>
+        <tr><td>Микроавтобус</td><td>Боковая полная</td><td>5 000 ₽</td><td class="acc">16,5 м²</td></tr>
+        <tr><td>Микроавтобус</td><td>Боковая + крыша</td><td>5 000 ₽</td><td class="acc">30 м²</td></tr>
+        <tr><td>Автобус</td><td>Боковой борт</td><td>8 000 ₽</td><td class="acc">12 м²</td></tr>
+        <tr><td>Задняя часть</td><td>Полная 2250×2250</td><td>3 600 ₽</td><td class="acc">5 м²</td></tr>
+        <tr><td>Задняя часть</td><td>Полная 3000×2500</td><td>3 600 ₽</td><td class="acc">6,5 м²</td></tr>
+        <tr><td>Задняя часть</td><td>Полная 2540×2370</td><td>3 600 ₽</td><td class="acc">6 м²</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="sec">
+    <div class="sec__title"><img src="assets/pr-sticker.png" alt="">Рекламная наклейка на транспорте</div>
+    <table>
+      <thead><tr><th>Расположение</th><th>Размер, мм</th><th>Размещение / мес</th><th>Печать + монтаж</th></tr></thead>
+      <tbody>
+        <tr><td>Заднее окно полностью</td><td>1300×530</td><td>1 800 ₽</td><td class="acc">1 800 ₽</td></tr>
+        <tr><td>Заднее окно полностью</td><td>1600×530</td><td>1 800 ₽</td><td class="acc">2 300 ₽</td></tr>
+        <tr><td>Заднее окно полностью</td><td>2130×890</td><td>1 800 ₽</td><td class="acc">5 100 ₽</td></tr>
+        <tr><td>Заднее окно полностью</td><td>1810×900</td><td>1 800 ₽</td><td class="acc">4 400 ₽</td></tr>
+        <tr><td>Заднее окно полностью</td><td>1590×600</td><td>1 800 ₽</td><td class="acc">2 610 ₽</td></tr>
+        <tr><td>Заднее окно полностью</td><td>1080×1900</td><td>1 800 ₽</td><td class="acc">5 500 ₽</td></tr>
+        <tr><td>Под задним окном</td><td>1300×530</td><td>1 300 ₽</td><td class="acc">1 800 ₽</td></tr>
+        <tr><td>Окно правый борт</td><td>1300×530</td><td>1 000 ₽</td><td class="acc">1 800 ₽</td></tr>
+        <tr><td>Окно правый борт</td><td>1100×500</td><td>1 000 ₽</td><td class="acc">1 500 ₽</td></tr>
+        <tr><td>Окно правый борт</td><td>1300×530</td><td>1 000 ₽</td><td class="acc">1 800 ₽</td></tr>
+        <tr><td>Окно правый борт</td><td>1500×1350</td><td>2 700 ₽</td><td class="acc">5 500 ₽</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="sec">
+    <div class="sec__title"><svg viewBox="0 0 24 24" fill="none"><path d="M6 4h9a3 3 0 013 3v7H8a2 2 0 01-2-2V4z" stroke="#1091EB" stroke-width="1.6" stroke-linejoin="round"/><path d="M6 14v4a2 2 0 002 2h10M18 14v6" stroke="#1091EB" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Реклама на спинках сидений</div>
+    <table>
+      <thead><tr><th>Формат</th><th>Размещение / мес</th><th>Кол-во</th><th>Печать</th><th>Монтаж / демонтаж</th></tr></thead>
+      <tbody>
+        <tr><td>A4 (10 шт)</td><td>1 800 ₽</td><td>10 спинок</td><td>360 ₽</td><td class="acc">640 ₽</td></tr>
+        <tr><td>A4 (20 шт)</td><td>3 300 ₽</td><td>20 спинок</td><td>720 ₽</td><td class="acc">1 280 ₽</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="sec">
+    <div class="sec__title"><svg viewBox="0 0 24 24" fill="none"><path d="M7 3h7l4 4v14a1 1 0 01-1 1H7a1 1 0 01-1-1V4a1 1 0 011-1z" stroke="#1091EB" stroke-width="1.6" stroke-linejoin="round"/><path d="M14 3v4h4M9 12h6M9 16h6" stroke="#1091EB" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Листовки в салоне</div>
+    <table>
+      <thead><tr><th>Формат</th><th>Размещение / мес</th></tr></thead>
+      <tbody>
+        <tr><td>Листовка А4</td><td class="acc">по запросу</td></tr>
+        <tr><td>Листовка А3</td><td class="acc">по запросу</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p class="doc__foot">Стоимость оклейки 1 м² — 2 400 ₽ (печать, монтаж, демонтаж включены). Минимальный срок размещения — 1 месяц. Смена изображения внутри месяца оплачивается отдельно. &nbsp;·&nbsp; +7 (961) 000-00-00 &nbsp;·&nbsp; info@creativebus.ru</p>
+</div>
+</body>
+</html>
