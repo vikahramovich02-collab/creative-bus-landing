@@ -1633,7 +1633,9 @@ mark.legal__fill { background: #FFF3C4; color: var(--text); padding: 0 4px; bord
   display: flex; align-items: flex-start; justify-content: space-between;
   gap: 32px; flex-wrap: wrap; margin-bottom: 44px;
 }
-.pricing__head-text { max-width: 640px; }
+.pricing__head-text { max-width: 760px; }
+.pricing__title-row { display: flex; align-items: center; gap: 20px; }
+.pricing__title-row .back-link { margin: 0; flex-shrink: 0; }
 .pricing__note { color: var(--gray); font: 400 15px/1.55 'Inter', sans-serif; margin-top: 12px; }
 .price-card {
   background: var(--white);
