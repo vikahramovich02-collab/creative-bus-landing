@@ -221,11 +221,11 @@ if (filterBar) {
     const pages = Math.ceil(total / PAGE_SIZE);
     if (pages <= 1) { pager.innerHTML = ''; pager.hidden = true; return; }
     pager.hidden = false;
-    let html = `<button class="cases-pager__btn cases-pager__arrow" data-page="prev" aria-label="Назад"${page === 1 ? ' disabled' : ''}>←</button>`;
+    let html = `<button class="cases-pager__btn cases-pager__arrow" data-page="prev" aria-label="Назад"${page === 1 ? ' disabled' : ''}><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M19 12H5m0 0l6-6m-6 6l6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>`;
     for (let i = 1; i <= pages; i++) {
       html += `<button class="cases-pager__btn${i === page ? ' is-active' : ''}" data-page="${i}">${i}</button>`;
     }
-    html += `<button class="cases-pager__btn cases-pager__arrow" data-page="next" aria-label="Вперёд"${page === pages ? ' disabled' : ''}>→</button>`;
+    html += `<button class="cases-pager__btn cases-pager__arrow" data-page="next" aria-label="Вперёд"${page === pages ? ' disabled' : ''}><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m0 0l-6-6m6 6l-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>`;
     pager.innerHTML = html;
   };
 
@@ -284,9 +284,9 @@ if (filterBar) {
   lb.className = 'lightbox';
   lb.innerHTML =
     '<button class="lightbox__close" aria-label="Закрыть">✕</button>' +
-    '<button class="lightbox__nav lightbox__nav--prev" aria-label="Предыдущее фото">←</button>' +
+    '<button class="lightbox__nav lightbox__nav--prev" aria-label="Предыдущее фото"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M19 12H5m0 0l6-6m-6 6l6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>' +
     '<figure class="lightbox__body"><img alt=""><figcaption></figcaption></figure>' +
-    '<button class="lightbox__nav lightbox__nav--next" aria-label="Следующее фото">→</button>';
+    '<button class="lightbox__nav lightbox__nav--next" aria-label="Следующее фото"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m0 0l-6-6m6 6l-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>';
   document.body.appendChild(lb);
 
   const img = lb.querySelector('img');
