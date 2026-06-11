@@ -1543,6 +1543,7 @@ body::before {
 
 /* ===== Детальная страница услуги ===== */
 .svc-detail__title { font: 500 48px/1.12 'Inter', sans-serif; letter-spacing: -.01em; color: var(--dark); margin-bottom: 28px; max-width: 1100px; }
+.svc-detail { padding-top: 44px; }
 .detail-head { display: flex; align-items: center; gap: 20px; margin-bottom: 28px; }
 .detail-head .back-link { margin: 0; flex-shrink: 0; }
 .detail-head .svc-detail__title { margin-bottom: 0; }
