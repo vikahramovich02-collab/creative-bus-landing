@@ -169,20 +169,63 @@ document.querySelectorAll('[data-accordion]').forEach((list) => {
   });
 })();
 
-// --- Мобильное меню ---
-const burger = document.querySelector('.header__burger');
-if (burger) {
-  burger.addEventListener('click', () => {
-    const open = document.body.classList.toggle('menu-open');
+// --- Мобильное меню (полноэкранное, как в макете) ---
+(() => {
+  const burger = document.querySelector('.header__burger');
+  if (!burger) return;
+
+  const LINKS = [
+    ['about.html', 'О нас'],
+    ['services.html', 'Услуги'],
+    ['pricing.html', 'Стоимость'],
+    ['cases.html', 'Кейсы'],
+    ['contacts.html', 'Контакты'],
+  ];
+  const page = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
+
+  const menu = document.createElement('div');
+  menu.className = 'mobile-menu';
+  menu.setAttribute('role', 'dialog');
+  menu.setAttribute('aria-modal', 'true');
+  menu.setAttribute('aria-label', 'Меню');
+  menu.hidden = true;
+  menu.innerHTML = `
+    <div class="mobile-menu__top">
+      <img class="mobile-menu__logo" src="assets/logo-white.png?v=2" alt="Creative Bus" width="196" height="56">
+      <button class="mobile-menu__close" type="button" aria-label="Закрыть меню">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <nav class="mobile-menu__nav" aria-label="Основная навигация">
+      ${LINKS.map(([href, name]) =>
+        `<a href="${href}"${href.toLowerCase() === page ? ' class="is-active" aria-current="page"' : ''}>${name}</a>`
+      ).join('')}
+    </nav>
+    <div class="mobile-menu__bottom">
+      <a href="contacts.html" class="btn btn--white mobile-menu__cta">Оставить заявку</a>
+      <a href="tel:+79610000000" class="mobile-menu__phone">+7 (961) 000-00-00</a>
+      <div class="mobile-menu__social">
+        <a href="#" rel="noopener">ВКонтакте</a>
+        <span aria-hidden="true">·</span>
+        <a href="#" rel="noopener">Telegram</a>
+      </div>
+    </div>`;
+  document.body.appendChild(menu);
+
+  const setOpen = (open) => {
+    document.body.classList.toggle('menu-open', open);
     burger.setAttribute('aria-expanded', String(open));
+    if (open) menu.hidden = false;
+    else setTimeout(() => { if (!document.body.classList.contains('menu-open')) menu.hidden = true; }, 300);
+  };
+
+  burger.addEventListener('click', () => setOpen(!document.body.classList.contains('menu-open')));
+  menu.querySelector('.mobile-menu__close').addEventListener('click', () => setOpen(false));
+  menu.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => setOpen(false)));
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && document.body.classList.contains('menu-open')) setOpen(false);
   });
-  document.querySelectorAll('.header__nav a').forEach((a) =>
-    a.addEventListener('click', () => {
-      document.body.classList.remove('menu-open');
-      burger.setAttribute('aria-expanded', 'false');
-    })
-  );
-}
+})();
 
 // --- Карусель «О нас» ---
 const aboutSlider = document.querySelector('[data-about-slider]');
@@ -469,4 +512,17 @@ document.querySelectorAll('form.form').forEach(initLeadForm);
 
   // диплинк: site.ru/#zayavka сразу открывает попап
   if (location.hash === '#zayavka') open();
+})();
+
+// --- Прайс-таблицы на мобиле: подписи колонок в ячейки (строка становится карточкой) ---
+(() => {
+  document.querySelectorAll('.price-table').forEach((table) => {
+    const heads = Array.from(table.querySelectorAll('thead th')).map((th) => th.textContent.trim());
+    if (!heads.length) return;
+    table.querySelectorAll('tbody tr').forEach((tr) => {
+      Array.from(tr.children).forEach((td, i) => {
+        if (heads[i]) td.setAttribute('data-label', heads[i]);
+      });
+    });
+  });
 })();

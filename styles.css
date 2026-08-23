@@ -1300,21 +1300,15 @@ img.header__logo-dark { display: none; }
     background: none; border: none; cursor: pointer;
     padding: 8px;
   }
-  .header__burger span { width: 24px; height: 2px; background: var(--white); }
+  .header__burger span { width: 24px; height: 2px; background: var(--white); transition: background .25s ease; }
+  /* на белой шапке бургер тёмный */
+  .header--scrolled .header__burger span,
+  .header--solid .header__burger span { background: var(--dark); }
   .header__actions { margin-left: 0; }
   .header__inner { justify-content: space-between; }
-  body.menu-open .header__nav {
-    display: flex;
-    position: fixed;
-    inset: 0;
-    background: var(--dark);
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 32px;
-    font-size: 22px;
-    z-index: 50;
-  }
+  /* кнопка заявки на мобиле живёт в бургер-меню */
+  .header__actions { display: none; }
+  .header__burger { margin-left: auto; }
   .cases__grid { grid-template-columns: 1fr 1fr; }
   .cases__card--wide { grid-column: 1 / -1; }
   .cases__card { height: 280px; }
@@ -1686,4 +1680,118 @@ mark.legal__fill { background: #FFF3C4; color: var(--text); padding: 0 4px; bord
   .price-card__title { font-size: 19px; }
   .price-card__wrap { overflow-x: auto; }
   .price-table { min-width: 520px; }
+}
+
+/* ===== Мобильное меню (полноэкранное) ===== */
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: var(--dark);
+  display: flex;
+  flex-direction: column;
+  padding: 18px 20px 36px;
+  opacity: 0;
+  transform: translateY(-8px);
+  transition: opacity .28s ease, transform .28s ease;
+  pointer-events: none;
+  overflow-y: auto;
+}
+.mobile-menu[hidden] { display: none; }
+body.menu-open { overflow: hidden; }
+body.menu-open .mobile-menu { opacity: 1; transform: none; pointer-events: auto; }
+.mobile-menu__top {
+  display: flex; align-items: center; justify-content: space-between;
+  flex: 0 0 auto;
+}
+.mobile-menu__logo { width: 104px; height: auto; }
+.mobile-menu__close {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,.4);
+  background: transparent;
+  color: var(--white);
+  display: inline-flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  transition: background .2s ease, border-color .2s ease, color .2s ease;
+}
+.mobile-menu__close:hover { background: var(--white); border-color: var(--white); color: var(--dark); }
+.mobile-menu__nav {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 28px;
+  padding: 64px 0 40px;
+}
+.mobile-menu__nav a {
+  font: 500 26px/1.2 'Inter', sans-serif;
+  color: var(--white);
+  text-decoration: none;
+}
+.mobile-menu__nav a.is-active { color: var(--blue); }
+.mobile-menu__bottom { flex: 0 0 auto; display: flex; flex-direction: column; gap: 24px; }
+.mobile-menu__cta { width: 100%; }
+.mobile-menu__phone {
+  font: 500 24px/1.2 'Inter', sans-serif;
+  color: var(--blue);
+  text-decoration: none;
+}
+.mobile-menu__social { display: flex; align-items: center; gap: 10px; }
+.mobile-menu__social a,
+.mobile-menu__social span {
+  font: 400 15px/1 'Inter', sans-serif;
+  color: var(--soft);
+  text-decoration: none;
+}
+.mobile-menu__social a:hover { color: var(--white); }
+@media (min-width: 1025px) { .mobile-menu { display: none !important; } }
+
+/* ===== Мобильные правки по макету ===== */
+@media (max-width: 860px) {
+  /* кейсы: шапка в колонку, фильтры переносятся — страница больше не уезжает вбок */
+  .cases-page__head { flex-wrap: wrap; align-items: flex-start; gap: 20px; margin-bottom: 32px; }
+  .cases-page__title { flex: 1 1 100%; }
+  .cases-page__filters { flex: 1 1 100%; flex-shrink: 1; gap: 8px; }
+  .filter-chip { padding: 11px 20px; }
+}
+
+@media (max-width: 760px) {
+  /* прайс: вместо горизонтального скролла — строка-карточка */
+  .price-card__wrap { overflow-x: visible; }
+  .price-table { min-width: 0; width: 100%; display: block; }
+  .price-table thead { display: none; }
+  .price-table tbody, .price-table tr, .price-table td { display: block; width: 100%; }
+  .price-table tr {
+    padding: 16px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .price-table tr:last-child { border-bottom: none; }
+  .price-table td {
+    padding: 0;
+    text-align: left !important;
+    font: 400 13px/1.4 'Inter', sans-serif;
+  }
+  /* первая ячейка — название строки */
+  .price-table td:first-child {
+    font: 500 15px/1.4 'Inter', sans-serif;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+  /* остальные — пара «параметр → значение» */
+  .price-table td:not(:first-child) {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 6px;
+    color: var(--dark);
+  }
+  .price-table td:not(:first-child)::before {
+    content: attr(data-label);
+    color: var(--gray);
+    font: 400 13px/1.3 'Inter', sans-serif;
+    flex: 0 0 auto;
+  }
+  .price-table td.price-accent { color: var(--sky); font-weight: 500; }
 }
