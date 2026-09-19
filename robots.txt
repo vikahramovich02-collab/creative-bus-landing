@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /pricing-print.html
+
+Sitemap: https://vikahramovich02-collab.github.io/creative-bus-landing/sitemap.xml

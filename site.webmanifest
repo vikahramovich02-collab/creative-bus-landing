@@ -1,0 +1,16 @@
+{
+  "name": "Creative Bus — реклама на транспорте в Таганроге",
+  "short_name": "Creative Bus",
+  "description": "Реклама на автобусах и маршрутках в Таганроге и Ростовской области.",
+  "lang": "ru",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#182238",
+  "icons": [
+    { "src": "assets/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "assets/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "assets/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
