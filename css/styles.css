@@ -1523,7 +1523,7 @@ body::before {
   border-radius: 20px;
   text-shadow: 0 1px 6px rgba(0,0,0,.35);
 }
-.svc-card__title { font: 700 26px/1.2 'Inter', sans-serif; text-transform: uppercase; max-width: 76%; }
+.svc-card__title { font: 700 26px/1.2 'Inter', sans-serif; max-width: 76%; }
 .svc-card__arrow {
   position: absolute; z-index: 2; right: 30px; bottom: 30px;
   width: 54px; height: 54px;
