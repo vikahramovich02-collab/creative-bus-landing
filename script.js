@@ -436,17 +436,27 @@ function initLeadForm(form) {
     if (name.value.trim().length < 2) { name.classList.add('is-error'); valid = false; }
     const digits = phone.value.replace(/\D/g, '');
     if (digits.length !== 11) { phone.classList.add('is-error'); valid = false; }
-    if (!consent.checked) { consent.focus(); valid = false; }
+    const checkBox = consent.closest('.form__check');
+    if (checkBox) checkBox.classList.remove('is-error');
+    if (!consent.checked) {
+      if (checkBox) checkBox.classList.add('is-error');
+      consent.focus();
+      valid = false;
+    }
 
     if (!valid) return;
 
-    // TODO: подключить отправку (email / Telegram-бот), когда будут доступы
+    // TODO: подключить отправку (email / Telegram-бот), когда будут доступы.
+    // Факт и время согласия фиксируем вместе с заявкой — это требование 152-ФЗ.
     console.log('Заявка:', {
       name: name.value.trim(),
       email: form.elements.email ? form.elements.email.value.trim() : '',
       company: form.elements.company ? form.elements.company.value.trim() : '',
       phone: phone.value,
       comment: form.elements.comment.value.trim(),
+      consent: true,
+      consentAt: new Date().toISOString(),
+      page: location.pathname,
     });
 
     form.innerHTML =
@@ -475,7 +485,7 @@ document.querySelectorAll('form.form').forEach(initLeadForm);
     '<input class="form__input" name="name" type="text" placeholder="ФИО*" required autocomplete="name">' +
     '<input class="form__input" name="phone" type="tel" placeholder="+7 (9XX) XXX XX XX*" required autocomplete="tel" inputmode="tel">' +
     '<textarea class="form__input form__input--area" name="comment" placeholder="Комментарий" rows="2"></textarea>' +
-    '<label class="form__check"><input type="checkbox" name="consent" checked required><span>Согласен(а) на обработку персональных данных</span></label>' +
+    '<label class="form__check"><input type="checkbox" name="consent" required><span>Я даю <a href="consent.html" target="_blank" rel="noopener">согласие на обработку персональных данных</a> и принимаю <a href="privacy.html" target="_blank" rel="noopener">политику конфиденциальности</a></span></label>' +
     '<button class="btn btn--dark form__submit" type="submit">Оставить заявку' +
     '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m0 0l-6-6m6 6l-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>';
 

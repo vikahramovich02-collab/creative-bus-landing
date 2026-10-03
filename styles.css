@@ -1819,3 +1819,51 @@ body.menu-open .mobile-menu { opacity: 1; transform: none; pointer-events: auto;
   .svc-about { margin-bottom: 56px; }
   .svc-about__text p { font-size: 15px; line-height: 1.6; }
 }
+
+/* ===== Планшет (641–1024): промежуточная ширина ===== */
+@media (min-width: 641px) and (max-width: 1024px) {
+  /* кнопки в шапках секций не должны ломаться на две строки */
+  .section-head .btn,
+  .cases-page__head .btn,
+  .svc-prices__head .btn { white-space: nowrap; flex-shrink: 0; }
+  .section-head { gap: 24px; align-items: flex-start; }
+  .section-head .section-title { max-width: 60%; }
+
+  /* заголовок карточки услуги упирался в кружок со стрелкой */
+  .svc-card__title { max-width: 68%; font-size: 23px; }
+  .svc-card__arrow { right: 24px; bottom: 24px; width: 48px; height: 48px; }
+  .svc-card__body { padding: 28px; }
+
+  /* кейсы: на планшете помещаются две колонки, одна была слишком растянутой */
+  .cases-page__grid { grid-template-columns: 1fr 1fr; gap: 28px 20px; }
+  .case-card { height: 300px; }
+  .cases-page__head { gap: 20px; }
+
+  /* полоса кейсов внутри услуги — ниже, иначе занимает пол-экрана */
+  .cases__expand { height: 320px; }
+  .cases__cap { left: 20px; bottom: 18px; font-size: 18px; }
+
+  /* статистика и блок «о нас»: числа и текст не должны прижиматься друг к другу */
+  .stats__num { flex-basis: 150px; font-size: 52px; }
+  .stats__row { gap: 24px; }
+  .about__desc { padding-top: 32px; max-width: 100%; }
+  .about__inner { gap: 32px; }
+
+  /* форма и контакты — в одну колонку, вторая была слишком узкой */
+  .contacts__grid { grid-template-columns: 1fr; gap: 40px; }
+  .contacts__desc { max-width: 100%; }
+
+  /* прайс: подписи колонок мельче, иначе переносятся */
+  .price-table thead th { font-size: 10px; }
+  .price-card__title { font-size: 20px; }
+
+  /* подвал: три колонки вместо четырёх */
+  .footer__top { grid-template-columns: 1.4fr 1fr 1fr; gap: 32px; }
+  .footer__col--last { grid-column: span 3; }
+}
+
+/* согласие на обработку данных — ссылки и состояние ошибки */
+.form__check a { color: var(--blue); text-decoration: underline; text-underline-offset: 2px; }
+.form__check a:hover { text-decoration: none; }
+.form__check.is-error { color: #E5484D; }
+.form__check.is-error input { outline: 2px solid #E5484D; outline-offset: 2px; border-radius: 3px; }
