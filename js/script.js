@@ -1,0 +1,575 @@
+// Куда уходят заявки с форм. Пустая строка — отправка не настроена,
+// форма тогда работает «вхолостую» (видно в консоли).
+const FORM_ENDPOINT = '';
+
+// ===== Creative Bus — лендинг =====
+
+// --- Прелоудер: голубая линия проезжает по верху при загрузке ---
+(() => {
+  const bar = document.createElement('div');
+  bar.className = 'page-loader';
+  bar.innerHTML = '<span></span>';
+  document.body.appendChild(bar);
+  const start = (window.performance && performance.now) ? performance.now() : 0;
+  const finish = () => { bar.classList.add('is-done'); setTimeout(() => bar.remove(), 400); };
+  const onReady = () => {
+    const elapsed = ((window.performance && performance.now) ? performance.now() : 0) - start;
+    setTimeout(finish, Math.max(0, 700 - elapsed));
+  };
+  if (document.readyState === 'complete') onReady();
+  else window.addEventListener('load', onReady);
+})();
+
+// --- Sticky-шапка: прячется при скролле вниз, выезжает при скролле вверх ---
+(() => {
+  const header = document.querySelector('.header');
+  if (!header) return;
+  const isSolid = header.classList.contains('header--solid'); // страница без hero
+  const hero = document.querySelector('.hero, .about-hero');
+  let lastY = window.scrollY;
+  let ticking = false;
+
+  const update = () => {
+    const y = window.scrollY;
+    // белая подложка — только когда ушли с главного экрана (на странице без hero — всегда)
+    if (!isSolid) {
+      const past = hero ? hero.offsetHeight - 80 : 60;
+      header.classList.toggle('header--scrolled', y > past);
+    }
+    // прячем при движении вниз, показываем при движении вверх
+    if (y > lastY && y > 160) header.classList.add('header--hidden');
+    else header.classList.remove('header--hidden');
+    lastY = y;
+    ticking = false;
+  };
+
+  window.addEventListener('scroll', () => {
+    if (!ticking) { requestAnimationFrame(update); ticking = true; }
+  }, { passive: true });
+  update();
+})();
+
+// --- Карусель hero: 5 фото, стрелки + индикаторы + автосмена 3с ---
+(() => {
+  const slider = document.querySelector('[data-hero-slider]');
+  if (!slider) return;
+  const slides = Array.from(slider.querySelectorAll('.hero__bg'));
+  const dots = Array.from(document.querySelectorAll('.hero__progress span'));
+  const hero = slider.closest('.hero');
+  const prev = hero.querySelector('.circle-btn--dim');
+  const next = hero.querySelector('.circle-btn--ghost');
+  let idx = 0, timer;
+
+  // УТП под каждый кадр — формат услуги и заголовок меняются вместе с фото
+  // (описание внизу — общее для всех слайдов, не меняется)
+  const UTP = [
+    { format: 'Бортовая реклама',
+      title: 'Невозможно не&nbsp;заметить рекламу размером с&nbsp;автобус' },
+    { format: 'Реклама на маршрутах',
+      title: 'Наш парк обслуживает более 20&nbsp;городских и&nbsp;пригородных маршрутов' },
+    { format: 'Реклама на спинках сидений',
+      title: 'Реклама на&nbsp;спинках сидений — её&nbsp;рассматривают всю&nbsp;поездку' },
+    { format: 'Реклама в салоне',
+      title: 'Реклама в&nbsp;салоне — работает, пока человек едет' },
+  ];
+  const titleEl = document.querySelector('[data-hero-title]');
+  const formatEl = document.querySelector('[data-hero-format]');
+  // плавная смена: текст уезжает вниз и растворяется, новый — выезжает снизу вверх
+  const fade = (el, html, delay) => {
+    if (!el || el.innerHTML === html) return;
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(14px)';
+    setTimeout(() => {
+      el.innerHTML = html;
+      el.style.opacity = '1';
+      el.style.transform = 'translateY(0)';
+    }, 240 + (delay || 0));
+  };
+  const setUtp = (i) => {
+    const u = UTP[i];
+    if (!u) return;
+    fade(formatEl, u.format, 0);
+    fade(titleEl, u.title, 80);
+  };
+
+  const show = (n) => {
+    idx = (n + slides.length) % slides.length;
+    slides.forEach((s, i) => s.classList.toggle('is-active', i === idx));
+    dots.forEach((d, i) => d.classList.toggle('is-active', i === idx));
+    setUtp(idx);
+  };
+  const go = (n) => { show(n); restart(); };
+  const restart = () => {
+    clearInterval(timer);
+    timer = setInterval(() => show(idx + 1), 5000);
+  };
+
+  if (prev) prev.addEventListener('click', () => go(idx - 1));
+  if (next) next.addEventListener('click', () => go(idx + 1));
+  dots.forEach((d, i) => d.addEventListener('click', () => go(i)));
+  show(0);
+  restart();
+})();
+
+// --- Кейсы: раскрывающаяся галерея (расширение по наведению) ---
+(() => {
+  const wrap = document.querySelector('.cases__expand');
+  if (!wrap) return;
+  const cards = Array.from(wrap.querySelectorAll('.cases__card'));
+  cards.forEach((card) => {
+    card.addEventListener('mouseenter', () => {
+      cards.forEach((c) => c.classList.toggle('is-active', c === card));
+    });
+  });
+})();
+
+// --- Авто-смена фото в full-width баннере (стр. О нас) ---
+(() => {
+  const banner = document.querySelector('[data-photo-rotator]');
+  if (!banner) return;
+  const imgs = Array.from(banner.querySelectorAll('img'));
+  if (imgs.length < 2) return;
+  let i = 0;
+  setInterval(() => {
+    imgs[i].classList.remove('is-active');
+    i = (i + 1) % imgs.length;
+    imgs[i].classList.add('is-active');
+  }, 4000);
+})();
+
+// --- Аккордеоны (услуги + FAQ) ---
+document.querySelectorAll('[data-accordion]').forEach((list) => {
+  list.addEventListener('click', (e) => {
+    const head = e.target.closest('.accordion__head, .faq__head');
+    if (!head) return;
+    const item = head.parentElement;
+    const wasOpen = item.classList.contains('is-open');
+    // одна открытая группа на аккордеон
+    list.querySelectorAll('.is-open').forEach((el) => {
+      el.classList.remove('is-open');
+      const b = el.querySelector('.accordion__head, .faq__head');
+      if (b) b.setAttribute('aria-expanded', 'false');
+    });
+    if (!wasOpen) {
+      item.classList.add('is-open');
+      head.setAttribute('aria-expanded', 'true');
+    }
+  });
+});
+
+// --- Активный пункт меню (голубым на текущей странице) ---
+(() => {
+  const page = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
+  document.querySelectorAll('.header__nav a').forEach((a) => {
+    const href = (a.getAttribute('href') || '').split('#')[0].split('/').pop().toLowerCase();
+    if (href && href === page) {
+      a.classList.add('is-active');
+      a.setAttribute('aria-current', 'page');
+    }
+  });
+})();
+
+// --- Мобильное меню (полноэкранное, как в макете) ---
+(() => {
+  const burger = document.querySelector('.header__burger');
+  if (!burger) return;
+
+  const LINKS = [
+    ['about.html', 'О нас'],
+    ['services.html', 'Услуги'],
+    ['pricing.html', 'Стоимость'],
+    ['cases.html', 'Кейсы'],
+    ['contacts.html', 'Контакты'],
+  ];
+  const page = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
+
+  const menu = document.createElement('div');
+  menu.className = 'mobile-menu';
+  menu.setAttribute('role', 'dialog');
+  menu.setAttribute('aria-modal', 'true');
+  menu.setAttribute('aria-label', 'Меню');
+  menu.hidden = true;
+  menu.innerHTML = `
+    <div class="mobile-menu__top">
+      <img class="mobile-menu__logo" src="assets/icons/logo-white.png?v=2" alt="Creative Bus" width="196" height="56">
+      <button class="mobile-menu__close" type="button" aria-label="Закрыть меню">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <nav class="mobile-menu__nav" aria-label="Основная навигация">
+      ${LINKS.map(([href, name]) =>
+        `<a href="${href}"${href.toLowerCase() === page ? ' class="is-active" aria-current="page"' : ''}>${name}</a>`
+      ).join('')}
+    </nav>
+    <div class="mobile-menu__bottom">
+      <a href="contacts.html" class="btn btn--white mobile-menu__cta">Оставить заявку</a>
+      <a href="tel:+79610000000" class="mobile-menu__phone">+7 (961) 000-00-00</a>
+      <div class="mobile-menu__social">
+        <a href="#" rel="noopener">ВКонтакте</a>
+        <span aria-hidden="true">·</span>
+        <a href="#" rel="noopener">Telegram</a>
+      </div>
+    </div>`;
+  document.body.appendChild(menu);
+
+  const setOpen = (open) => {
+    document.body.classList.toggle('menu-open', open);
+    burger.setAttribute('aria-expanded', String(open));
+    if (open) menu.hidden = false;
+    else setTimeout(() => { if (!document.body.classList.contains('menu-open')) menu.hidden = true; }, 300);
+  };
+
+  burger.addEventListener('click', () => setOpen(!document.body.classList.contains('menu-open')));
+  menu.querySelector('.mobile-menu__close').addEventListener('click', () => setOpen(false));
+  menu.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => setOpen(false)));
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && document.body.classList.contains('menu-open')) setOpen(false);
+  });
+})();
+
+// --- Карусель «О нас» ---
+const aboutSlider = document.querySelector('[data-about-slider]');
+if (aboutSlider) {
+  const slides = Array.from(aboutSlider.querySelectorAll('.about__slide'));
+  let idx = 0;
+  const show = (n) => {
+    idx = (n + slides.length) % slides.length;
+    slides.forEach((s, i) => s.classList.toggle('is-active', i === idx));
+  };
+  const about = aboutSlider.closest('.about');
+  let timer;
+  const restart = () => {
+    clearInterval(timer);
+    timer = setInterval(() => show(idx + 1), 5000);
+  };
+  const go = (n) => { show(n); restart(); };
+  about.querySelector('.about__arrow--prev').addEventListener('click', () => go(idx - 1));
+  about.querySelector('.about__arrow--next').addEventListener('click', () => go(idx + 1));
+  restart();
+}
+
+// --- Фильтрация кейсов (cases.html) ---
+const filterBar = document.querySelector('.cases-page__filters');
+if (filterBar) {
+  const cards = Array.from(document.querySelectorAll('.case-card'));
+  const pager = document.querySelector('.cases-pager');
+  const PAGE_SIZE = 10; // 5 рядов по 2 карточки
+  let activeFilter = 'all';
+  let page = 1;
+
+  const matched = () => cards.filter((c) => activeFilter === 'all' || c.dataset.cat === activeFilter);
+
+  const renderPager = (total) => {
+    if (!pager) return;
+    const pages = Math.ceil(total / PAGE_SIZE);
+    if (pages <= 1) { pager.innerHTML = ''; pager.hidden = true; return; }
+    pager.hidden = false;
+    let html = `<button class="cases-pager__btn cases-pager__arrow" data-page="prev" aria-label="Назад"${page === 1 ? ' disabled' : ''}><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M19 12H5m0 0l6-6m-6 6l6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>`;
+    for (let i = 1; i <= pages; i++) {
+      html += `<button class="cases-pager__btn${i === page ? ' is-active' : ''}" data-page="${i}">${i}</button>`;
+    }
+    html += `<button class="cases-pager__btn cases-pager__arrow" data-page="next" aria-label="Вперёд"${page === pages ? ' disabled' : ''}><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m0 0l-6-6m6 6l-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>`;
+    pager.innerHTML = html;
+  };
+
+  const apply = () => {
+    const list = matched();
+    const pages = Math.max(1, Math.ceil(list.length / PAGE_SIZE));
+    if (page > pages) page = pages;
+    const start = (page - 1) * PAGE_SIZE;
+    const pageSet = new Set(list.slice(start, start + PAGE_SIZE));
+    cards.forEach((c) => c.classList.toggle('is-hidden', !pageSet.has(c)));
+    renderPager(list.length);
+  };
+
+  const setFilter = (f) => {
+    const chip = filterBar.querySelector(`.filter-chip[data-filter="${f}"]`);
+    if (!chip) return;
+    filterBar.querySelectorAll('.filter-chip').forEach((c) => c.classList.remove('is-active'));
+    chip.classList.add('is-active');
+    activeFilter = f;
+    page = 1;
+    apply();
+  };
+
+  filterBar.addEventListener('click', (e) => {
+    const chip = e.target.closest('.filter-chip');
+    if (!chip) return;
+    setFilter(chip.dataset.filter);
+  });
+
+  if (pager) {
+    pager.addEventListener('click', (e) => {
+      const btn = e.target.closest('.cases-pager__btn');
+      if (!btn || btn.disabled) return;
+      const pages = Math.max(1, Math.ceil(matched().length / PAGE_SIZE));
+      const v = btn.dataset.page;
+      if (v === 'prev') page = Math.max(1, page - 1);
+      else if (v === 'next') page = Math.min(pages, page + 1);
+      else page = parseInt(v, 10);
+      apply();
+      const head = document.querySelector('.cases-page__head');
+      if (head) head.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  }
+
+  // фильтр из ссылки услуги: cases.html?filter=nakleyki
+  const wanted = new URLSearchParams(location.search).get('filter');
+  setFilter(wanted || 'all');
+}
+
+// --- Лайтбокс для кейсов ---
+(() => {
+  const cards = Array.from(document.querySelectorAll('.case-card, .cases__card'));
+  if (!cards.length) return;
+
+  const lb = document.createElement('div');
+  lb.className = 'lightbox';
+  lb.innerHTML =
+    '<button class="lightbox__close" aria-label="Закрыть">✕</button>' +
+    '<button class="lightbox__nav lightbox__nav--prev" aria-label="Предыдущее фото"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M19 12H5m0 0l6-6m-6 6l6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>' +
+    '<figure class="lightbox__body"><img alt=""><figcaption></figcaption></figure>' +
+    '<button class="lightbox__nav lightbox__nav--next" aria-label="Следующее фото"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m0 0l-6-6m6 6l-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>';
+  document.body.appendChild(lb);
+
+  const img = lb.querySelector('img');
+  const cap = lb.querySelector('figcaption');
+  let current = 0;
+
+  const visibleCards = () => cards.filter((c) => !c.classList.contains('is-hidden'));
+
+  const open = (card) => {
+    const list = visibleCards();
+    current = list.indexOf(card);
+    render();
+    lb.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+  };
+  const render = () => {
+    const list = visibleCards();
+    const card = list[current];
+    if (!card) return;
+    const cardImg = card.querySelector('img');
+    img.src = cardImg.dataset.full || cardImg.src;
+    const cat = card.querySelector('.case-card__cat') || card.querySelector('.cases__cap');
+    cap.textContent = cat ? cat.textContent : (card.querySelector('img').alt || '');
+  };
+  const close = () => {
+    lb.classList.remove('is-open');
+    document.body.style.overflow = '';
+  };
+  const step = (d) => {
+    const list = visibleCards();
+    current = (current + d + list.length) % list.length;
+    render();
+  };
+
+  cards.forEach((card) => {
+    card.style.cursor = 'zoom-in';
+    card.addEventListener('click', (e) => { e.preventDefault(); open(card); });
+  });
+  lb.querySelector('.lightbox__close').addEventListener('click', close);
+  lb.querySelector('.lightbox__nav--prev').addEventListener('click', (e) => { e.stopPropagation(); step(-1); });
+  lb.querySelector('.lightbox__nav--next').addEventListener('click', (e) => { e.stopPropagation(); step(1); });
+  lb.addEventListener('click', (e) => { if (e.target === lb) close(); });
+  document.addEventListener('keydown', (e) => {
+    if (!lb.classList.contains('is-open')) return;
+    if (e.key === 'Escape') close();
+    if (e.key === 'ArrowLeft') step(-1);
+    if (e.key === 'ArrowRight') step(1);
+  });
+})();
+
+// --- Кнопка «Назад» на подстраницах (возврат на предыдущую страницу) ---
+document.querySelectorAll('[data-back]').forEach((link) => {
+  link.addEventListener('click', (e) => {
+    // если есть куда вернуться — возвращаемся, иначе переходим по href (на главную)
+    if (history.length > 1 && document.referrer) {
+      e.preventDefault();
+      history.back();
+    }
+  });
+});
+
+// --- Анимации проявления при заходе в блок (повторяются при каждом входе) ---
+(() => {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (!('IntersectionObserver' in window)) return;
+  const targets = document.querySelectorAll(
+    '.section-label, .section-title, [data-reveal], .research__draw, .research__lead, .stats__row, .stats__photo, ' +
+    '.svc-card, .accordion, .cases__expand, .case-card, .routes__card, .faq, .contacts__info, .contacts__photo, .form, .cta__title, ' +
+    '.svc-detail__hero-img, .svc-price, .photo-banner'
+  );
+  if (!targets.length) return;
+  targets.forEach((el) => el.classList.add('reveal'));
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => e.target.classList.toggle('is-visible', e.isIntersecting));
+  }, { threshold: 0.12 });
+  targets.forEach((el) => io.observe(el));
+})();
+
+// --- Кнопка «наверх» ---
+const upBtn = document.querySelector('.footer__up');
+if (upBtn) upBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+// --- Лид-форма: маска телефона, валидация, заглушка отправки ---
+function initLeadForm(form) {
+  const phone = form.querySelector('input[name="phone"]');
+  if (phone) {
+    phone.addEventListener('input', () => {
+      let d = phone.value.replace(/\D/g, '');
+      if (d.startsWith('8')) d = '7' + d.slice(1);
+      if (!d.startsWith('7')) d = '7' + d;
+      d = d.slice(0, 11);
+      let out = '+7';
+      if (d.length > 1) out += ' (' + d.slice(1, 4);
+      if (d.length >= 4) out += ') ' + d.slice(4, 7);
+      if (d.length >= 7) out += ' ' + d.slice(7, 9);
+      if (d.length >= 9) out += ' ' + d.slice(9, 11);
+      phone.value = out;
+    });
+  }
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name = form.elements.name;
+    const consent = form.elements.consent;
+    let valid = true;
+
+    [name, phone].forEach((el) => el && el.classList.remove('is-error'));
+
+    if (name.value.trim().length < 2) { name.classList.add('is-error'); valid = false; }
+    const digits = phone.value.replace(/\D/g, '');
+    if (digits.length !== 11) { phone.classList.add('is-error'); valid = false; }
+    const checkBox = consent.closest('.form__check');
+    if (checkBox) checkBox.classList.remove('is-error');
+    if (!consent.checked) {
+      if (checkBox) checkBox.classList.add('is-error');
+      consent.focus();
+      valid = false;
+    }
+
+    if (!valid) return;
+
+    // Факт и время согласия уходят вместе с заявкой — требование 152-ФЗ
+    const payload = {
+      name: name.value.trim(),
+      email: form.elements.email ? form.elements.email.value.trim() : '',
+      phone: phone.value,
+      comment: form.elements.comment ? form.elements.comment.value.trim() : '',
+      website: form.elements.website ? form.elements.website.value : '',
+      consent: true,
+      consentAt: new Date().toISOString(),
+      page: location.pathname,
+    };
+
+    const submitBtn = form.querySelector('.form__submit');
+    if (submitBtn) { submitBtn.disabled = true; submitBtn.dataset.label = submitBtn.innerHTML; submitBtn.textContent = 'Отправляем…'; }
+
+    const finish = (ok) => {
+      if (submitBtn) { submitBtn.disabled = false; if (submitBtn.dataset.label) submitBtn.innerHTML = submitBtn.dataset.label; }
+      if (ok) showSuccess();
+      else showError();
+    };
+
+    if (!FORM_ENDPOINT) {
+      console.warn('Отправка заявок не настроена: задайте FORM_ENDPOINT в js/script.js', payload);
+      finish(true);
+      return;
+    }
+
+    fetch(FORM_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    })
+      .then((r) => finish(r.ok))
+      .catch(() => finish(false));
+
+    function showError() {
+      let box = form.querySelector('.form__error');
+      if (!box) {
+        box = document.createElement('p');
+        box.className = 'form__error';
+        form.appendChild(box);
+      }
+      box.innerHTML = 'Не удалось отправить заявку. Позвоните нам: ' +
+        '<a href="tel:+79198816611">+7 (919) 881-66-11</a> или напишите на ' +
+        '<a href="mailto:ra-taganrog@mail.ru">ra-taganrog@mail.ru</a>.';
+    }
+
+    function showSuccess() {
+    form.innerHTML =
+      '<div class="form__success">' +
+        '<span class="form__success-ic" aria-hidden="true">' +
+          '<svg width="34" height="34" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>' +
+        '</span>' +
+        '<strong>Спасибо!</strong>' +
+        '<p>Заявка отправлена — свяжемся с вами в&nbsp;течение рабочего дня.</p>' +
+        '<button class="btn btn--dark" type="button" data-form-done>Хорошо</button>' +
+      '</div>';
+    const modalCard = form.closest('.modal');
+    if (modalCard) modalCard.classList.add('is-success');
+    const doneBtn = form.querySelector('[data-form-done]');
+    if (doneBtn) doneBtn.addEventListener('click', () => {
+      if (modalCard) { modalCard.classList.remove('is-open', 'is-success'); document.body.style.overflow = ''; }
+      else window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+    }
+  });
+}
+document.querySelectorAll('form.form').forEach(initLeadForm);
+
+// --- Попап «Оставить заявку» ---
+(() => {
+  const FORM_HTML =
+    '<input class="form__input" name="name" type="text" placeholder="ФИО*" required autocomplete="name">' +
+    '<input class="form__input" name="phone" type="tel" placeholder="+7 (9XX) XXX XX XX*" required autocomplete="tel" inputmode="tel">' +
+    '<textarea class="form__input form__input--area" name="comment" placeholder="Комментарий" rows="2"></textarea>' +
+    '<input class="form__trap" name="website" type="text" tabindex="-1" autocomplete="off" aria-hidden="true">' +
+    '<label class="form__check"><input type="checkbox" name="consent" required><span>Я даю <a href="consent.html" target="_blank" rel="noopener">согласие на обработку персональных данных</a> и принимаю <a href="privacy.html" target="_blank" rel="noopener">политику конфиденциальности</a></span></label>' +
+    '<button class="btn btn--dark form__submit" type="submit">Оставить заявку' +
+    '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m0 0l-6-6m6 6l-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>';
+
+  const modal = document.createElement('div');
+  modal.className = 'modal';
+  modal.innerHTML =
+    '<div class="modal__card">' +
+    '<button class="modal__close" type="button" aria-label="Закрыть">✕</button>' +
+    '<h3 class="modal__title">Оставить заявку</h3>' +
+    '<p class="modal__sub">Менеджер свяжется в течение часа</p>' +
+    '<form class="form form--modal" novalidate>' + FORM_HTML + '</form>' +
+    '</div>';
+  document.body.appendChild(modal);
+  initLeadForm(modal.querySelector('form'));
+
+  const open = () => { modal.classList.add('is-open'); document.body.style.overflow = 'hidden'; };
+  const close = () => { modal.classList.remove('is-open'); document.body.style.overflow = ''; };
+
+  modal.querySelector('.modal__close').addEventListener('click', close);
+  modal.addEventListener('click', (e) => { if (e.target === modal) close(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && modal.classList.contains('is-open')) close(); });
+
+  // все кнопки «Оставить заявку», кроме сабмитов форм, открывают попап
+  document.querySelectorAll('a.btn, button.btn').forEach((btn) => {
+    if (btn.closest('form') || btn.closest('.modal')) return;
+    if (btn.textContent.trim().startsWith('Оставить заявку')) {
+      btn.addEventListener('click', (e) => { e.preventDefault(); open(); });
+    }
+  });
+
+  // диплинк: site.ru/#zayavka сразу открывает попап
+  if (location.hash === '#zayavka') open();
+})();
+
+// --- Прайс-таблицы на мобиле: подписи колонок в ячейки (строка становится карточкой) ---
+(() => {
+  document.querySelectorAll('.price-table').forEach((table) => {
+    const heads = Array.from(table.querySelectorAll('thead th')).map((th) => th.textContent.trim());
+    if (!heads.length) return;
+    table.querySelectorAll('tbody tr').forEach((tr) => {
+      Array.from(tr.children).forEach((td, i) => {
+        if (heads[i]) td.setAttribute('data-label', heads[i]);
+      });
+    });
+  });
+})();

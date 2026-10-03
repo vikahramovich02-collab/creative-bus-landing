@@ -10,11 +10,11 @@
   <meta name="robots" content="index, follow, max-image-preview:large">
 
   <!-- favicon -->
-  <link rel="icon" href="assets/cb-icon.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/icons/cb-icon.svg" type="image/svg+xml">
   <link rel="icon" href="cb-favicon.ico" sizes="48x48">
-  <link rel="icon" href="assets/cb-icon-32.png" sizes="32x32" type="image/png">
-  <link rel="icon" href="assets/cb-icon-16.png" sizes="16x16" type="image/png">
-  <link rel="apple-touch-icon" href="assets/cb-apple-touch.png">
+  <link rel="icon" href="assets/icons/cb-icon-32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="assets/icons/cb-icon-16.png" sizes="16x16" type="image/png">
+  <link rel="apple-touch-icon" href="assets/icons/cb-apple-touch.png">
   <link rel="manifest" href="site.webmanifest?v=3">
   <meta name="theme-color" content="#128BF8">
 
@@ -25,7 +25,7 @@
   <meta property="og:url" content="https://vikahramovich02-collab.github.io/creative-bus-landing/about.html">
   <meta property="og:title" content="О нас — Creative Bus | Реклама на транспорте в Таганроге">
   <meta property="og:description" content="Creative Bus — полный цикл рекламы на транспорте в Таганроге: дизайн, печать на УФ-принтере, монтаж. Работаем с 2007 года, 120+ единиц транспорта.">
-  <meta property="og:image" content="https://vikahramovich02-collab.github.io/creative-bus-landing/assets/og-cover.jpg?v=1">
+  <meta property="og:image" content="https://vikahramovich02-collab.github.io/creative-bus-landing/assets/img/og-cover.jpg?v=1">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Creative Bus — реклама на транспорте в Таганроге">
@@ -34,24 +34,26 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="О нас — Creative Bus | Реклама на транспорте в Таганроге">
   <meta name="twitter:description" content="Creative Bus — полный цикл рекламы на транспорте в Таганроге: дизайн, печать на УФ-принтере, монтаж. Работаем с 2007 года, 120+ единиц транспорта.">
-  <meta name="twitter:image" content="https://vikahramovich02-collab.github.io/creative-bus-landing/assets/og-cover.jpg?v=1">
+  <meta name="twitter:image" content="https://vikahramovich02-collab.github.io/creative-bus-landing/assets/img/og-cover.jpg?v=1">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=126">
+  <link rel="preload" as="image" href="assets/img/banner-autodoc.webp" fetchpriority="high">
+  <link rel="stylesheet" href="css/styles.css?v=126">
 </head>
 <body>
 
 <!-- ===== Интро-баннер (full-bleed hero) ===== -->
 <section class="about-hero">
-  <img class="about-hero__bg" src="assets/banner-autodoc.webp" alt="" fetchpriority="high">
+  <img class="about-hero__bg" src="assets/img/banner-autodoc.webp" alt="" fetchpriority="high">
   <div class="about-hero__overlay"></div>
 
   <header class="header">
     <div class="container header__inner">
       <a href="index.html" class="header__logo" aria-label="Creative Bus — на главную">
-        <img class="header__logo-light" src="assets/logo-white.png?v=2" alt="Creative Bus" width="196" height="56">
-        <img class="header__logo-dark" src="assets/logo.png?v=2" alt="Creative Bus" width="196" height="56">
+        <img class="header__logo-light" src="assets/icons/logo-white.png?v=2" alt="Creative Bus" width="196" height="56">
+        <img class="header__logo-dark" src="assets/icons/logo.png?v=2" alt="Creative Bus" width="196" height="56">
       </a>
       <nav class="header__nav" aria-label="Основная навигация">
         <a href="about.html">О нас</a>
@@ -86,9 +88,9 @@
   <!-- ===== Full-width меняющееся фото ===== -->
   <div class="container">
     <div class="photo-banner" data-photo-rotator>
-      <img class="is-active" src="assets/banner-autodoc.webp" alt="Маршрутка с бортовой рекламой autodoc.ru в Таганроге" fetchpriority="high">
-      <img src="assets/banner-kupertino.webp" alt="Автобус с полным брендированием «Купертино»" loading="lazy">
-      <img src="assets/banner-fixprice.webp" alt="Маршрутный автобус с рекламой Fix Price" loading="lazy">
+      <img class="is-active" src="assets/img/banner-autodoc.webp" alt="Маршрутка с бортовой рекламой autodoc.ru в Таганроге" fetchpriority="high">
+      <img src="assets/img/banner-kupertino.webp" alt="Автобус с полным брендированием «Купертино»" loading="lazy" decoding="async">
+      <img src="assets/img/banner-fixprice.webp" alt="Маршрутный автобус с рекламой Fix Price" loading="lazy" decoding="async">
     </div>
   </div>
 
@@ -107,7 +109,7 @@
             </div>
           </div>
           <figure class="about__photo">
-            <img src="assets/about-design.webp?v=2" alt="Дизайнер Creative Bus готовит макет рекламы для транспорта" loading="lazy">
+            <img src="assets/img/about-design.webp?v=2" alt="Дизайнер Creative Bus готовит макет рекламы для транспорта" loading="lazy" decoding="async">
           </figure>
         </div>
       </div>
@@ -124,7 +126,7 @@
             </div>
           </div>
           <figure class="about__photo">
-            <img src="assets/about-print-mimaki.webp" alt="Интерьерный принтер Mimaki UCJV печатает рекламный баннер" loading="lazy">
+            <img src="assets/img/about-print-mimaki.webp" alt="Интерьерный принтер Mimaki UCJV печатает рекламный баннер" loading="lazy" decoding="async">
           </figure>
         </div>
       </div>
@@ -141,7 +143,7 @@
             </div>
           </div>
           <figure class="about__photo">
-            <img src="assets/about-uvink-mimaki.webp" alt="Фирменные УФ-чернила Mimaki LUS для печати на транспорте" loading="lazy">
+            <img src="assets/img/about-uvink-mimaki.webp" alt="Фирменные УФ-чернила Mimaki LUS для печати на транспорте" loading="lazy" decoding="async">
           </figure>
         </div>
       </div>
@@ -158,7 +160,7 @@
           <p class="section-label">О нас</p>
           <h2 class="section-title stats__title">Реклама, которую видит весь город</h2>
           <figure class="stats__photo">
-            <img src="assets/stats-bus.webp?v=2" alt="Брендированный автобус Creative Bus на улице Таганрога" loading="lazy">
+            <img src="assets/img/stats-bus.webp?v=2" alt="Брендированный автобус Creative Bus на улице Таганрога" loading="lazy" decoding="async">
           </figure>
         </div>
 
@@ -231,7 +233,7 @@
     </div>
 
     <div class="footer__bottom">
-      <img src="assets/logo.png?v=2" alt="Creative Bus" width="109" height="31">
+      <img src="assets/icons/logo.png?v=2" alt="Creative Bus" width="109" height="31">
       <p>© 2026 CreativeBus&nbsp;&nbsp;·&nbsp;&nbsp;Таганрог, Ростовская область</p>
       <div class="footer__social">
         <span>Социальные сети</span>
@@ -241,6 +243,6 @@
   </div>
 </footer>
 
-<script src="script.js?v=126"></script>
+<script src="js/script.js?v=126" defer></script>
 </body>
 </html>

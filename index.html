@@ -10,11 +10,11 @@
   <meta name="robots" content="index, follow, max-image-preview:large">
 
   <!-- favicon -->
-  <link rel="icon" href="assets/cb-icon.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/icons/cb-icon.svg" type="image/svg+xml">
   <link rel="icon" href="cb-favicon.ico" sizes="48x48">
-  <link rel="icon" href="assets/cb-icon-32.png" sizes="32x32" type="image/png">
-  <link rel="icon" href="assets/cb-icon-16.png" sizes="16x16" type="image/png">
-  <link rel="apple-touch-icon" href="assets/cb-apple-touch.png">
+  <link rel="icon" href="assets/icons/cb-icon-32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="assets/icons/cb-icon-16.png" sizes="16x16" type="image/png">
+  <link rel="apple-touch-icon" href="assets/icons/cb-apple-touch.png">
   <link rel="manifest" href="site.webmanifest?v=3">
   <meta name="theme-color" content="#128BF8">
 
@@ -25,7 +25,7 @@
   <meta property="og:url" content="https://vikahramovich02-collab.github.io/creative-bus-landing/">
   <meta property="og:title" content="Creative Bus — реклама на транспорте в Таганроге">
   <meta property="og:description" content="Реклама на автобусах и маршрутках в Таганроге и Ростовской области. 120+ единиц транспорта, открытые цены, собственная печать. Работаем с 2007 года.">
-  <meta property="og:image" content="https://vikahramovich02-collab.github.io/creative-bus-landing/assets/og-cover.jpg?v=1">
+  <meta property="og:image" content="https://vikahramovich02-collab.github.io/creative-bus-landing/assets/img/og-cover.jpg?v=1">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Creative Bus — реклама на транспорте в Таганроге">
@@ -34,11 +34,13 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Creative Bus — реклама на транспорте в Таганроге">
   <meta name="twitter:description" content="Реклама на автобусах и маршрутках в Таганроге и Ростовской области. 120+ единиц транспорта, открытые цены, собственная печать. Работаем с 2007 года.">
-  <meta name="twitter:image" content="https://vikahramovich02-collab.github.io/creative-bus-landing/assets/og-cover.jpg?v=1">
+  <meta name="twitter:image" content="https://vikahramovich02-collab.github.io/creative-bus-landing/assets/img/og-cover.jpg?v=1">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=126">
+  <link rel="preload" as="image" href="assets/img/hero-city.webp" fetchpriority="high">
+  <link rel="stylesheet" href="css/styles.css?v=126">
 
   <script type="application/ld+json">
   {
@@ -51,8 +53,8 @@
     "taxID": "615427950366",
     "description": "Реклама на общественном транспорте в Таганроге и Ростовской области: бортовая реклама, наклейки, листовки и реклама на спинках сидений. Печать, монтаж и демонтаж включены в стоимость.",
     "url": "https://vikahramovich02-collab.github.io/creative-bus-landing/",
-    "image": "https://vikahramovich02-collab.github.io/creative-bus-landing/assets/og-cover.jpg",
-    "logo": "https://vikahramovich02-collab.github.io/creative-bus-landing/assets/logo.png",
+    "image": "https://vikahramovich02-collab.github.io/creative-bus-landing/assets/img/og-cover.jpg",
+    "logo": "https://vikahramovich02-collab.github.io/creative-bus-landing/assets/icons/logo.png",
     "telephone": "+7-919-881-66-11",
     "email": "ra-taganrog@mail.ru",
     "foundingDate": "2007",
@@ -91,18 +93,18 @@
 <!-- ===== HERO ===== -->
 <section class="hero" id="top">
   <div class="hero__slides" data-hero-slider>
-    <img class="hero__bg is-active" src="assets/hero-city.webp?v=2" alt="Городской автобус с полной обклейкой на маршруте" fetchpriority="high">
-    <img class="hero__bg" src="assets/hero-routes.webp?v=2" alt="Маршрутный автобус с рекламой Fix Price на городском маршруте" loading="lazy">
-    <img class="hero__bg" src="assets/hero-3.webp" alt="Реклама на спинках сидений в салоне" loading="lazy">
-    <img class="hero__bg" src="assets/hero-5.webp" alt="Реклама в салоне автобуса" loading="lazy">
+    <img class="hero__bg is-active" src="assets/img/hero-city.webp?v=2" alt="Городской автобус с полной обклейкой на маршруте" fetchpriority="high">
+    <img class="hero__bg" src="assets/img/hero-routes.webp?v=2" alt="Маршрутный автобус с рекламой Fix Price на городском маршруте" loading="lazy" decoding="async">
+    <img class="hero__bg" src="assets/img/hero-3.webp" alt="Реклама на спинках сидений в салоне" loading="lazy" decoding="async">
+    <img class="hero__bg" src="assets/img/hero-5.webp" alt="Реклама в салоне автобуса" loading="lazy" decoding="async">
   </div>
   <div class="hero__overlay"></div>
 
   <header class="header">
     <div class="container header__inner">
       <a href="#top" class="header__logo" aria-label="Creative Bus — на главную">
-        <img class="header__logo-light" src="assets/logo-white.png?v=2" alt="Creative Bus" width="196" height="56">
-        <img class="header__logo-dark" src="assets/logo.png?v=2" alt="Creative Bus" width="196" height="56">
+        <img class="header__logo-light" src="assets/icons/logo-white.png?v=2" alt="Creative Bus" width="196" height="56">
+        <img class="header__logo-dark" src="assets/icons/logo.png?v=2" alt="Creative Bus" width="196" height="56">
       </a>
       <nav class="header__nav" aria-label="Основная навигация">
         <a href="about.html">О нас</a>
@@ -148,7 +150,7 @@
         <p class="section-label">О нас</p>
         <h2 class="section-title stats__title">Реклама, которую видит весь город</h2>
         <figure class="stats__photo">
-          <img src="assets/stats-bus.webp?v=2" alt="Брендированный автобус Creative Bus на улице Таганрога" loading="lazy">
+          <img src="assets/img/stats-bus.webp?v=2" alt="Брендированный автобус Creative Bus на улице Таганрога" loading="lazy" decoding="async">
         </figure>
       </div>
 
@@ -190,7 +192,7 @@
 
       <div class="svc-cards" style="margin-top:40px">
         <a class="svc-card" href="service-bortovaya.html">
-          <img src="assets/svc-bortovaya.webp?v=2" alt="Широкоформатная бортовая реклама на городском автобусе" loading="lazy">
+          <img src="assets/img/svc-bortovaya.webp?v=2" alt="Широкоформатная бортовая реклама на городском автобусе" loading="lazy" decoding="async">
           <div class="svc-card__body">
             <span class="svc-card__title">Широкоформатная бортовая реклама</span>
           </div>
@@ -199,7 +201,7 @@
           </span>
         </a>
         <a class="svc-card" href="service-nakleyki.html">
-          <img src="assets/svc-nakleyki.webp?v=2" alt="Рекламные наклейки на задней части транспорта" loading="lazy">
+          <img src="assets/img/svc-nakleyki.webp?v=2" alt="Рекламные наклейки на задней части транспорта" loading="lazy" decoding="async">
           <div class="svc-card__body">
             <span class="svc-card__title">Рекламные наклейки на транспорте</span>
           </div>
@@ -208,7 +210,7 @@
           </span>
         </a>
         <a class="svc-card" href="service-listovki.html">
-          <img src="assets/svc-listovki.webp?v=2" alt="Рекламные плакаты в салоне маршрутного автобуса" loading="lazy">
+          <img src="assets/img/svc-listovki.webp?v=2" alt="Рекламные плакаты в салоне маршрутного автобуса" loading="lazy" decoding="async">
           <div class="svc-card__body">
             <span class="svc-card__title">Листовки в салоне</span>
           </div>
@@ -217,7 +219,7 @@
           </span>
         </a>
         <a class="svc-card" href="service-spinki.html">
-          <img src="assets/svc-spinki.webp?v=2" alt="Реклама на спинках сидений в салоне маршрутки" loading="lazy">
+          <img src="assets/img/svc-spinki.webp?v=2" alt="Реклама на спинках сидений в салоне маршрутки" loading="lazy" decoding="async">
           <div class="svc-card__body">
             <span class="svc-card__title">Реклама на спинках сидений</span>
           </div>
@@ -246,7 +248,7 @@
         </g>
 
         <!-- центр -->
-        <image href="assets/icon-nakleyka.webp" x="600" y="250" width="120" height="84"/>
+        <image href="assets/icons/icon-nakleyka.webp" x="600" y="250" width="120" height="84"/>
         <text x="660" y="360" text-anchor="middle" font-size="14" fill="#64748B">Охват в месяц</text>
         <text x="660" y="386" text-anchor="middle" font-size="22" font-weight="600" fill="#182238">162 тыс. чел.</text>
 
@@ -334,7 +336,7 @@
             </div>
           </div>
           <figure class="about__photo">
-            <img src="assets/about-design.webp?v=2" alt="Дизайнер Creative Bus готовит макет рекламы для транспорта" loading="lazy">
+            <img src="assets/img/about-design.webp?v=2" alt="Дизайнер Creative Bus готовит макет рекламы для транспорта" loading="lazy" decoding="async">
           </figure>
         </div>
       </div>
@@ -351,7 +353,7 @@
             </div>
           </div>
           <figure class="about__photo">
-            <img src="assets/about-print-mimaki.webp" alt="Интерьерный принтер Mimaki UCJV печатает рекламный баннер" loading="lazy">
+            <img src="assets/img/about-print-mimaki.webp" alt="Интерьерный принтер Mimaki UCJV печатает рекламный баннер" loading="lazy" decoding="async">
           </figure>
         </div>
       </div>
@@ -368,7 +370,7 @@
             </div>
           </div>
           <figure class="about__photo">
-            <img src="assets/about-uvink-mimaki.webp" alt="Фирменные УФ-чернила Mimaki LUS для печати на транспорте" loading="lazy">
+            <img src="assets/img/about-uvink-mimaki.webp" alt="Фирменные УФ-чернила Mimaki LUS для печати на транспорте" loading="lazy" decoding="async">
           </figure>
         </div>
       </div>
@@ -393,19 +395,19 @@
 
     <div class="cases__expand">
         <a href="cases.html" class="cases__card is-active">
-          <img src="assets/cs-kupertino-1.webp" alt="Полное брендирование борта" loading="lazy">
+          <img src="assets/img/cs-kupertino-1.webp" alt="Полное брендирование борта" loading="lazy" decoding="async">
           <span class="cases__cap">Полное брендирование борта</span>
         </a>
         <a href="cases.html" class="cases__card">
-          <img src="assets/cs-fixprice.webp" alt="Бортовая реклама" loading="lazy">
+          <img src="assets/img/cs-fixprice.webp" alt="Бортовая реклама" loading="lazy" decoding="async">
           <span class="cases__cap">Бортовая реклама</span>
         </a>
         <a href="cases.html" class="cases__card">
-          <img src="assets/cs-skyglass.webp" alt="Наклейка на заднем стекле" loading="lazy">
+          <img src="assets/img/cs-skyglass.webp" alt="Наклейка на заднем стекле" loading="lazy" decoding="async">
           <span class="cases__cap">Наклейка на заднем стекле</span>
         </a>
         <a href="cases.html" class="cases__card">
-          <img src="assets/cs-spinki.webp" alt="Реклама в салоне" loading="lazy">
+          <img src="assets/img/cs-spinki.webp" alt="Реклама в салоне" loading="lazy" decoding="async">
           <span class="cases__cap">Реклама в салоне</span>
         </a>
     </div>
@@ -520,6 +522,7 @@
             <label class="form__label" for="f-comment">Сообщение</label>
             <textarea class="form__input form__input--area" id="f-comment" name="comment" placeholder="Ваше сообщение" rows="3"></textarea>
           </div>
+          <input class="form__trap" name="website" type="text" tabindex="-1" autocomplete="off" aria-hidden="true">
           <label class="form__check">
             <input type="checkbox" name="consent" required>
             <span>Я даю <a href="consent.html" target="_blank" rel="noopener">согласие на обработку персональных данных</a> и принимаю <a href="privacy.html" target="_blank" rel="noopener">политику конфиденциальности</a></span>
@@ -532,7 +535,7 @@
       </div>
 
       <figure class="contacts__photo">
-        <img src="assets/form-bus.webp?v=2" alt="Автобус с полным брендированием «Купертино» на маршруте" loading="lazy">
+        <img src="assets/img/form-bus.webp?v=2" alt="Автобус с полным брендированием «Купертино» на маршруте" loading="lazy" decoding="async">
       </figure>
     </div>
   </section>
@@ -573,7 +576,7 @@
     </div>
 
     <div class="footer__bottom">
-      <img src="assets/logo.png?v=2" alt="Creative Bus" width="109" height="31">
+      <img src="assets/icons/logo.png?v=2" alt="Creative Bus" width="109" height="31">
       <p>© 2026 CreativeBus&nbsp;&nbsp;·&nbsp;&nbsp;Таганрог, Ростовская область</p>
       <div class="footer__social">
         <span>Социальные сети</span>
@@ -583,6 +586,6 @@
   </div>
 </footer>
 
-<script src="script.js?v=126"></script>
+<script src="js/script.js?v=126" defer></script>
 </body>
 </html>

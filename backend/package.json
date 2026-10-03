@@ -1,0 +1,7 @@
+{
+  "name": "creativebus-lead-form",
+  "version": "1.0.0",
+  "description": "Приём заявок с сайта Creative Bus и отправка письмом",
+  "main": "index.js",
+  "dependencies": { "nodemailer": "^6.9.14" }
+}
