@@ -472,8 +472,11 @@ function initLeadForm(form) {
     };
 
     if (!FORM_ENDPOINT) {
+      // Пока приёмник заявок не подключён — не обманываем человека «спасибо»,
+      // а сразу даём контакты, чтобы заявка не потерялась.
       console.warn('Отправка заявок не настроена: задайте FORM_ENDPOINT в js/script.js', payload);
-      finish(true);
+      if (submitBtn) { submitBtn.disabled = false; if (submitBtn.dataset.label) submitBtn.innerHTML = submitBtn.dataset.label; }
+      showError();
       return;
     }
 
@@ -492,9 +495,9 @@ function initLeadForm(form) {
         box.className = 'form__error';
         form.appendChild(box);
       }
-      box.innerHTML = 'Не удалось отправить заявку. Позвоните нам: ' +
+      box.innerHTML = 'Заявку пока не удалось отправить. Позвоните нам: ' +
         '<a href="tel:+79198816611">+7 (919) 881-66-11</a> или напишите на ' +
-        '<a href="mailto:ra-taganrog@mail.ru">ra-taganrog@mail.ru</a>.';
+        '<a href="mailto:ra-taganrog@mail.ru">ra-taganrog@mail.ru</a> — ответим и всё подберём.';
     }
 
     function showSuccess() {
