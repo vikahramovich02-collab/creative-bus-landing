@@ -582,3 +582,202 @@ document.querySelectorAll('form.form').forEach(initLeadForm);
     });
   });
 })();
+
+// --- Калькулятор стоимости (страница «Стоимость размещения») ---
+// Цены взяты из прайса заказчика от 06.03.2025. Меняются в одном месте — здесь.
+(() => {
+  const root = document.getElementById('calc');
+  if (!root) return;
+
+  const SQM_PRICE = 2400;           // оклейка 1 м²: печать + монтаж + демонтаж
+  const fmt = n => Math.round(n).toLocaleString('ru-RU') + ' ₽';
+  const plural = (n, one, few, many) => {
+    const a = Math.abs(n) % 100, b = a % 10;
+    if (a > 10 && a < 20) return many;
+    if (b > 1 && b < 5) return few;
+    return b === 1 ? one : many;
+  };
+
+  const SERVICES = {
+    bort: {
+      name: 'Широкоформатная бортовая реклама',
+      qtyLabel: 'Единиц транспорта',
+      options: [
+        { label: 'Автобус Мерседес — боковой борт, 37 м²',            rent: 8000, area: 37 },
+        { label: 'Автобус Мерседес — борт + крыша, 66 м²',            rent: 8000, area: 66 },
+        { label: 'Микроавтобус Хундай Каунти — борт, 16,5 м²',        rent: 5000, area: 16.5 },
+        { label: 'Микроавтобус Хундай Каунти — борт + крыша, 30 м²',  rent: 5000, area: 30 },
+        { label: 'Автобус КАВЗ — боковой борт, 12 м²',                rent: 8000, area: 12 },
+        { label: 'Хундай Каунти — задняя часть, 5 м²',                rent: 3600, area: 5 },
+        { label: 'Мерседес — задняя часть, 6,5 м²',                   rent: 3600, area: 6.5 },
+        { label: 'ПАЗ — задняя часть, 6 м²',                          rent: 3600, area: 6 },
+      ],
+      calc(o, months, qty) {
+        const rent = o.rent * months * qty;
+        const wrap = o.area * SQM_PRICE * qty;
+        return {
+          total: rent + wrap,
+          lines: [
+            ['Аренда, ' + months + ' ' + plural(months, 'месяц', 'месяца', 'месяцев') + (qty > 1 ? ' × ' + qty + ' ед.' : ''), rent],
+            ['Оклейка ' + String(o.area * qty).replace('.', ',') + ' м² по ' + SQM_PRICE.toLocaleString('ru-RU') + ' ₽', wrap],
+          ],
+        };
+      },
+    },
+    sticker: {
+      name: 'Рекламная наклейка на транспорте',
+      qtyLabel: 'Единиц транспорта',
+      options: [
+        { label: 'Заднее окно полностью — универсальный, 1300×530', place: 1800, print: 1800 },
+        { label: 'Заднее окно полностью — Хундай, 1600×530',        place: 1800, print: 2300 },
+        { label: 'Заднее окно полностью — Мерседес, 2130×890',      place: 1800, print: 5100 },
+        { label: 'Заднее окно полностью — ПАЗ, 1810×900',           place: 1800, print: 4400 },
+        { label: 'Заднее окно полностью — КАВЗ, 1590×600',          place: 1800, print: 2610 },
+        { label: 'Заднее окно полностью — СИМАЗ, 1900×1080',        place: 1800, print: 5500 },
+        { label: 'Под задним окном — универсальный, 1300×530',      place: 1300, print: 1800 },
+        { label: 'Окно правый борт — Хундай, 1300×530',             place: 1000, print: 1800 },
+        { label: 'Окно правый борт — ПАЗ, 1100×500',                place: 1000, print: 1500 },
+        { label: 'Окно правый борт — КАВЗ, 1300×530',               place: 1000, print: 1800 },
+        { label: 'Окно правый борт — КАВЗ, 1500×1350',              place: 2700, print: 5500 },
+      ],
+      calc(o, months, qty) {
+        const place = o.place * months * qty;
+        const print = o.print * qty;
+        return {
+          total: place + print,
+          lines: [
+            ['Размещение, ' + months + ' ' + plural(months, 'месяц', 'месяца', 'месяцев') + (qty > 1 ? ' × ' + qty + ' ед.' : ''), place],
+            ['Печать и монтаж' + (qty > 1 ? ' × ' + qty + ' ед.' : ''), print],
+          ],
+        };
+      },
+    },
+    spinki: {
+      name: 'Реклама на спинках сидений',
+      qtyLabel: 'Единиц транспорта',
+      options: [
+        { label: 'A4, 10 спинок в салоне', place: 1800, print: 360, mount: 640 },
+        { label: 'A4, 20 спинок в салоне', place: 3300, print: 720, mount: 1280 },
+      ],
+      calc(o, months, qty) {
+        const place = o.place * months * qty;
+        const print = o.print * qty;
+        const mount = o.mount * qty;
+        return {
+          total: place + print + mount,
+          lines: [
+            ['Размещение, ' + months + ' ' + plural(months, 'месяц', 'месяца', 'месяцев') + (qty > 1 ? ' × ' + qty + ' ед.' : ''), place],
+            ['Печать' + (qty > 1 ? ' × ' + qty + ' ед.' : ''), print],
+            ['Монтаж и демонтаж' + (qty > 1 ? ' × ' + qty + ' ед.' : ''), mount],
+          ],
+        };
+      },
+    },
+    listovki: {
+      name: 'Листовки в салоне',
+      qtyLabel: 'Количество листовок',
+      options: [
+        { label: 'Листовка А4', place: 200, print: 36, mount: 64 },
+        { label: 'Листовка А3', place: 300, print: 64, mount: 86 },
+      ],
+      calc(o, months, qty) {
+        const place = o.place * months * qty;
+        const print = o.print * qty;
+        const mount = o.mount * qty;
+        return {
+          total: place + print + mount,
+          lines: [
+            ['Размещение, ' + months + ' ' + plural(months, 'месяц', 'месяца', 'месяцев') + (qty > 1 ? ' × ' + qty + ' шт.' : ''), place],
+            ['Печать' + (qty > 1 ? ' × ' + qty + ' шт.' : ''), print],
+            ['Монтаж и демонтаж' + (qty > 1 ? ' × ' + qty + ' шт.' : ''), mount],
+          ],
+        };
+      },
+    },
+  };
+
+  const tabs     = root.querySelectorAll('.calc__tab');
+  const select   = root.querySelector('#calc-option');
+  const months   = root.querySelector('#calc-months');
+  const qty      = root.querySelector('#calc-qty');
+  const qtyLabel = root.querySelector('[data-qty-label]');
+  const totalEl  = root.querySelector('#calc-total');
+  const periodEl = root.querySelector('#calc-period');
+  const linesEl  = root.querySelector('#calc-lines');
+  const cta      = root.querySelector('#calc-cta');
+
+  let current = 'bort';
+
+  const clamp = (el, min, max) => {
+    let v = parseInt(el.value, 10);
+    if (!Number.isFinite(v)) v = min;
+    return Math.min(Math.max(v, min), max);
+  };
+
+  function fillOptions() {
+    const svc = SERVICES[current];
+    select.innerHTML = svc.options
+      .map((o, i) => '<option value="' + i + '">' + o.label + '</option>')
+      .join('');
+    qtyLabel.textContent = svc.qtyLabel;
+  }
+
+  function render() {
+    const svc = SERVICES[current];
+    const o = svc.options[select.selectedIndex] || svc.options[0];
+    const m = clamp(months, 1, 24);
+    const q = clamp(qty, 1, 200);
+    const { total, lines } = svc.calc(o, m, q);
+
+    totalEl.textContent = fmt(total);
+    periodEl.textContent = 'за ' + m + ' ' + plural(m, 'месяц', 'месяца', 'месяцев') + ' размещения';
+    linesEl.innerHTML = lines
+      .map(([name, sum]) => '<li><span>' + name + '</span><b>' + fmt(sum) + '</b></li>')
+      .join('');
+
+    // Расчёт подставится в комментарий к заявке на странице контактов
+    const text = svc.name + ' — ' + o.label
+      + '. Срок: ' + m + ' ' + plural(m, 'месяц', 'месяца', 'месяцев')
+      + ', количество: ' + q
+      + '. Ориентировочно ' + fmt(total) + '.';
+    try { sessionStorage.setItem('cb-calc', text); } catch (e) {}
+    cta.setAttribute('aria-label', 'Отправить расчёт: ' + fmt(total));
+  }
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      if (tab.dataset.svc === current) return;
+      tabs.forEach(t => {
+        const on = t === tab;
+        t.classList.toggle('is-active', on);
+        t.setAttribute('aria-selected', on ? 'true' : 'false');
+      });
+      current = tab.dataset.svc;
+      fillOptions();
+      render();
+    });
+  });
+
+  select.addEventListener('change', render);
+  [months, qty].forEach(el => {
+    el.addEventListener('input', render);
+    el.addEventListener('blur', () => {
+      el.value = clamp(el, el === months ? 1 : 1, el === months ? 24 : 200);
+      render();
+    });
+  });
+
+  fillOptions();
+  render();
+})();
+
+// --- Подстановка расчёта в форму заявки ---
+(() => {
+  const field = document.querySelector('#comment, [name="comment"]');
+  if (!field || field.value) return;
+  let text = '';
+  try { text = sessionStorage.getItem('cb-calc') || ''; } catch (e) {}
+  if (!text) return;
+  field.value = text;
+  try { sessionStorage.removeItem('cb-calc'); } catch (e) {}
+})();
