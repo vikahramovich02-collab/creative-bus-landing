@@ -39,7 +39,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=127">
+  <link rel="stylesheet" href="css/styles.css?v=128">
 </head>
 <body>
 
@@ -223,29 +223,42 @@
       </section>
 
       <!-- ===== Маршруты ===== -->
-      <section class="routes" data-reveal aria-labelledby="routes-title">
-        <div class="routes__head">
-          <h2 class="section-title" id="routes-title">Где поедет ваша реклама</h2>
-          <p class="calc__lead">Транспорт работает на городских и пригородных маршрутах Таганрога — от жилых районов до центра, вокзалов и рынков. Маршруты подбираем под вашу аудиторию.</p>
+      <section class="geo" data-reveal aria-labelledby="geo-title">
+        <div class="geo__head">
+          <h2 class="section-title" id="geo-title">Где поедет ваша реклама</h2>
+          <p class="geo__lead">Транспорт работает на городских маршрутах Таганрога и пригородных направлениях Неклиновского района. Скажите при заявке, какие районы вам нужны, — подберём маршруты и свободные борта.</p>
         </div>
-        <div class="routes__grid">
-          <article class="routes__card">
-            <span class="routes__num">120+</span>
-            <h3 class="routes__card-title">единиц транспорта</h3>
-            <p>Автобусы Мерседес, КАВЗ, ПАЗ, СИМАЗ и микроавтобусы Хундай Каунти — выбираем модель под нужный формат рекламы.</p>
-          </article>
-          <article class="routes__card">
-            <span class="routes__num">20+</span>
-            <h3 class="routes__card-title">маршрутов в городе</h3>
-            <p>Городские и пригородные направления Таганрога. Подберём маршруты, которые проходят через районы вашей аудитории.</p>
-          </article>
-          <article class="routes__card">
-            <span class="routes__num">12 ч</span>
-            <h3 class="routes__card-title">в день на линии</h3>
-            <p>Транспорт на маршруте весь рабочий день — реклама работает и утром, и в вечерний час пик.</p>
-          </article>
+
+        <div class="price-card">
+          <div class="price-card__head">
+            <span class="price-card__title">
+              <span class="price-card__icon"><img src="assets/icons/pr-bus.png?6" alt="" width="28" height="28"></span>
+              Список маршрутов
+            </span>
+          </div>
+          <div class="price-card__wrap">
+            <table class="price-table price-table--routes">
+              <thead><tr><th>Транспорт</th><th>Маршруты</th></tr></thead>
+              <tbody>
+                <tr class="price-table__group"><td colspan="2">Город · маршрутки</td></tr>
+                <tr><td>Хендай Каунти</td><td class="price-accent">6, 8, 10, 13, 50, 56, 77</td></tr>
+                <tr><td>СИМАЗ</td><td class="price-accent">13, 50, 56, 77, Греческие Роты</td></tr>
+
+                <tr class="price-table__group"><td colspan="2">Город · автобусы</td></tr>
+                <tr><td>ПАЗ</td><td class="price-accent">6, 10, 11, 13, 36, 50, 56, 77</td></tr>
+                <tr><td>КАВЗ</td><td class="price-accent">31, 34/35</td></tr>
+                <tr><td>Мерседес</td><td class="price-accent">31, 34/35</td></tr>
+                <tr><td>МАЗ</td><td class="price-accent">35</td></tr>
+
+                <tr class="price-table__group"><td colspan="2">Пригород</td></tr>
+                <tr><td>Хендай</td><td class="price-accent">Покровское (5 машин), Самбек (1 машина)</td></tr>
+                <tr><td>ПАЗ</td><td class="price-accent">Петрушино (4 машины), Грузиново, Дарьевка, Вознесенка, Беглица, Лакедемоновка, Ханжоновка, Федоровка, Плодосовхоз, Некрасовка, Каймакчи, Греческие Роты (911, 4 машины)</td></tr>
+              </tbody>
+            </table>
+          </div>
         </div>
-        <p class="routes__foot">Нужны конкретные маршруты или районы — скажите при заявке, покажем, какой транспорт на них выходит, и подберём свободные борта.</p>
+
+        <p class="geo__foot">В скобках — сколько машин работает на направлении. По городским маршрутам количество бортов уточняем на момент заявки: часть транспорта может быть уже занята.</p>
       </section>
 
       <p class="pricing__foot">В стоимость входят аренда размещения, услуги дизайнера, печать материалов, монтаж и демонтаж. Минимальный срок размещения — 1 месяц. Смена изображения внутри месяца оплачивается отдельно.</p>
@@ -281,7 +294,6 @@
         <h4>Контакты</h4>
         <a href="tel:+79198816611">+7 (919) 881-66-11</a>
         <a href="mailto:ra-taganrog@mail.ru">ra-taganrog@mail.ru</a>
-        <a href="https://vk.ru/creativegoo" target="_blank" rel="noopener">ВКонтакте</a>
       </nav>
       <div class="footer__col footer__col--last">
         <nav aria-label="Конфиденциальность">
@@ -304,6 +316,6 @@
   </div>
 </footer>
 
-<script src="js/script.js?v=127" defer></script>
+<script src="js/script.js?v=128" defer></script>
 </body>
 </html>
