@@ -1705,6 +1705,17 @@ mark.legal__fill { background: #FFF3C4; color: var(--text); padding: 0 4px; bord
 .price-place__note {
   display: block; font: 400 12.5px/1.4 'Inter', sans-serif; color: var(--gray); margin-top: 4px;
 }
+/* строка прайса кликабельна — открывает расчёт этого варианта */
+.price-table .price-row { cursor: pointer; }
+.price-table .price-row:hover .price-accent { color: var(--sky); }
+.pricing__hint {
+  font: 400 14px/1.5 'Inter', sans-serif; color: var(--gray);
+  margin: -20px 0 24px; display: flex; gap: 10px; align-items: center;
+}
+.pricing__hint::before {
+  content: ''; width: 16px; height: 16px; flex-shrink: 0; border-radius: 50%;
+  background: var(--blue) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none'%3E%3Cpath d='M5 12h14m0 0l-6-6m6 6l-6 6' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/10px no-repeat;
+}
 /* граница между группами мест — чтобы строки не путались между собой */
 .price-table .price-row--group > td { border-top: 1px solid var(--border); }
 .price-table tbody tr.price-row--group:first-child > td { border-top: 0; }
@@ -1853,6 +1864,84 @@ mark.legal__fill { background: #FFF3C4; color: var(--text); padding: 0 4px; bord
 
 @media (min-width: 641px) and (max-width: 1024px) {
   .calc__body { grid-template-columns: 1fr 290px; }
+  .geo__cards { grid-template-columns: 1fr; }
+  .calc__total { font-size: 34px; }
+}
+@media (max-width: 760px) {
+  .calc__body { grid-template-columns: 1fr; }
+  .calc__main { padding: 20px 18px 24px; }
+  .calc__row { grid-template-columns: 1fr; gap: 16px; }
+  .calc__tab { padding: 9px 14px; font-size: 13px; }
+  .pick__shot { width: 52px; height: 36px; }
+  .pick__opt-shot { width: 46px; height: 32px; }
+  .pick__menu { max-height: 300px; }
+  .scheme { padding: 14px 10px 12px; }
+  .scheme__shot { max-height: 120px; }
+  .calc__result { position: static; padding: 24px 20px 20px; }
+  .calc__total { font-size: 34px; }
+}
+
+/* ===== География маршрутов (страница цен) ===== */
+.geo { margin-top: 64px; }
+.geo__head { margin-bottom: 26px; }
+.geo__lead {
+  color: var(--gray); font: 400 15px/1.6 'Inter', sans-serif;
+  max-width: 680px; margin-top: 12px;
+}
+.geo__cards { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.geo__card {
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: 20px; padding: 24px 26px 26px;
+}
+.geo__card-title { font: 500 20px/1.25 'Inter', sans-serif; color: var(--dark); margin: 0; }
+.geo__count {
+  font: 400 13.5px/1.4 'Inter', sans-serif; color: var(--gray); margin: 6px 0 18px;
+}
+.geo__chips { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.geo__chip {
+  font: 500 14px/1 'Inter', sans-serif; color: var(--dark);
+  background: var(--light); border-radius: 30px; padding: 9px 15px;
+}
+.geo__chip--num {
+  font-variant-numeric: tabular-nums; font-weight: 600; color: var(--label);
+  min-width: 44px; text-align: center;
+}
+
+/* разбивка по транспорту — раскрывается по кнопке */
+.geo__more { margin-top: 20px; border-top: 1px solid var(--border); }
+.geo__toggle {
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  width: 100%; padding: 20px 2px; border: 0; background: none; cursor: pointer;
+  font: 500 17px/1.3 'Inter', sans-serif; color: var(--dark); text-align: left;
+}
+.geo__toggle:hover { color: var(--blue); }
+.geo__more.is-open .accordion__toggle::before { transform: translate(-50%, -50%) rotate(45deg); }
+.geo__more.is-open .accordion__toggle::after  { transform: translate(-50%, -50%) rotate(-45deg); }
+.geo__panel { padding-bottom: 8px; }
+.geo__panel[hidden] { display: none; }
+.geo__foot {
+  display: flex; gap: 16px; align-items: stretch; color: var(--gray);
+  font: 400 14px/1.55 'Inter', sans-serif; max-width: 700px; margin-top: 24px;
+}
+.geo__foot::before {
+  content: ''; flex-shrink: 0; width: 3px; background: var(--blue); border-radius: 3px;
+}
+
+/* строка-разделитель внутри таблицы маршрутов */
+.price-table__group td {
+  padding: 22px 16px 8px;
+  font: 600 11px/1.2 'Inter', sans-serif; color: var(--blue);
+  text-transform: uppercase; letter-spacing: .06em;
+  text-align: left;
+}
+.price-table--routes td:last-child { text-align: left; white-space: normal; line-height: 1.5; color: var(--gray); }
+.price-table--routes td:first-child { width: 200px; }
+.price-table--routes tbody tr:first-child td { padding-top: 10px; }
+.price-table__group:hover { background: transparent !important; }
+
+@media (min-width: 641px) and (max-width: 1024px) {
+  .calc__body { grid-template-columns: 1fr 290px; }
+  .geo__cards { grid-template-columns: 1fr; }
   .calc__total { font-size: 34px; }
 }
 @media (max-width: 760px) {
@@ -1902,6 +1991,9 @@ mark.legal__fill { background: #FFF3C4; color: var(--text); padding: 0 4px; bord
   .price-shot--leaflet { width: 100px; }
   .price-place__note { display: none; }
   .price-table .price-place { padding: 14px 12px; }
+  .geo__cards { grid-template-columns: 1fr; }
+  .geo__card { padding: 20px 18px 22px; }
+  .geo__toggle { font-size: 15px; }
   .price-table--routes { min-width: 440px; }
   .price-table--routes td:first-child { width: 130px; }
 }

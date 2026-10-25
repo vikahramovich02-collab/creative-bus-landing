@@ -861,6 +861,24 @@ document.querySelectorAll('form.form').forEach(initLeadForm);
     t.setAttribute('aria-selected', on ? 'true' : 'false');
   });
 
+  // строка прайса открывает расчёт этого же варианта
+  document.querySelectorAll('.price-row[data-svc]').forEach(row => {
+    row.addEventListener('click', () => {
+      const svc = row.dataset.svc;
+      if (!SERVICES[svc]) return;
+      current = svc;
+      index = +row.dataset.opt || 0;
+      tabs.forEach(t => {
+        const on = t.dataset.svc === current;
+        t.classList.toggle('is-active', on);
+        t.setAttribute('aria-selected', on ? 'true' : 'false');
+      });
+      fillOptions();
+      render();
+      root.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+
   fillOptions();
   render();
 })();
@@ -874,4 +892,18 @@ document.querySelectorAll('form.form').forEach(initLeadForm);
   if (!text) return;
   field.value = text;
   try { sessionStorage.removeItem('cb-calc'); } catch (e) {}
+})();
+
+// --- Разбивка маршрутов по транспорту: раскрывается по кнопке ---
+(() => {
+  const box = document.querySelector('[data-geo]');
+  if (!box) return;
+  const btn = box.querySelector('.geo__toggle');
+  const panel = box.querySelector('.geo__panel');
+  btn.addEventListener('click', () => {
+    const open = panel.hidden;
+    panel.hidden = !open;
+    box.classList.toggle('is-open', open);
+    btn.setAttribute('aria-expanded', String(open));
+  });
 })();
