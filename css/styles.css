@@ -1696,16 +1696,15 @@ mark.legal__fill { background: #FFF3C4; color: var(--text); padding: 0 4px; bord
 .calc__head { margin-bottom: 26px; }
 .calc__lead {
   color: var(--gray); font: 400 15px/1.6 'Inter', sans-serif;
-  max-width: 640px; margin-top: 12px;
+  max-width: 680px; margin-top: 12px;
 }
-.calc__body {
-  display: grid; grid-template-columns: 1fr 340px; gap: 24px; align-items: start;
-}
-.calc__controls {
+.calc__body { display: grid; grid-template-columns: 1fr 340px; gap: 24px; align-items: start; }
+.calc__main {
   background: var(--white); border: 1px solid var(--border);
   border-radius: 20px; padding: 26px 30px 30px;
   display: flex; flex-direction: column; gap: 22px;
 }
+.calc__controls { display: flex; flex-direction: column; gap: 18px; }
 .calc__field { display: flex; flex-direction: column; gap: 10px; }
 .calc__row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
 .calc__label {
@@ -1726,6 +1725,29 @@ mark.legal__fill { background: #FFF3C4; color: var(--text); padding: 0 4px; bord
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none'%3E%3Cpath d='M6 9l6 6 6-6' stroke='%2364748B' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
   background-repeat: no-repeat; background-position: right 16px center;
 }
+
+/* схема «что и куда клеится» */
+.scheme {
+  margin: 0; background: var(--light); border-radius: 16px;
+  padding: 18px 20px 16px; text-align: center;
+}
+.scheme__svg { width: 100%; max-width: 460px; max-height: 210px; height: auto; display: block; margin: 0 auto; }
+.scheme-body { fill: var(--white); stroke: var(--dark); stroke-width: 2.5; stroke-linejoin: round; }
+.scheme-glass { fill: #E4EDF8; stroke: var(--dark); stroke-width: 1.8; }
+.scheme-detail { fill: none; stroke: var(--dark); stroke-width: 1.8; stroke-linecap: round; }
+.scheme-wheel { fill: var(--white); stroke: var(--dark); stroke-width: 2.5; }
+.scheme-hub { fill: var(--dark); }
+.scheme-zone { fill: var(--blue); stroke: var(--label); stroke-width: 1.5; }
+.scheme__scene, .scheme__zone { display: none; }
+.scheme__scene.is-on, .scheme__zone.is-on { display: block; }
+.scheme__zone .scheme-zone { animation: zone-in .35s ease both; }
+@keyframes zone-in { from { opacity: 0; } to { opacity: 1; } }
+.scheme__cap {
+  font: 400 13.5px/1.5 'Inter', sans-serif; color: var(--gray);
+  margin: 12px 0 0;
+}
+.scheme__cap b { color: var(--dark); font-weight: 600; }
+
 .calc__result {
   background: var(--dark); border-radius: 20px; padding: 28px 26px 24px;
   display: flex; flex-direction: column; gap: 6px;
@@ -1756,6 +1778,20 @@ mark.legal__fill { background: #FFF3C4; color: var(--text); padding: 0 4px; bord
   font: 400 12px/1.45 'Inter', sans-serif; color: rgba(255,255,255,.45); margin-top: 12px;
 }
 
+@media (min-width: 641px) and (max-width: 1024px) {
+  .calc__body { grid-template-columns: 1fr 290px; }
+  .calc__total { font-size: 34px; }
+}
+@media (max-width: 760px) {
+  .calc__body { grid-template-columns: 1fr; }
+  .calc__main { padding: 20px 18px 24px; }
+  .calc__row { grid-template-columns: 1fr; gap: 16px; }
+  .calc__tab { padding: 9px 14px; font-size: 13px; }
+  .scheme { padding: 12px 10px 14px; }
+  .calc__result { position: static; padding: 24px 20px 20px; }
+  .calc__total { font-size: 34px; }
+}
+
 /* ===== География маршрутов (страница цен) ===== */
 .geo { margin-top: 64px; }
 .geo__head { margin-bottom: 26px; }
@@ -1782,17 +1818,7 @@ mark.legal__fill { background: #FFF3C4; color: var(--text); padding: 0 4px; bord
 }
 .price-table__group:hover { background: transparent !important; }
 
-@media (min-width: 641px) and (max-width: 1024px) {
-  .calc__body { grid-template-columns: 1fr 290px; }
-  .calc__total { font-size: 34px; }
-}
 @media (max-width: 760px) {
-  .calc__body { grid-template-columns: 1fr; }
-  .calc__controls { padding: 20px 18px 24px; }
-  .calc__row { grid-template-columns: 1fr; gap: 16px; }
-  .calc__tab { padding: 9px 14px; font-size: 13px; }
-  .calc__result { position: static; padding: 24px 20px 20px; }
-  .calc__total { font-size: 34px; }
   .price-table--routes { min-width: 440px; }
   .price-table--routes td:first-child { width: 130px; }
 }

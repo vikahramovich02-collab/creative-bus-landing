@@ -584,126 +584,132 @@ document.querySelectorAll('form.form').forEach(initLeadForm);
 })();
 
 // --- Калькулятор стоимости (страница «Стоимость размещения») ---
-// Цены взяты из прайса заказчика от 06.03.2025. Меняются в одном месте — здесь.
+// Цены и размеры — из прайса заказчика от 06.03.2025. Меняются только здесь.
 (() => {
   const root = document.getElementById('calc');
   if (!root) return;
 
   const SQM_PRICE = 2400;           // оклейка 1 м²: печать + монтаж + демонтаж
   const fmt = n => Math.round(n).toLocaleString('ru-RU') + ' ₽';
+  const num = n => String(n).replace('.', ',');
   const plural = (n, one, few, many) => {
     const a = Math.abs(n) % 100, b = a % 10;
     if (a > 10 && a < 20) return many;
     if (b > 1 && b < 5) return few;
     return b === 1 ? one : many;
   };
+  const months = n => plural(n, 'месяц', 'месяца', 'месяцев');
 
   const SERVICES = {
     bort: {
-      name: 'Широкоформатная бортовая реклама',
       qtyLabel: 'Единиц транспорта',
+      name: 'Широкоформатная бортовая реклама',
       options: [
-        { label: 'Автобус Мерседес — боковой борт, 37 м²',            rent: 8000, area: 37 },
-        { label: 'Автобус Мерседес — борт + крыша, 66 м²',            rent: 8000, area: 66 },
-        { label: 'Микроавтобус Хундай Каунти — борт, 16,5 м²',        rent: 5000, area: 16.5 },
-        { label: 'Микроавтобус Хундай Каунти — борт + крыша, 30 м²',  rent: 5000, area: 30 },
-        { label: 'Автобус КАВЗ — боковой борт, 12 м²',                rent: 8000, area: 12 },
-        { label: 'Хундай Каунти — задняя часть, 5 м²',                rent: 3600, area: 5 },
-        { label: 'Мерседес — задняя часть, 6,5 м²',                   rent: 3600, area: 6.5 },
-        { label: 'ПАЗ — задняя часть, 6 м²',                          rent: 3600, area: 6 },
+        { label: 'Автобус Мерседес — боковой борт',           rent: 8000, area: 37,   scene: 'side', zone: 'side-bort',   where: 'Боковой борт автобуса Мерседес' },
+        { label: 'Автобус Мерседес — борт и крыша',           rent: 8000, area: 66,   scene: 'side', zone: 'side-roof',   where: 'Боковой борт и крыша автобуса Мерседес' },
+        { label: 'Микроавтобус Хундай Каунти — боковой борт', rent: 5000, area: 16.5, scene: 'side', zone: 'side-bort',   where: 'Боковой борт микроавтобуса Хундай Каунти' },
+        { label: 'Микроавтобус Хундай Каунти — борт и крыша', rent: 5000, area: 30,   scene: 'side', zone: 'side-roof',   where: 'Боковой борт и крыша микроавтобуса Хундай Каунти' },
+        { label: 'Автобус КАВЗ — боковой борт',               rent: 8000, area: 12,   scene: 'side', zone: 'side-bort',   where: 'Боковой борт автобуса КАВЗ' },
+        { label: 'Хундай Каунти — задняя часть',              rent: 3600, area: 5,    scene: 'rear', zone: 'rear-full',   where: 'Задняя часть целиком, 2250×2250 мм' },
+        { label: 'Мерседес — задняя часть',                   rent: 3600, area: 6.5,  scene: 'rear', zone: 'rear-full',   where: 'Задняя часть целиком, 3000×2500 мм' },
+        { label: 'ПАЗ — задняя часть',                        rent: 3600, area: 6,    scene: 'rear', zone: 'rear-full',   where: 'Задняя часть целиком, 2540×2370 мм' },
       ],
-      calc(o, months, qty) {
-        const rent = o.rent * months * qty;
-        const wrap = o.area * SQM_PRICE * qty;
+      calc(o, m, q) {
+        const rent = o.rent * m * q;
+        const wrap = o.area * SQM_PRICE * q;
         return {
           total: rent + wrap,
           lines: [
-            ['Аренда, ' + months + ' ' + plural(months, 'месяц', 'месяца', 'месяцев') + (qty > 1 ? ' × ' + qty + ' ед.' : ''), rent],
-            ['Оклейка ' + String(o.area * qty).replace('.', ',') + ' м² по ' + SQM_PRICE.toLocaleString('ru-RU') + ' ₽', wrap],
+            ['Аренда места, ' + m + ' ' + months(m) + (q > 1 ? ' × ' + q + ' ед.' : ''), rent],
+            ['Оклейка ' + num(+(o.area * q).toFixed(1)) + ' м² по ' + SQM_PRICE.toLocaleString('ru-RU') + ' ₽', wrap],
           ],
         };
       },
+      cap: o => '<b>' + o.where + '</b> — площадь оклейки ' + num(o.area) + ' м². В оклейку входят печать, монтаж и демонтаж.',
     },
     sticker: {
-      name: 'Рекламная наклейка на транспорте',
       qtyLabel: 'Единиц транспорта',
+      name: 'Рекламная наклейка на транспорте',
       options: [
-        { label: 'Заднее окно полностью — универсальный, 1300×530', place: 1800, print: 1800 },
-        { label: 'Заднее окно полностью — Хундай, 1600×530',        place: 1800, print: 2300 },
-        { label: 'Заднее окно полностью — Мерседес, 2130×890',      place: 1800, print: 5100 },
-        { label: 'Заднее окно полностью — ПАЗ, 1810×900',           place: 1800, print: 4400 },
-        { label: 'Заднее окно полностью — КАВЗ, 1590×600',          place: 1800, print: 2610 },
-        { label: 'Заднее окно полностью — СИМАЗ, 1900×1080',        place: 1800, print: 5500 },
-        { label: 'Под задним окном — универсальный, 1300×530',      place: 1300, print: 1800 },
-        { label: 'Окно правый борт — Хундай, 1300×530',             place: 1000, print: 1800 },
-        { label: 'Окно правый борт — ПАЗ, 1100×500',                place: 1000, print: 1500 },
-        { label: 'Окно правый борт — КАВЗ, 1300×530',               place: 1000, print: 1800 },
-        { label: 'Окно правый борт — КАВЗ, 1500×1350',              place: 2700, print: 5500 },
+        { label: 'Заднее окно целиком — универсальный размер', place: 1800, print: 1800, size: '1300×530', scene: 'rear', zone: 'rear-window', where: 'Заднее окно целиком' },
+        { label: 'Заднее окно целиком — Хундай',               place: 1800, print: 2300, size: '1600×530', scene: 'rear', zone: 'rear-window', where: 'Заднее окно целиком, Хундай' },
+        { label: 'Заднее окно целиком — Мерседес',             place: 1800, print: 5100, size: '2130×890', scene: 'rear', zone: 'rear-window', where: 'Заднее окно целиком, Мерседес' },
+        { label: 'Заднее окно целиком — ПАЗ',                  place: 1800, print: 4400, size: '1810×900', scene: 'rear', zone: 'rear-window', where: 'Заднее окно целиком, ПАЗ' },
+        { label: 'Заднее окно целиком — КАВЗ',                 place: 1800, print: 2610, size: '1590×600', scene: 'rear', zone: 'rear-window', where: 'Заднее окно целиком, КАВЗ' },
+        { label: 'Заднее окно целиком — СИМАЗ',                place: 1800, print: 5500, size: '1900×1080', scene: 'rear', zone: 'rear-window', where: 'Заднее окно целиком, СИМАЗ' },
+        { label: 'Под задним окном — универсальный размер',    place: 1300, print: 1800, size: '1300×530', scene: 'rear', zone: 'rear-under', where: 'Панель под задним окном' },
+        { label: 'Окно правого борта — Хундай',                place: 1000, print: 1800, size: '1300×530', scene: 'side', zone: 'side-window', where: 'Окно правого борта, Хундай' },
+        { label: 'Окно правого борта — ПАЗ',                   place: 1000, print: 1500, size: '1100×500', scene: 'side', zone: 'side-window', where: 'Окно правого борта, ПАЗ' },
+        { label: 'Окно правого борта — КАВЗ',                  place: 1000, print: 1800, size: '1300×530', scene: 'side', zone: 'side-window', where: 'Окно правого борта, КАВЗ' },
+        { label: 'Окно правого борта — КАВЗ, большое',         place: 2700, print: 5500, size: '1500×1350', scene: 'side', zone: 'side-window', where: 'Увеличенное окно правого борта, КАВЗ' },
       ],
-      calc(o, months, qty) {
-        const place = o.place * months * qty;
-        const print = o.print * qty;
+      calc(o, m, q) {
+        const place = o.place * m * q;
+        const print = o.print * q;
         return {
           total: place + print,
           lines: [
-            ['Размещение, ' + months + ' ' + plural(months, 'месяц', 'месяца', 'месяцев') + (qty > 1 ? ' × ' + qty + ' ед.' : ''), place],
-            ['Печать и монтаж' + (qty > 1 ? ' × ' + qty + ' ед.' : ''), print],
+            ['Размещение, ' + m + ' ' + months(m) + (q > 1 ? ' × ' + q + ' ед.' : ''), place],
+            ['Печать и монтаж' + (q > 1 ? ' × ' + q + ' ед.' : ''), print],
           ],
         };
       },
+      cap: o => '<b>' + o.where + '</b> — наклейка ' + o.size + ' мм. Печать и монтаж оплачиваются один раз.',
     },
     spinki: {
-      name: 'Реклама на спинках сидений',
       qtyLabel: 'Единиц транспорта',
+      name: 'Реклама на спинках сидений',
       options: [
-        { label: 'A4, 10 спинок в салоне', place: 1800, print: 360, mount: 640 },
-        { label: 'A4, 20 спинок в салоне', place: 3300, print: 720, mount: 1280 },
+        { label: '10 спинок в салоне', place: 1800, print: 360, mount: 640,  seats: 10, scene: 'seat', zone: 'seat-a4' },
+        { label: '20 спинок в салоне', place: 3300, print: 720, mount: 1280, seats: 20, scene: 'seat', zone: 'seat-a4' },
       ],
-      calc(o, months, qty) {
-        const place = o.place * months * qty;
-        const print = o.print * qty;
-        const mount = o.mount * qty;
+      calc(o, m, q) {
+        const place = o.place * m * q, print = o.print * q, mount = o.mount * q;
         return {
           total: place + print + mount,
           lines: [
-            ['Размещение, ' + months + ' ' + plural(months, 'месяц', 'месяца', 'месяцев') + (qty > 1 ? ' × ' + qty + ' ед.' : ''), place],
-            ['Печать' + (qty > 1 ? ' × ' + qty + ' ед.' : ''), print],
-            ['Монтаж и демонтаж' + (qty > 1 ? ' × ' + qty + ' ед.' : ''), mount],
+            ['Размещение, ' + m + ' ' + months(m) + (q > 1 ? ' × ' + q + ' ед.' : ''), place],
+            ['Печать' + (q > 1 ? ' × ' + q + ' ед.' : ''), print],
+            ['Монтаж и демонтаж' + (q > 1 ? ' × ' + q + ' ед.' : ''), mount],
           ],
         };
       },
+      cap: o => '<b>Формат A4 на спинке сиденья</b> — ' + o.seats + ' спинок в одном салоне. Пассажир видит макет всю поездку.',
     },
     listovki: {
-      name: 'Листовки в салоне',
       qtyLabel: 'Количество листовок',
+      name: 'Листовки в салоне',
       options: [
-        { label: 'Листовка А4', place: 200, print: 36, mount: 64 },
-        { label: 'Листовка А3', place: 300, print: 64, mount: 86 },
+        { label: 'Листовка A4', place: 200, print: 36, mount: 64, size: 'A4, 210×297', scene: 'leaflet', zone: 'leaflet-panel' },
+        { label: 'Листовка A3', place: 300, print: 64, mount: 86, size: 'A3, 297×420', scene: 'leaflet', zone: 'leaflet-panel' },
       ],
-      calc(o, months, qty) {
-        const place = o.place * months * qty;
-        const print = o.print * qty;
-        const mount = o.mount * qty;
+      calc(o, m, q) {
+        const place = o.place * m * q, print = o.print * q, mount = o.mount * q;
         return {
           total: place + print + mount,
           lines: [
-            ['Размещение, ' + months + ' ' + plural(months, 'месяц', 'месяца', 'месяцев') + (qty > 1 ? ' × ' + qty + ' шт.' : ''), place],
-            ['Печать' + (qty > 1 ? ' × ' + qty + ' шт.' : ''), print],
-            ['Монтаж и демонтаж' + (qty > 1 ? ' × ' + qty + ' шт.' : ''), mount],
+            ['Размещение, ' + m + ' ' + months(m) + (q > 1 ? ' × ' + q + ' шт.' : ''), place],
+            ['Печать' + (q > 1 ? ' × ' + q + ' шт.' : ''), print],
+            ['Монтаж и демонтаж' + (q > 1 ? ' × ' + q + ' шт.' : ''), mount],
           ],
         };
       },
+      cap: o => '<b>Листовка ' + o.size + ' мм</b> — на панели над окном в салоне. Цены указаны за одну листовку.',
     },
   };
 
   const tabs     = root.querySelectorAll('.calc__tab');
   const select   = root.querySelector('#calc-option');
-  const months   = root.querySelector('#calc-months');
-  const qty      = root.querySelector('#calc-qty');
+  const monthsIn = root.querySelector('#calc-months');
+  const qtyIn    = root.querySelector('#calc-qty');
   const qtyLabel = root.querySelector('[data-qty-label]');
   const totalEl  = root.querySelector('#calc-total');
   const periodEl = root.querySelector('#calc-period');
   const linesEl  = root.querySelector('#calc-lines');
+  const capEl    = root.querySelector('#scheme-cap');
+  const svgEl    = root.querySelector('.scheme__svg');
+  const scenes   = root.querySelectorAll('.scheme__scene');
+  const zones    = root.querySelectorAll('.scheme__zone');
   const cta      = root.querySelector('#calc-cta');
 
   let current = 'bort';
@@ -716,30 +722,41 @@ document.querySelectorAll('form.form').forEach(initLeadForm);
 
   function fillOptions() {
     const svc = SERVICES[current];
-    select.innerHTML = svc.options
-      .map((o, i) => '<option value="' + i + '">' + o.label + '</option>')
-      .join('');
+    select.innerHTML = svc.options.map((o, i) => '<option value="' + i + '">' + o.label + '</option>').join('');
     qtyLabel.textContent = svc.qtyLabel;
+  }
+
+  function showScheme(o) {
+    scenes.forEach(g => {
+      const on = g.dataset.scene === o.scene;
+      g.classList.toggle('is-on', on);
+      if (on && g.dataset.box) svgEl.setAttribute('viewBox', g.dataset.box);
+    });
+    zones.forEach(g => {
+      const on = g.dataset.zone === o.zone;
+      g.classList.remove('is-on');
+      if (on) {
+        g.getBoundingClientRect();      // перезапускает проявление зоны
+        g.classList.add('is-on');
+      }
+    });
   }
 
   function render() {
     const svc = SERVICES[current];
     const o = svc.options[select.selectedIndex] || svc.options[0];
-    const m = clamp(months, 1, 24);
-    const q = clamp(qty, 1, 200);
+    const m = clamp(monthsIn, 1, 24);
+    const q = clamp(qtyIn, 1, 200);
     const { total, lines } = svc.calc(o, m, q);
 
+    showScheme(o);
+    capEl.innerHTML = svc.cap(o);
     totalEl.textContent = fmt(total);
-    periodEl.textContent = 'за ' + m + ' ' + plural(m, 'месяц', 'месяца', 'месяцев') + ' размещения';
-    linesEl.innerHTML = lines
-      .map(([name, sum]) => '<li><span>' + name + '</span><b>' + fmt(sum) + '</b></li>')
-      .join('');
+    periodEl.textContent = 'за ' + m + ' ' + months(m) + ' размещения';
+    linesEl.innerHTML = lines.map(([n, v]) => '<li><span>' + n + '</span><b>' + fmt(v) + '</b></li>').join('');
 
-    // Расчёт подставится в комментарий к заявке на странице контактов
-    const text = svc.name + ' — ' + o.label
-      + '. Срок: ' + m + ' ' + plural(m, 'месяц', 'месяца', 'месяцев')
-      + ', количество: ' + q
-      + '. Ориентировочно ' + fmt(total) + '.';
+    const text = svc.name + ' — ' + o.label + '. Срок: ' + m + ' ' + months(m)
+      + ', количество: ' + q + '. Ориентировочно ' + fmt(total) + '.';
     try { sessionStorage.setItem('cb-calc', text); } catch (e) {}
     cta.setAttribute('aria-label', 'Отправить расчёт: ' + fmt(total));
   }
@@ -759,10 +776,10 @@ document.querySelectorAll('form.form').forEach(initLeadForm);
   });
 
   select.addEventListener('change', render);
-  [months, qty].forEach(el => {
+  [monthsIn, qtyIn].forEach(el => {
     el.addEventListener('input', render);
     el.addEventListener('blur', () => {
-      el.value = clamp(el, el === months ? 1 : 1, el === months ? 24 : 200);
+      el.value = clamp(el, 1, el === monthsIn ? 24 : 200);
       render();
     });
   });

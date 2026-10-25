@@ -39,7 +39,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=128">
+  <link rel="stylesheet" href="css/styles.css?v=129">
 </head>
 <body>
 
@@ -177,11 +177,11 @@
       <section class="calc" id="calc" data-reveal aria-labelledby="calc-title">
         <div class="calc__head">
           <h2 class="section-title" id="calc-title">Рассчитать стоимость</h2>
-          <p class="calc__lead">Выберите формат, срок и количество — покажем ориентировочную сумму по прайсу. Точную смету посчитаем под ваш макет и маршруты.</p>
+          <p class="calc__lead">Выберите формат и место на транспорте — схема покажет, что именно клеится, а расчёт даст ориентировочную сумму. Точную смету посчитаем под ваш макет и маршруты.</p>
         </div>
 
         <div class="calc__body">
-          <div class="calc__controls">
+          <div class="calc__main">
             <div class="calc__field calc__field--tabs">
               <span class="calc__label">Формат размещения</span>
               <div class="calc__tabs" role="tablist" aria-label="Формат размещения">
@@ -192,19 +192,89 @@
               </div>
             </div>
 
-            <div class="calc__field">
-              <label class="calc__label" for="calc-option">Вариант</label>
-              <select class="form__input calc__select" id="calc-option"></select>
-            </div>
+            <!-- Схема: что и куда клеится -->
+            <figure class="scheme">
+              <svg class="scheme__svg" viewBox="0 0 460 190" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="scheme-cap">
+                <!-- вид сбоку -->
+                <g class="scheme__scene" data-scene="side" data-box="4 16 452 162">
+                  <path class="scheme-body" d="M16 56 Q16 38 36 38 H402 Q430 38 436 60 L442 114 Q444 136 424 136 H32 Q16 136 16 120 Z"/>
+                  <rect class="scheme-glass" x="38"  y="52" width="64" height="34" rx="3"/>
+                  <rect class="scheme-glass" x="112" y="52" width="64" height="34" rx="3"/>
+                  <rect class="scheme-glass" x="186" y="52" width="64" height="34" rx="3"/>
+                  <rect class="scheme-glass" x="260" y="52" width="64" height="34" rx="3"/>
+                  <rect class="scheme-glass" x="334" y="52" width="60" height="34" rx="3"/>
+                  <path class="scheme-glass" d="M406 50 H418 Q428 50 430 60 L434 84 H406 Z"/>
+                  <g class="scheme__zone" data-zone="side-bort">
+                    <path class="scheme-zone" d="M18 96 H440 L442 116 Q443 134 424 134 H32 Q18 134 18 120 Z"/>
+                  </g>
+                  <g class="scheme__zone" data-zone="side-roof">
+                    <path class="scheme-zone" d="M18 96 H440 L442 116 Q443 134 424 134 H32 Q18 134 18 120 Z"/>
+                    <path class="scheme-zone" d="M36 40 H400 Q420 40 426 50 H30 Q22 50 22 44 Z"/>
+                  </g>
+                  <g class="scheme__zone" data-zone="side-window">
+                    <rect class="scheme-zone" x="112" y="52" width="64" height="34" rx="3"/>
+                  </g>
+                  <circle class="scheme-wheel" cx="96"  cy="136" r="21"/><circle class="scheme-hub" cx="96"  cy="136" r="7"/>
+                  <circle class="scheme-wheel" cx="368" cy="136" r="21"/><circle class="scheme-hub" cx="368" cy="136" r="7"/>
+                </g>
 
-            <div class="calc__row">
+                <!-- вид сзади -->
+                <g class="scheme__scene" data-scene="rear" data-box="142 2 232 186">
+                  <path class="scheme-body" d="M152 28 Q152 12 170 12 H346 Q364 12 364 28 V162 Q364 176 348 176 H168 Q152 176 152 162 Z"/>
+                  <rect class="scheme-glass" x="170" y="28" width="176" height="66" rx="4"/>
+                  <path class="scheme-detail" d="M152 102 H364"/>
+                  <rect class="scheme-detail" x="170" y="112" width="176" height="38" rx="3"/>
+                  <path class="scheme-detail" d="M152 158 H364"/>
+                  <g class="scheme__zone" data-zone="rear-window">
+                    <rect class="scheme-zone" x="170" y="28" width="176" height="66" rx="4"/>
+                  </g>
+                  <g class="scheme__zone" data-zone="rear-under">
+                    <rect class="scheme-zone" x="170" y="112" width="176" height="38" rx="3"/>
+                  </g>
+                  <g class="scheme__zone" data-zone="rear-full">
+                    <path class="scheme-zone" d="M154 30 Q154 14 172 14 H344 Q362 14 362 30 V156 H154 Z"/>
+                  </g>
+                  <rect class="scheme-hub" x="170" y="162" width="32" height="11" rx="3"/>
+                  <rect class="scheme-hub" x="314" y="162" width="32" height="11" rx="3"/>
+                </g>
+
+                <!-- спинка сиденья -->
+                <g class="scheme__scene" data-scene="seat" data-box="152 12 164 176">
+                  <path class="scheme-body" d="M196 22 H272 Q286 22 286 36 V58 H182 V36 Q182 22 196 22 Z"/>
+                  <path class="scheme-body" d="M176 68 H292 Q306 68 306 84 V150 Q306 164 292 164 H176 Q162 164 162 150 V84 Q162 68 176 68 Z"/>
+                  <g class="scheme__zone" data-zone="seat-a4">
+                    <rect class="scheme-zone" x="196" y="84" width="76" height="64" rx="3"/>
+                  </g>
+                  <path class="scheme-detail" d="M198 164 V178 M270 164 V178"/>
+                </g>
+
+                <!-- листовка в салоне -->
+                <g class="scheme__scene" data-scene="leaflet" data-box="94 32 272 132">
+                  <path class="scheme-body" d="M116 42 H344 Q356 42 356 54 V142 Q356 154 344 154 H116 Q104 154 104 142 V54 Q104 42 116 42 Z"/>
+                  <path class="scheme-detail" d="M104 104 H356"/>
+                  <rect class="scheme-glass" x="124" y="114" width="224" height="32" rx="4"/>
+                  <g class="scheme__zone" data-zone="leaflet-panel">
+                    <rect class="scheme-zone" x="182" y="54" width="100" height="40" rx="3"/>
+                  </g>
+                </g>
+              </svg>
+              <figcaption class="scheme__cap" id="scheme-cap"></figcaption>
+            </figure>
+
+            <div class="calc__controls">
               <div class="calc__field">
-                <label class="calc__label" for="calc-months">Срок, месяцев</label>
-                <input class="form__input" id="calc-months" type="number" min="1" max="24" step="1" value="1" inputmode="numeric">
+                <label class="calc__label" for="calc-option">Место размещения</label>
+                <select class="form__input calc__select" id="calc-option"></select>
               </div>
-              <div class="calc__field" data-qty-field>
-                <label class="calc__label" for="calc-qty"><span data-qty-label>Единиц транспорта</span></label>
-                <input class="form__input" id="calc-qty" type="number" min="1" max="200" step="1" value="1" inputmode="numeric">
+              <div class="calc__row">
+                <div class="calc__field">
+                  <label class="calc__label" for="calc-months">Срок, месяцев</label>
+                  <input class="form__input" id="calc-months" type="number" min="1" max="24" step="1" value="1" inputmode="numeric">
+                </div>
+                <div class="calc__field">
+                  <label class="calc__label" for="calc-qty"><span data-qty-label>Единиц транспорта</span></label>
+                  <input class="form__input" id="calc-qty" type="number" min="1" max="200" step="1" value="1" inputmode="numeric">
+                </div>
               </div>
             </div>
           </div>
@@ -316,6 +386,6 @@
   </div>
 </footer>
 
-<script src="js/script.js?v=128" defer></script>
+<script src="js/script.js?v=129" defer></script>
 </body>
 </html>
