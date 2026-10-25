@@ -1693,6 +1693,7 @@ mark.legal__fill { background: #FFF3C4; color: var(--text); padding: 0 4px; bord
 
 /* ячейка «место на транспорте» с рендером формата */
 .price-table .price-place {
+  width: 218px;                  /* одинаковая колонка во всех таблицах цен */
   vertical-align: middle; padding: 18px 20px 18px 16px;
   border-right: 1px solid var(--border); text-align: left;
   background: var(--white);
@@ -1708,7 +1709,7 @@ mark.legal__fill { background: #FFF3C4; color: var(--text); padding: 0 4px; bord
   display: block; height: auto; margin: 0 auto;
   mix-blend-mode: multiply;      /* белый фон рендера сливается с подложкой */
 }
-.price-shot--side    { width: 190px; }
+.price-shot--side    { width: 178px; }
 .price-shot--rear    { width: 118px; }
 .price-shot--seat    { width: 92px; }
 .price-shot--leaflet { width: 150px; }
