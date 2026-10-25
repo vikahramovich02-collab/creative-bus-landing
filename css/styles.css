@@ -1691,6 +1691,32 @@ mark.legal__fill { background: #FFF3C4; color: var(--text); padding: 0 4px; bord
   .price-table { min-width: 520px; }
 }
 
+/* библиотека схем не показывается, из неё берутся символы */
+.scheme-lib { position: absolute; width: 0; height: 0; overflow: hidden; }
+
+/* ячейка «место на транспорте» со схемой */
+.price-table .price-place {
+  vertical-align: middle; padding: 18px 20px 18px 16px;
+  border-right: 1px solid var(--border); text-align: left;
+  background: var(--bg-gray);
+}
+/* ячейка транспорта сразу за схемой — как остальные строки группы, слева */
+.price-table .price-place + td {
+  text-align: left; font-weight: 600; color: var(--dark);
+}
+.price-place__name {
+  display: block; font: 600 14px/1.3 'Inter', sans-serif; color: var(--dark); margin-top: 10px;
+}
+.price-place__note {
+  display: block; font: 400 12.5px/1.4 'Inter', sans-serif; color: var(--gray); margin-top: 4px;
+}
+.price-scheme { display: block; height: auto; }
+.price-scheme--side    { width: 150px; aspect-ratio: 452 / 162; }
+.price-scheme--rear    { width: 92px;  aspect-ratio: 232 / 186; }
+.price-scheme--seat    { width: 80px;  aspect-ratio: 164 / 176; }
+.price-scheme--leaflet { width: 130px; aspect-ratio: 272 / 132; }
+.price-table tbody tr:hover .price-place { background: var(--bg-gray); }
+
 /* ===== Калькулятор стоимости ===== */
 .calc { margin-top: 56px; }
 .calc__head { margin-bottom: 26px; }
@@ -1720,6 +1746,10 @@ mark.legal__fill { background: #FFF3C4; color: var(--text); padding: 0 4px; bord
 }
 .calc__tab:hover { border-color: var(--blue); color: var(--dark); }
 .calc__tab.is-active { background: var(--dark); border-color: var(--dark); color: var(--white); }
+.calc__select optgroup {
+  font: 600 12px/1.4 'Inter', sans-serif; color: var(--gray);
+}
+.calc__select option { font: 400 14px/1.4 'Inter', sans-serif; color: var(--text); }
 .calc__select {
   appearance: none; cursor: pointer; padding-right: 44px;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none'%3E%3Cpath d='M6 9l6 6 6-6' stroke='%2364748B' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
@@ -1819,6 +1849,12 @@ mark.legal__fill { background: #FFF3C4; color: var(--text); padding: 0 4px; bord
 .price-table__group:hover { background: transparent !important; }
 
 @media (max-width: 760px) {
+  .price-scheme--side { width: 104px; }
+  .price-scheme--rear { width: 64px; }
+  .price-scheme--seat { width: 56px; }
+  .price-scheme--leaflet { width: 90px; }
+  .price-place__note { display: none; }
+  .price-table .price-place { padding: 14px 12px; }
   .price-table--routes { min-width: 440px; }
   .price-table--routes td:first-child { width: 130px; }
 }
