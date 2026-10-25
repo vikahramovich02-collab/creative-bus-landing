@@ -1705,6 +1705,9 @@ mark.legal__fill { background: #FFF3C4; color: var(--text); padding: 0 4px; bord
 .price-place__note {
   display: block; font: 400 12.5px/1.4 'Inter', sans-serif; color: var(--gray); margin-top: 4px;
 }
+/* граница между группами мест — чтобы строки не путались между собой */
+.price-table .price-row--group > td { border-top: 1px solid var(--border); }
+.price-table tbody tr.price-row--group:first-child > td { border-top: 0; }
 .price-shot {
   display: block; height: auto; margin: 0 auto;
   mix-blend-mode: multiply;      /* белый фон рендера сливается с подложкой */
@@ -1805,15 +1808,15 @@ mark.legal__fill { background: #FFF3C4; color: var(--text); padding: 0 4px; bord
 /* иллюстрация формата в калькуляторе */
 .scheme {
   margin: 0; background: var(--white); border: 1px solid var(--border);
-  border-radius: 16px; padding: 22px 20px 16px; text-align: center;
+  border-radius: 16px; padding: 16px 20px 14px; text-align: center;
 }
 .scheme__shot {
-  display: block; width: auto; max-width: 100%; max-height: 190px;
+  display: block; width: auto; max-width: 100%; max-height: 148px;
   margin: 0 auto; mix-blend-mode: multiply;
   animation: shot-in .3s ease both;
 }
 @keyframes shot-in { from { opacity: 0; } to { opacity: 1; } }
-.scheme__cap { font: 400 13.5px/1.5 'Inter', sans-serif; color: var(--gray); margin: 14px 0 0; }
+.scheme__cap { font: 400 13.5px/1.5 'Inter', sans-serif; color: var(--gray); margin: 10px 0 0; }
 .scheme__cap b { color: var(--dark); font-weight: 600; }
 
 .calc__result {
@@ -1859,7 +1862,7 @@ mark.legal__fill { background: #FFF3C4; color: var(--text); padding: 0 4px; bord
   .pick__opt-shot { width: 46px; height: 32px; }
   .pick__menu { max-height: 300px; }
   .scheme { padding: 14px 10px 12px; }
-  .scheme__shot { max-height: 150px; }
+  .scheme__shot { max-height: 120px; }
   .calc__result { position: static; padding: 24px 20px 20px; }
   .calc__total { font-size: 34px; }
 }

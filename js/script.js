@@ -767,8 +767,7 @@ document.querySelectorAll('form.form').forEach(initLeadForm);
     pick.classList.toggle('is-open', open);
     pickBtn.setAttribute('aria-expanded', String(open));
     if (open) {
-      const sel = pickMenu.querySelector('[aria-selected="true"]');
-      if (sel) sel.focus({ preventScroll: true });
+      pickMenu.scrollTop = 0;     // список всегда открывается с первой группы
     }
   }
 
@@ -832,9 +831,15 @@ document.querySelectorAll('form.form').forEach(initLeadForm);
     if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
       e.preventDefault();
       if (pickMenu.hidden) { openMenu(true); return; }
+      if (document.activeElement === pickBtn) {
+        const sel = opts[index] || opts[0];
+        if (sel) sel.focus({ preventScroll: true });
+        sel.scrollIntoView({ block: 'nearest' });
+        return;
+      }
       const at = opts.indexOf(document.activeElement);
       const to = e.key === 'ArrowDown' ? Math.min(at + 1, opts.length - 1) : Math.max(at - 1, 0);
-      if (opts[to]) opts[to].focus({ preventScroll: true });
+      if (opts[to]) { opts[to].focus({ preventScroll: true }); opts[to].scrollIntoView({ block: 'nearest' }); }
     }
   });
 
