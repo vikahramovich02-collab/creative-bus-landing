@@ -39,7 +39,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=135">
+  <link rel="stylesheet" href="css/styles.css?v=136">
 </head>
 <body>
 
@@ -65,86 +65,6 @@
   </div>
 </header>
 
-  <!-- Библиотека схем размещения: подключается через <use href="#sch-..."> -->
-  <svg class="scheme-lib" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
-    <defs>
-      <g id="g-side-base">
-        <path class="scheme-body" d="M16 56 Q16 38 36 38 H402 Q430 38 436 60 L442 114 Q444 136 424 136 H32 Q16 136 16 120 Z"/>
-        <rect class="scheme-glass" x="38"  y="52" width="64" height="34" rx="3"/>
-        <rect class="scheme-glass" x="112" y="52" width="64" height="34" rx="3"/>
-        <rect class="scheme-glass" x="186" y="52" width="64" height="34" rx="3"/>
-        <rect class="scheme-glass" x="260" y="52" width="64" height="34" rx="3"/>
-        <rect class="scheme-glass" x="334" y="52" width="60" height="34" rx="3"/>
-        <path class="scheme-glass" d="M406 50 H418 Q428 50 430 60 L434 84 H406 Z"/>
-      </g>
-      <g id="g-side-wheels">
-        <circle class="scheme-wheel" cx="96"  cy="136" r="21"/><circle class="scheme-hub" cx="96"  cy="136" r="7"/>
-        <circle class="scheme-wheel" cx="368" cy="136" r="21"/><circle class="scheme-hub" cx="368" cy="136" r="7"/>
-      </g>
-      <g id="g-rear-base">
-        <path class="scheme-body" d="M152 28 Q152 12 170 12 H346 Q364 12 364 28 V162 Q364 176 348 176 H168 Q152 176 152 162 Z"/>
-        <rect class="scheme-glass" x="170" y="28" width="176" height="66" rx="4"/>
-        <path class="scheme-detail" d="M152 102 H364"/>
-        <rect class="scheme-detail" x="170" y="112" width="176" height="38" rx="3"/>
-        <path class="scheme-detail" d="M152 158 H364"/>
-      </g>
-      <g id="g-rear-lamps">
-        <rect class="scheme-hub" x="170" y="162" width="32" height="11" rx="3"/>
-        <rect class="scheme-hub" x="314" y="162" width="32" height="11" rx="3"/>
-      </g>
-      <g id="g-seat-base">
-        <path class="scheme-body" d="M196 22 H272 Q286 22 286 36 V58 H182 V36 Q182 22 196 22 Z"/>
-        <path class="scheme-body" d="M176 68 H292 Q306 68 306 84 V150 Q306 164 292 164 H176 Q162 164 162 150 V84 Q162 68 176 68 Z"/>
-      </g>
-      <g id="g-leaflet-base">
-        <path class="scheme-body" d="M116 42 H344 Q356 42 356 54 V142 Q356 154 344 154 H116 Q104 154 104 142 V54 Q104 42 116 42 Z"/>
-        <path class="scheme-detail" d="M104 104 H356"/>
-        <rect class="scheme-glass" x="124" y="114" width="224" height="32" rx="4"/>
-      </g>
-    </defs>
-
-    <symbol id="sch-side-bort" viewBox="4 16 452 162">
-      <use href="#g-side-base"/>
-      <path class="scheme-zone" d="M18 96 H440 L442 116 Q443 134 424 134 H32 Q18 134 18 120 Z"/>
-      <use href="#g-side-wheels"/>
-    </symbol>
-    <symbol id="sch-side-roof" viewBox="4 16 452 162">
-      <use href="#g-side-base"/>
-      <path class="scheme-zone" d="M18 96 H440 L442 116 Q443 134 424 134 H32 Q18 134 18 120 Z"/>
-      <path class="scheme-zone" d="M36 40 H400 Q420 40 426 50 H30 Q22 50 22 44 Z"/>
-      <use href="#g-side-wheels"/>
-    </symbol>
-    <symbol id="sch-side-window" viewBox="4 16 452 162">
-      <use href="#g-side-base"/>
-      <rect class="scheme-zone" x="112" y="52" width="64" height="34" rx="3"/>
-      <use href="#g-side-wheels"/>
-    </symbol>
-    <symbol id="sch-rear-window" viewBox="142 2 232 186">
-      <use href="#g-rear-base"/>
-      <rect class="scheme-zone" x="170" y="28" width="176" height="66" rx="4"/>
-      <use href="#g-rear-lamps"/>
-    </symbol>
-    <symbol id="sch-rear-under" viewBox="142 2 232 186">
-      <use href="#g-rear-base"/>
-      <rect class="scheme-zone" x="170" y="112" width="176" height="38" rx="3"/>
-      <use href="#g-rear-lamps"/>
-    </symbol>
-    <symbol id="sch-rear-full" viewBox="142 2 232 186">
-      <use href="#g-rear-base"/>
-      <path class="scheme-zone" d="M154 30 Q154 14 172 14 H344 Q362 14 362 30 V156 H154 Z"/>
-      <use href="#g-rear-lamps"/>
-    </symbol>
-    <symbol id="sch-seat-a4" viewBox="152 12 164 176">
-      <use href="#g-seat-base"/>
-      <rect class="scheme-zone" x="196" y="84" width="76" height="64" rx="3"/>
-      <path class="scheme-detail" d="M198 164 V178 M270 164 V178"/>
-    </symbol>
-    <symbol id="sch-leaflet-panel" viewBox="94 32 272 132">
-      <use href="#g-leaflet-base"/>
-      <rect class="scheme-zone" x="182" y="54" width="100" height="40" rx="3"/>
-    </symbol>
-  </svg>
-
 <main class="subpage">
   <div class="container">
     <section class="pricing">
@@ -166,7 +86,6 @@
       <div class="price-card" data-reveal>
         <div class="price-card__head">
           <span class="price-card__title">
-            <span class="price-card__icon"><img src="assets/icons/pr-bus.png?6" alt="" width="28" height="28"></span>
             Широкоформатная бортовая реклама
           </span>
         </div>
@@ -174,12 +93,12 @@
           <table class="price-table">
             <thead><tr><th>Место на транспорте</th><th>Транспорт</th><th>Аренда / мес</th><th>Площадь оклейки</th></tr></thead>
             <tbody>
-              <tr><td class="price-place" rowspan="3"><svg class="price-scheme price-scheme--side" role="img" aria-label="Боковой борт"><use href="#sch-side-bort"/></svg><span class="price-place__name">Боковой борт</span><span class="price-place__note">Макет на всю боковую поверхность</span></td><td>Автобус Мерседес</td><td>8 000 ₽</td><td class="price-accent">37 м²</td></tr>
+              <tr><td class="price-place price-place--shot" rowspan="3"><img class="price-shot price-shot--side" src="assets/img/fmt-side-bort.webp" alt="Автобус сбоку с оклеенным боковым бортом" width="680" height="208" loading="lazy" decoding="async"><span class="price-place__name">Боковой борт</span><span class="price-place__note">Макет на всю боковую поверхность</span></td><td>Автобус Мерседес</td><td>8 000 ₽</td><td class="price-accent">37 м²</td></tr>
               <tr><td>Микроавтобус Хундай Каунти</td><td>5 000 ₽</td><td class="price-accent">16,5 м²</td></tr>
               <tr><td>Автобус КАВЗ</td><td>8 000 ₽</td><td class="price-accent">12 м²</td></tr>
-              <tr><td class="price-place" rowspan="2"><svg class="price-scheme price-scheme--side" role="img" aria-label="Борт и крыша"><use href="#sch-side-roof"/></svg><span class="price-place__name">Борт и крыша</span><span class="price-place__note">Боковая поверхность вместе с крышей</span></td><td>Автобус Мерседес</td><td>8 000 ₽</td><td class="price-accent">66 м²</td></tr>
+              <tr><td class="price-place price-place--shot" rowspan="2"><img class="price-shot price-shot--side" src="assets/img/fmt-side-roof.webp" alt="Автобус с оклеенным бортом и крышей" width="680" height="307" loading="lazy" decoding="async"><span class="price-place__name">Борт и крыша</span><span class="price-place__note">Боковая поверхность вместе с крышей</span></td><td>Автобус Мерседес</td><td>8 000 ₽</td><td class="price-accent">66 м²</td></tr>
               <tr><td>Микроавтобус Хундай Каунти</td><td>5 000 ₽</td><td class="price-accent">30 м²</td></tr>
-              <tr><td class="price-place" rowspan="3"><svg class="price-scheme price-scheme--rear" role="img" aria-label="Задняя часть"><use href="#sch-rear-full"/></svg><span class="price-place__name">Задняя часть</span><span class="price-place__note">Задняя стенка целиком</span></td><td>Хундай Каунти, 2250×2250 мм</td><td>3 600 ₽</td><td class="price-accent">5 м²</td></tr>
+              <tr><td class="price-place price-place--shot" rowspan="3"><img class="price-shot price-shot--rear" src="assets/img/fmt-rear-full.webp" alt="Автобус сзади с полностью оклеенной задней частью" width="614" height="680" loading="lazy" decoding="async"><span class="price-place__name">Задняя часть</span><span class="price-place__note">Задняя стенка целиком</span></td><td>Хундай Каунти, 2250×2250 мм</td><td>3 600 ₽</td><td class="price-accent">5 м²</td></tr>
               <tr><td>Мерседес, 3000×2500 мм</td><td>3 600 ₽</td><td class="price-accent">6,5 м²</td></tr>
               <tr><td>ПАЗ, 2540×2370 мм</td><td>3 600 ₽</td><td class="price-accent">6 м²</td></tr>
             </tbody>
@@ -236,7 +155,6 @@
       <div class="price-card" data-reveal>
         <div class="price-card__head">
           <span class="price-card__title">
-            <span class="price-card__icon"><img src="assets/icons/pr-listovki.png?5" alt="" width="28" height="28"></span>
             Листовки в салоне
           </span>
         </div>
@@ -244,7 +162,7 @@
           <table class="price-table">
             <thead><tr><th>Место в салоне</th><th>Формат</th><th>Размещение / мес</th><th>Печать, 1 шт</th><th>Монтаж / демонтаж</th></tr></thead>
             <tbody>
-              <tr><td class="price-place" rowspan="2"><svg class="price-scheme price-scheme--leaflet" role="img" aria-label="Панель над окном"><use href="#sch-leaflet-panel"/></svg><span class="price-place__name">Панель над окном</span><span class="price-place__note">Цены указаны за одну листовку</span></td><td>Листовка А4</td><td>200 ₽</td><td>36 ₽</td><td class="price-accent">64 ₽</td></tr>
+              <tr><td class="price-place price-place--shot" rowspan="2"><img class="price-shot price-shot--leaflet" src="assets/img/fmt-leaflet.webp" alt="Листовка на панели над окном в салоне" width="680" height="383" loading="lazy" decoding="async"><span class="price-place__name">Панель над окном</span><span class="price-place__note">Цены указаны за одну листовку</span></td><td>Листовка А4</td><td>200 ₽</td><td>36 ₽</td><td class="price-accent">64 ₽</td></tr>
               <tr><td>Листовка А3</td><td>300 ₽</td><td>64 ₽</td><td class="price-accent">86 ₽</td></tr>
             </tbody>
           </table>
@@ -272,9 +190,7 @@
 
             <!-- Схема: что и куда клеится -->
             <figure class="scheme">
-              <svg class="scheme__svg" viewBox="4 16 452 162" role="img" aria-labelledby="scheme-cap" xmlns="http://www.w3.org/2000/svg">
-                <use class="scheme__use" href="#sch-side-bort"/>
-              </svg>
+              <img class="scheme__shot" src="assets/img/fmt-side-bort.webp" alt="" width="680" height="208" decoding="async">
               <figcaption class="scheme__cap" id="scheme-cap"></figcaption>
             </figure>
 
@@ -319,7 +235,6 @@
         <div class="price-card">
           <div class="price-card__head">
             <span class="price-card__title">
-              <span class="price-card__icon"><img src="assets/icons/pr-bus.png?6" alt="" width="28" height="28"></span>
               Список маршрутов
             </span>
           </div>
@@ -403,6 +318,6 @@
   </div>
 </footer>
 
-<script src="js/script.js?v=133" defer></script>
+<script src="js/script.js?v=136" defer></script>
 </body>
 </html>

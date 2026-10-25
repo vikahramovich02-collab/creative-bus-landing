@@ -605,14 +605,14 @@ document.querySelectorAll('form.form').forEach(initLeadForm);
       qtyLabel: 'Единиц транспорта',
       name: 'Широкоформатная бортовая реклама',
       options: [
-        { label: 'Автобус Мерседес — 37 м²',                  group: 'Боковой борт', rent: 8000, area: 37,   scene: 'side', zone: 'side-bort', where: 'Боковой борт автобуса Мерседес' },
-        { label: 'Микроавтобус Хундай Каунти — 16,5 м²',      group: 'Боковой борт', rent: 5000, area: 16.5, scene: 'side', zone: 'side-bort', where: 'Боковой борт микроавтобуса Хундай Каунти' },
-        { label: 'Автобус КАВЗ — 12 м²',                      group: 'Боковой борт', rent: 8000, area: 12,   scene: 'side', zone: 'side-bort', where: 'Боковой борт автобуса КАВЗ' },
-        { label: 'Автобус Мерседес — 66 м²',                  group: 'Борт и крыша', rent: 8000, area: 66,   scene: 'side', zone: 'side-roof', where: 'Боковой борт и крыша автобуса Мерседес' },
-        { label: 'Микроавтобус Хундай Каунти — 30 м²',        group: 'Борт и крыша', rent: 5000, area: 30,   scene: 'side', zone: 'side-roof', where: 'Боковой борт и крыша микроавтобуса Хундай Каунти' },
-        { label: 'Хундай Каунти — 5 м², 2250×2250 мм',        group: 'Задняя часть', rent: 3600, area: 5,    scene: 'rear', zone: 'rear-full', where: 'Задняя часть целиком, 2250×2250 мм' },
-        { label: 'Мерседес — 6,5 м², 3000×2500 мм',           group: 'Задняя часть', rent: 3600, area: 6.5,  scene: 'rear', zone: 'rear-full', where: 'Задняя часть целиком, 3000×2500 мм' },
-        { label: 'ПАЗ — 6 м², 2540×2370 мм',                  group: 'Задняя часть', rent: 3600, area: 6,    scene: 'rear', zone: 'rear-full', where: 'Задняя часть целиком, 2540×2370 мм' },
+        { label: 'Автобус Мерседес — 37 м²',                  group: 'Боковой борт', rent: 8000, area: 37,   scene: 'side', shot: 'fmt-side-bort', where: 'Боковой борт автобуса Мерседес' },
+        { label: 'Микроавтобус Хундай Каунти — 16,5 м²',      group: 'Боковой борт', rent: 5000, area: 16.5, scene: 'side', shot: 'fmt-side-bort', where: 'Боковой борт микроавтобуса Хундай Каунти' },
+        { label: 'Автобус КАВЗ — 12 м²',                      group: 'Боковой борт', rent: 8000, area: 12,   scene: 'side', shot: 'fmt-side-bort', where: 'Боковой борт автобуса КАВЗ' },
+        { label: 'Автобус Мерседес — 66 м²',                  group: 'Борт и крыша', rent: 8000, area: 66,   scene: 'side', shot: 'fmt-side-roof', where: 'Боковой борт и крыша автобуса Мерседес' },
+        { label: 'Микроавтобус Хундай Каунти — 30 м²',        group: 'Борт и крыша', rent: 5000, area: 30,   scene: 'side', shot: 'fmt-side-roof', where: 'Боковой борт и крыша микроавтобуса Хундай Каунти' },
+        { label: 'Хундай Каунти — 5 м², 2250×2250 мм',        group: 'Задняя часть', rent: 3600, area: 5,    scene: 'rear', shot: 'fmt-rear-full', where: 'Задняя часть целиком, 2250×2250 мм' },
+        { label: 'Мерседес — 6,5 м², 3000×2500 мм',           group: 'Задняя часть', rent: 3600, area: 6.5,  scene: 'rear', shot: 'fmt-rear-full', where: 'Задняя часть целиком, 3000×2500 мм' },
+        { label: 'ПАЗ — 6 м², 2540×2370 мм',                  group: 'Задняя часть', rent: 3600, area: 6,    scene: 'rear', shot: 'fmt-rear-full', where: 'Задняя часть целиком, 2540×2370 мм' },
       ],
       calc(o, m, q) {
         const rent = o.rent * m * q;
@@ -631,17 +631,17 @@ document.querySelectorAll('form.form').forEach(initLeadForm);
       qtyLabel: 'Единиц транспорта',
       name: 'Рекламная наклейка на транспорте',
       options: [
-        { label: 'Универсальный размер — 1300×530 мм', group: 'Заднее окно', place: 1800, print: 1800, size: '1300×530', scene: 'rear', zone: 'rear-window', where: 'Заднее окно целиком' },
-        { label: 'Хундай — 1600×530 мм', group: 'Заднее окно',               place: 1800, print: 2300, size: '1600×530', scene: 'rear', zone: 'rear-window', where: 'Заднее окно целиком, Хундай' },
-        { label: 'Мерседес — 2130×890 мм', group: 'Заднее окно',             place: 1800, print: 5100, size: '2130×890', scene: 'rear', zone: 'rear-window', where: 'Заднее окно целиком, Мерседес' },
-        { label: 'ПАЗ — 1810×900 мм', group: 'Заднее окно',                  place: 1800, print: 4400, size: '1810×900', scene: 'rear', zone: 'rear-window', where: 'Заднее окно целиком, ПАЗ' },
-        { label: 'КАВЗ — 1590×600 мм', group: 'Заднее окно',                 place: 1800, print: 2610, size: '1590×600', scene: 'rear', zone: 'rear-window', where: 'Заднее окно целиком, КАВЗ' },
-        { label: 'СИМАЗ — 1900×1080 мм', group: 'Заднее окно',                place: 1800, print: 5500, size: '1900×1080', scene: 'rear', zone: 'rear-window', where: 'Заднее окно целиком, СИМАЗ' },
-        { label: 'Универсальный размер — 1300×530 мм', group: 'Под задним окном',    place: 1300, print: 1800, size: '1300×530', scene: 'rear', zone: 'rear-under', where: 'Панель под задним окном' },
-        { label: 'Хундай — 1300×530 мм', group: 'Окно правого борта',                place: 1000, print: 1800, size: '1300×530', scene: 'side', zone: 'side-window', where: 'Окно правого борта, Хундай' },
-        { label: 'ПАЗ — 1100×500 мм', group: 'Окно правого борта',                   place: 1000, print: 1500, size: '1100×500', scene: 'side', zone: 'side-window', where: 'Окно правого борта, ПАЗ' },
-        { label: 'КАВЗ — 1300×530 мм', group: 'Окно правого борта',                  place: 1000, print: 1800, size: '1300×530', scene: 'side', zone: 'side-window', where: 'Окно правого борта, КАВЗ' },
-        { label: 'КАВЗ, увеличенное — 1500×1350 мм', group: 'Окно правого борта',         place: 2700, print: 5500, size: '1500×1350', scene: 'side', zone: 'side-window', where: 'Увеличенное окно правого борта, КАВЗ' },
+        { label: 'Универсальный размер — 1300×530 мм', group: 'Заднее окно', place: 1800, print: 1800, size: '1300×530', scene: 'rear', shot: 'fmt-rear-window', where: 'Заднее окно целиком' },
+        { label: 'Хундай — 1600×530 мм', group: 'Заднее окно',               place: 1800, print: 2300, size: '1600×530', scene: 'rear', shot: 'fmt-rear-window', where: 'Заднее окно целиком, Хундай' },
+        { label: 'Мерседес — 2130×890 мм', group: 'Заднее окно',             place: 1800, print: 5100, size: '2130×890', scene: 'rear', shot: 'fmt-rear-window', where: 'Заднее окно целиком, Мерседес' },
+        { label: 'ПАЗ — 1810×900 мм', group: 'Заднее окно',                  place: 1800, print: 4400, size: '1810×900', scene: 'rear', shot: 'fmt-rear-window', where: 'Заднее окно целиком, ПАЗ' },
+        { label: 'КАВЗ — 1590×600 мм', group: 'Заднее окно',                 place: 1800, print: 2610, size: '1590×600', scene: 'rear', shot: 'fmt-rear-window', where: 'Заднее окно целиком, КАВЗ' },
+        { label: 'СИМАЗ — 1900×1080 мм', group: 'Заднее окно',                place: 1800, print: 5500, size: '1900×1080', scene: 'rear', shot: 'fmt-rear-window', where: 'Заднее окно целиком, СИМАЗ' },
+        { label: 'Универсальный размер — 1300×530 мм', group: 'Под задним окном',    place: 1300, print: 1800, size: '1300×530', scene: 'rear', shot: 'fmt-rear-under', where: 'Панель под задним окном' },
+        { label: 'Хундай — 1300×530 мм', group: 'Окно правого борта',                place: 1000, print: 1800, size: '1300×530', scene: 'side', shot: 'fmt-side-window', where: 'Окно правого борта, Хундай' },
+        { label: 'ПАЗ — 1100×500 мм', group: 'Окно правого борта',                   place: 1000, print: 1500, size: '1100×500', scene: 'side', shot: 'fmt-side-window', where: 'Окно правого борта, ПАЗ' },
+        { label: 'КАВЗ — 1300×530 мм', group: 'Окно правого борта',                  place: 1000, print: 1800, size: '1300×530', scene: 'side', shot: 'fmt-side-window', where: 'Окно правого борта, КАВЗ' },
+        { label: 'КАВЗ, увеличенное — 1500×1350 мм', group: 'Окно правого борта',         place: 2700, print: 5500, size: '1500×1350', scene: 'side', shot: 'fmt-side-window', where: 'Увеличенное окно правого борта, КАВЗ' },
       ],
       calc(o, m, q) {
         const place = o.place * m * q;
@@ -660,8 +660,8 @@ document.querySelectorAll('form.form').forEach(initLeadForm);
       qtyLabel: 'Единиц транспорта',
       name: 'Реклама на спинках сидений',
       options: [
-        { label: '10 спинок в салоне', group: 'Спинка сиденья', place: 1800, print: 360, mount: 640,  seats: 10, scene: 'seat', zone: 'seat-a4' },
-        { label: '20 спинок в салоне', group: 'Спинка сиденья', place: 3300, print: 720, mount: 1280, seats: 20, scene: 'seat', zone: 'seat-a4' },
+        { label: '10 спинок в салоне', group: 'Спинка сиденья', place: 1800, print: 360, mount: 640,  seats: 10, scene: 'seat', shot: 'fmt-seat' },
+        { label: '20 спинок в салоне', group: 'Спинка сиденья', place: 3300, print: 720, mount: 1280, seats: 20, scene: 'seat', shot: 'fmt-seat' },
       ],
       calc(o, m, q) {
         const place = o.place * m * q, print = o.print * q, mount = o.mount * q;
@@ -680,8 +680,8 @@ document.querySelectorAll('form.form').forEach(initLeadForm);
       qtyLabel: 'Количество листовок',
       name: 'Листовки в салоне',
       options: [
-        { label: 'Листовка A4', group: 'Панель над окном', place: 200, print: 36, mount: 64, size: 'A4, 210×297', scene: 'leaflet', zone: 'leaflet-panel' },
-        { label: 'Листовка A3', group: 'Панель над окном', place: 300, print: 64, mount: 86, size: 'A3, 297×420', scene: 'leaflet', zone: 'leaflet-panel' },
+        { label: 'Листовка A4', group: 'Панель над окном', place: 200, print: 36, mount: 64, size: 'A4, 210×297', scene: 'leaflet', shot: 'fmt-leaflet' },
+        { label: 'Листовка A3', group: 'Панель над окном', place: 300, print: 64, mount: 86, size: 'A3, 297×420', scene: 'leaflet', shot: 'fmt-leaflet' },
       ],
       calc(o, m, q) {
         const place = o.place * m * q, print = o.print * q, mount = o.mount * q;
@@ -707,8 +707,7 @@ document.querySelectorAll('form.form').forEach(initLeadForm);
   const periodEl = root.querySelector('#calc-period');
   const linesEl  = root.querySelector('#calc-lines');
   const capEl    = root.querySelector('#scheme-cap');
-  const svgEl    = root.querySelector('.scheme__svg');
-  const useEl    = root.querySelector('.scheme__use');
+  const shotEl   = root.querySelector('.scheme__shot');
   const cta      = root.querySelector('#calc-cta');
 
   // формат можно задать ссылкой: pricing.html?f=sticker#calc
@@ -738,15 +737,9 @@ document.querySelectorAll('form.form').forEach(initLeadForm);
     qtyLabel.textContent = svc.qtyLabel;
   }
 
-  // кадры символов из библиотеки схем в разметке страницы
-  const BOX = {
-    side: '4 16 452 162', rear: '142 2 232 186',
-    seat: '152 12 164 176', leaflet: '94 32 272 132',
-  };
-
   function showScheme(o) {
-    useEl.setAttribute('href', '#sch-' + o.zone);
-    svgEl.setAttribute('viewBox', BOX[o.scene] || BOX.side);
+    shotEl.src = 'assets/img/' + o.shot + '.webp';
+    shotEl.alt = (o.where || o.label) + ' — иллюстрация размещения';
   }
 
   function render() {
