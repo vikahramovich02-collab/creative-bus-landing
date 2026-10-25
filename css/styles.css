@@ -1713,9 +1713,12 @@ mark.legal__fill { background: #FFF3C4; color: var(--text); padding: 0 4px; bord
 /* 3D-рендер формата в таблице */
 .price-table .price-place--shot { background: var(--white); }
 .price-shot {
-  display: block; width: 136px; height: auto; margin: 0 auto 2px;
-  mix-blend-mode: multiply;
+  display: block; height: auto; margin: 0 auto 2px;
+  mix-blend-mode: multiply;      /* белый фон рендера сливается с подложкой */
 }
+.price-shot--rear { width: 118px; }
+.price-shot--side { width: 170px; }
+.price-shot--seat { width: 96px; }
 .price-scheme { display: block; height: auto; }
 .price-scheme--side    { width: 150px; aspect-ratio: 452 / 162; }
 .price-scheme--rear    { width: 92px;  aspect-ratio: 232 / 186; }
