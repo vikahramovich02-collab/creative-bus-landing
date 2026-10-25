@@ -39,7 +39,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=136">
+  <link rel="stylesheet" href="css/styles.css?v=137">
 </head>
 <body>
 
@@ -196,8 +196,19 @@
 
             <div class="calc__controls">
               <div class="calc__field">
-                <label class="calc__label" for="calc-option">Место размещения</label>
-                <select class="form__input calc__select" id="calc-option"></select>
+                <span class="calc__label" id="calc-option-label">Место размещения</span>
+                <div class="pick" data-pick>
+                  <button type="button" class="pick__btn" id="calc-option" aria-haspopup="listbox"
+                          aria-expanded="false" aria-labelledby="calc-option-label calc-option">
+                    <img class="pick__shot" src="assets/img/fmt-side-bort.webp" alt="" width="680" height="208" decoding="async">
+                    <span class="pick__text">
+                      <span class="pick__name"></span>
+                      <span class="pick__meta"></span>
+                    </span>
+                    <svg class="pick__arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </button>
+                  <div class="pick__menu" role="listbox" aria-labelledby="calc-option-label" hidden></div>
+                </div>
               </div>
               <div class="calc__row">
                 <div class="calc__field">
@@ -318,6 +329,6 @@
   </div>
 </footer>
 
-<script src="js/script.js?v=136" defer></script>
+<script src="js/script.js?v=137" defer></script>
 </body>
 </html>

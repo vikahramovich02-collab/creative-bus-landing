@@ -699,7 +699,12 @@ document.querySelectorAll('form.form').forEach(initLeadForm);
   };
 
   const tabs     = root.querySelectorAll('.calc__tab');
-  const select   = root.querySelector('#calc-option');
+  const pick     = root.querySelector('[data-pick]');
+  const pickBtn  = root.querySelector('.pick__btn');
+  const pickMenu = root.querySelector('.pick__menu');
+  const pickShot = root.querySelector('.pick__shot');
+  const pickName = root.querySelector('.pick__name');
+  const pickMeta = root.querySelector('.pick__meta');
   const monthsIn = root.querySelector('#calc-months');
   const qtyIn    = root.querySelector('#calc-qty');
   const qtyLabel = root.querySelector('[data-qty-label]');
@@ -720,21 +725,51 @@ document.querySelectorAll('form.form').forEach(initLeadForm);
     return Math.min(Math.max(v, min), max);
   };
 
+  let index = 0;                   // выбранный вариант внутри формата
+
+  const split = label => {
+    const i = label.indexOf(' — ');
+    return i === -1 ? [label, ''] : [label.slice(0, i), label.slice(i + 3)];
+  };
+
   function fillOptions() {
     const svc = SERVICES[current];
-    // варианты с подписанной группой собираются в optgroup — так видно, какое это место
     let html = '', group = null;
     svc.options.forEach((o, i) => {
       if (o.group && o.group !== group) {
-        if (group) html += '</optgroup>';
-        html += '<optgroup label="' + o.group + '">';
+        html += '<span class="pick__group">' + o.group + '</span>';
         group = o.group;
       }
-      html += '<option value="' + i + '">' + o.label + '</option>';
+      const [name, meta] = split(o.label);
+      html += '<button type="button" class="pick__opt" role="option" data-i="' + i + '"'
+           +  ' aria-selected="' + (i === index) + '">'
+           +  '<img class="pick__opt-shot" src="assets/img/' + o.shot + '.webp" alt="" loading="lazy" decoding="async">'
+           +  '<span class="pick__opt-name">' + name + '</span>'
+           +  (meta ? '<span class="pick__opt-meta">' + meta + '</span>' : '')
+           +  '</button>';
     });
-    if (group) html += '</optgroup>';
-    select.innerHTML = html;
+    pickMenu.innerHTML = html;
     qtyLabel.textContent = svc.qtyLabel;
+  }
+
+  function syncPick(o) {
+    const [name, meta] = split(o.label);
+    pickShot.src = 'assets/img/' + o.shot + '.webp';
+    pickName.textContent = name;
+    pickMeta.textContent = meta;
+    pickMenu.querySelectorAll('.pick__opt').forEach(b => {
+      b.setAttribute('aria-selected', String(+b.dataset.i === index));
+    });
+  }
+
+  function openMenu(open) {
+    pickMenu.hidden = !open;
+    pick.classList.toggle('is-open', open);
+    pickBtn.setAttribute('aria-expanded', String(open));
+    if (open) {
+      const sel = pickMenu.querySelector('[aria-selected="true"]');
+      if (sel) sel.focus({ preventScroll: true });
+    }
   }
 
   function showScheme(o) {
@@ -744,12 +779,13 @@ document.querySelectorAll('form.form').forEach(initLeadForm);
 
   function render() {
     const svc = SERVICES[current];
-    const o = svc.options[select.selectedIndex] || svc.options[0];
+    const o = svc.options[index] || svc.options[0];
     const m = clamp(monthsIn, 1, 24);
     const q = clamp(qtyIn, 1, 200);
     const { total, lines } = svc.calc(o, m, q);
 
     showScheme(o);
+    syncPick(o);
     capEl.innerHTML = svc.cap(o);
     totalEl.textContent = fmt(total);
     periodEl.textContent = 'за ' + m + ' ' + months(m) + ' размещения';
@@ -770,12 +806,41 @@ document.querySelectorAll('form.form').forEach(initLeadForm);
         t.setAttribute('aria-selected', on ? 'true' : 'false');
       });
       current = tab.dataset.svc;
+      index = 0;
       fillOptions();
       render();
     });
   });
 
-  select.addEventListener('change', render);
+  pickBtn.addEventListener('click', () => openMenu(pickMenu.hidden));
+
+  pickMenu.addEventListener('click', e => {
+    const opt = e.target.closest('.pick__opt');
+    if (!opt) return;
+    index = +opt.dataset.i;
+    openMenu(false);
+    pickBtn.focus({ preventScroll: true });
+    render();
+  });
+
+  // стрелками переходим по пунктам, Esc закрывает
+  pick.addEventListener('keydown', e => {
+    const opts = [...pickMenu.querySelectorAll('.pick__opt')];
+    if (e.key === 'Escape' && !pickMenu.hidden) {
+      openMenu(false); pickBtn.focus({ preventScroll: true }); return;
+    }
+    if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+      e.preventDefault();
+      if (pickMenu.hidden) { openMenu(true); return; }
+      const at = opts.indexOf(document.activeElement);
+      const to = e.key === 'ArrowDown' ? Math.min(at + 1, opts.length - 1) : Math.max(at - 1, 0);
+      if (opts[to]) opts[to].focus({ preventScroll: true });
+    }
+  });
+
+  document.addEventListener('click', e => {
+    if (!pickMenu.hidden && !pick.contains(e.target)) openMenu(false);
+  });
   [monthsIn, qtyIn].forEach(el => {
     el.addEventListener('input', render);
     el.addEventListener('blur', () => {
