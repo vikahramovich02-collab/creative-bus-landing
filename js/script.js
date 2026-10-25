@@ -712,7 +712,9 @@ document.querySelectorAll('form.form').forEach(initLeadForm);
   const zones    = root.querySelectorAll('.scheme__zone');
   const cta      = root.querySelector('#calc-cta');
 
-  let current = 'bort';
+  // формат можно задать ссылкой: pricing.html?f=sticker#calc
+  const asked = new URLSearchParams(location.search).get('f');
+  let current = Object.prototype.hasOwnProperty.call(SERVICES, asked) ? asked : 'bort';
 
   const clamp = (el, min, max) => {
     let v = parseInt(el.value, 10);
@@ -782,6 +784,13 @@ document.querySelectorAll('form.form').forEach(initLeadForm);
       el.value = clamp(el, 1, el === monthsIn ? 24 : 200);
       render();
     });
+  });
+
+  // подсветить вкладку, выбранную через ссылку
+  tabs.forEach(t => {
+    const on = t.dataset.svc === current;
+    t.classList.toggle('is-active', on);
+    t.setAttribute('aria-selected', on ? 'true' : 'false');
   });
 
   fillOptions();
