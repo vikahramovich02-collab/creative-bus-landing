@@ -543,8 +543,8 @@ document.querySelectorAll('form.form').forEach(initLeadForm);
   modal.className = 'modal';
   modal.innerHTML =
     '<div class="modal__card">' +
-    '<button class="modal__close" type="button" aria-label="Закрыть">✕</button>' +
-    '<h3 class="modal__title">Оставить заявку</h3>' +
+    '<button class="req__close" type="button" aria-label="Закрыть">✕</button>' +
+    '<h3 class="req__title">Оставить заявку</h3>' +
     '<p class="modal__sub">Менеджер свяжется в течение часа</p>' +
     '<form class="form form--modal" novalidate>' + FORM_HTML + '</form>' +
     '</div>';
@@ -554,7 +554,7 @@ document.querySelectorAll('form.form').forEach(initLeadForm);
   const open = () => { modal.classList.add('is-open'); document.body.style.overflow = 'hidden'; };
   const close = () => { modal.classList.remove('is-open'); document.body.style.overflow = ''; };
 
-  modal.querySelector('.modal__close').addEventListener('click', close);
+  modal.querySelector('.req__close').addEventListener('click', close);
   modal.addEventListener('click', (e) => { if (e.target === modal) close(); });
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && modal.classList.contains('is-open')) close(); });
 
@@ -726,6 +726,8 @@ document.querySelectorAll('form.form').forEach(initLeadForm);
   };
 
   let index = 0;                   // выбранный вариант внутри формата
+  let chosen = null;               // что уйдёт в заявку
+  const modal = document.getElementById('calc-req');
 
   const split = label => {
     const i = label.indexOf(' — ');
@@ -790,10 +792,26 @@ document.querySelectorAll('form.form').forEach(initLeadForm);
     periodEl.textContent = 'за ' + m + ' ' + months(m) + ' размещения';
     linesEl.innerHTML = lines.map(([n, v]) => '<li><span>' + n + '</span><b>' + fmt(v) + '</b></li>').join('');
 
+    const unit = current === 'listovki' ? 'шт.' : 'ед. транспорта';
     const text = svc.name + ' — ' + o.label + '. Срок: ' + m + ' ' + months(m)
       + ', количество: ' + q + '. Ориентировочно ' + fmt(total) + '.';
     try { sessionStorage.setItem('cb-calc', text); } catch (e) {}
     cta.setAttribute('aria-label', 'Отправить расчёт: ' + fmt(total));
+
+    // то же самое — в плашку попапа заявки
+    chosen = {
+      shot: o.shot,
+      name: svc.name + ' · ' + o.label,
+      terms: m + ' ' + months(m) + ', ' + q + ' ' + unit,
+      sum: fmt(total),
+      text: text,
+    };
+    if (modal) {
+      modal.querySelector('.req__pick-shot').src = 'assets/img/' + chosen.shot + '.webp';
+      modal.querySelector('#req-pick-name').textContent = chosen.name;
+      modal.querySelector('#req-pick-terms').textContent = chosen.terms;
+      modal.querySelector('#req-pick-sum').textContent = chosen.sum;
+    }
   }
 
   tabs.forEach(tab => {
@@ -860,6 +878,47 @@ document.querySelectorAll('form.form').forEach(initLeadForm);
     t.classList.toggle('is-active', on);
     t.setAttribute('aria-selected', on ? 'true' : 'false');
   });
+
+  // «Отправить расчёт» открывает попап с формой
+  if (modal) {
+    const form = modal.querySelector('#calc-form');
+    const comment = form.elements.comment;
+    let lastFocus = null;
+
+    const closeModal = () => {
+      modal.hidden = true;
+      document.body.style.overflow = '';
+      if (lastFocus) lastFocus.focus({ preventScroll: true });
+    };
+
+    cta.addEventListener('click', () => {
+      lastFocus = cta;
+      modal.hidden = false;
+      document.body.style.overflow = 'hidden';
+      // расчёт кладём в сообщение — он уйдёт вместе с заявкой
+      if (chosen && !comment.value.trim()) comment.value = chosen.text;
+      const first = form.elements.name;
+      if (first) first.focus({ preventScroll: true });
+    });
+
+    modal.addEventListener('click', e => {
+      if (e.target.closest('[data-req-close]')) closeModal();
+    });
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && !modal.hidden) closeModal();
+    });
+
+    // фокус не выходит за пределы попапа, пока он открыт
+    modal.addEventListener('keydown', e => {
+      if (e.key !== 'Tab') return;
+      const can = [...modal.querySelectorAll('a[href], button, input, textarea, select')]
+        .filter(el => !el.disabled && el.offsetParent !== null);
+      if (!can.length) return;
+      const first = can[0], last = can[can.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    });
+  }
 
   // строка прайса открывает расчёт этого же варианта
   document.querySelectorAll('.price-row[data-svc]').forEach(row => {

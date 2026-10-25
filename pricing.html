@@ -39,7 +39,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=142">
+  <link rel="stylesheet" href="css/styles.css?v=143">
 </head>
 <body>
 
@@ -229,9 +229,9 @@
             <output class="calc__total" id="calc-total">—</output>
             <span class="calc__total-note" id="calc-period"></span>
             <ul class="calc__lines" id="calc-lines"></ul>
-            <a href="contacts.html" class="btn btn--dark calc__cta" id="calc-cta">Отправить расчёт
+            <button type="button" class="btn btn--dark calc__cta" id="calc-cta">Отправить расчёт
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m0 0l-6-6m6 6l-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </a>
+            </button>
             <p class="calc__disclaimer">Расчёт справочный и не является публичной офертой.</p>
           </aside>
         </div>
@@ -330,6 +330,53 @@
   </section>
 </main>
 
+
+<!-- ===== Заявка по расчёту ===== -->
+<div class="req" id="calc-req" hidden>
+  <div class="req__overlay" data-req-close></div>
+  <div class="req__box" role="dialog" aria-modal="true" aria-labelledby="calc-req-title">
+    <button type="button" class="req__close" data-req-close aria-label="Закрыть">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+
+    <h2 class="req__title" id="calc-req-title">Оставьте заявку</h2>
+    <p class="req__lead">Перезвоним, уточним макет и маршруты и посчитаем точную смету.</p>
+
+    <div class="req__pick">
+      <img class="req__pick-shot" src="assets/img/fmt-side-bort.webp" alt="" width="680" height="208" decoding="async">
+      <div class="req__pick-text">
+        <span class="req__pick-name" id="req-pick-name"></span>
+        <span class="req__pick-terms" id="req-pick-terms"></span>
+      </div>
+      <span class="req__pick-sum" id="req-pick-sum"></span>
+    </div>
+
+    <form class="form form--bare" id="calc-form" novalidate>
+      <div class="form__field">
+        <label class="form__label" for="m-name">Имя</label>
+        <input class="form__input" id="m-name" name="name" type="text" placeholder="Ваше имя" required autocomplete="name">
+      </div>
+      <div class="form__field">
+        <label class="form__label" for="m-phone">Телефон</label>
+        <input class="form__input" id="m-phone" name="phone" type="tel" placeholder="+7 (9XX) XXX XX XX" required autocomplete="tel" inputmode="tel">
+      </div>
+      <div class="form__field">
+        <label class="form__label" for="m-comment">Сообщение</label>
+        <textarea class="form__input form__input--area" id="m-comment" name="comment" placeholder="Что хотите разместить" rows="2"></textarea>
+      </div>
+      <input class="form__trap" name="website" type="text" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <label class="form__check">
+        <input type="checkbox" name="consent" required>
+        <span>Я даю <a href="consent.html" target="_blank" rel="noopener">согласие на обработку персональных данных</a> и принимаю <a href="privacy.html" target="_blank" rel="noopener">политику конфиденциальности</a></span>
+      </label>
+      <button class="btn btn--dark form__submit" type="submit">
+        Отправить заявку
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m0 0l-6-6m6 6l-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </form>
+  </div>
+</div>
+
 <footer class="footer">
   <div class="container">
     <div class="footer__top">
@@ -372,6 +419,6 @@
   </div>
 </footer>
 
-<script src="js/script.js?v=142" defer></script>
+<script src="js/script.js?v=143" defer></script>
 </body>
 </html>
