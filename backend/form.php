@@ -33,6 +33,7 @@ $name    = mb_substr(trim($data['name']    ?? ''), 0, 100);
 $phone   = mb_substr(trim($data['phone']   ?? ''), 0, 30);
 $email   = mb_substr(trim($data['email']   ?? ''), 0, 100);
 $comment = mb_substr(trim($data['comment'] ?? ''), 0, 2000);
+$calc    = mb_substr(trim($data['calc']    ?? ''), 0, 500);
 $page    = mb_substr(trim($data['page']    ?? '/'), 0, 200);
 
 if (mb_strlen($name) < 2 || strlen(preg_replace('/\D/', '', $phone)) !== 11) {
@@ -50,6 +51,7 @@ $rows = [
     ['Телефон', '<a href="tel:' . $e($phone) . '">' . $e($phone) . '</a>'],
 ];
 if ($email)   $rows[] = ['Почта', '<a href="mailto:' . $e($email) . '">' . $e($email) . '</a>'];
+if ($calc)    $rows[] = ['Расчёт на сайте', '<b>' . $e($calc) . '</b>'];
 if ($comment) $rows[] = ['Сообщение', nl2br($e($comment))];
 $rows[] = ['Страница', $e($page)];
 $rows[] = ['Время', $when . ' (МСК)'];

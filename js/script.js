@@ -462,6 +462,7 @@ function initLeadForm(form) {
       email: form.elements.email ? form.elements.email.value.trim() : '',
       phone: phone.value,
       comment: form.elements.comment ? form.elements.comment.value.trim() : '',
+      calc: form.elements.calc ? form.elements.calc.value : '',
       website: form.elements.website ? form.elements.website.value : '',
       consent: true,
       consentAt: new Date().toISOString(),
@@ -795,7 +796,6 @@ document.querySelectorAll('form.form').forEach(initLeadForm);
     const unit = current === 'listovki' ? 'шт.' : 'ед. транспорта';
     const text = svc.name + ' — ' + o.label + '. Срок: ' + m + ' ' + months(m)
       + ', количество: ' + q + '. Ориентировочно ' + fmt(total) + '.';
-    try { sessionStorage.setItem('cb-calc', text); } catch (e) {}
     cta.setAttribute('aria-label', 'Отправить расчёт: ' + fmt(total));
 
     // то же самое — в плашку попапа заявки
@@ -882,7 +882,7 @@ document.querySelectorAll('form.form').forEach(initLeadForm);
   // «Отправить расчёт» открывает попап с формой
   if (modal) {
     const form = modal.querySelector('#calc-form');
-    const comment = form.elements.comment;
+    const calcField = form.elements.calc;
     let lastFocus = null;
 
     const closeModal = () => {
@@ -895,8 +895,8 @@ document.querySelectorAll('form.form').forEach(initLeadForm);
       lastFocus = cta;
       modal.hidden = false;
       document.body.style.overflow = 'hidden';
-      // расчёт кладём в сообщение — он уйдёт вместе с заявкой
-      if (chosen && !comment.value.trim()) comment.value = chosen.text;
+      // расчёт уходит скрытым полем — «Сообщение» остаётся человеку
+      if (chosen && calcField) calcField.value = chosen.text;
       const first = form.elements.name;
       if (first) first.focus({ preventScroll: true });
     });
@@ -942,16 +942,6 @@ document.querySelectorAll('form.form').forEach(initLeadForm);
   render();
 })();
 
-// --- Подстановка расчёта в форму заявки ---
-(() => {
-  const field = document.querySelector('#comment, [name="comment"]');
-  if (!field || field.value) return;
-  let text = '';
-  try { text = sessionStorage.getItem('cb-calc') || ''; } catch (e) {}
-  if (!text) return;
-  field.value = text;
-  try { sessionStorage.removeItem('cb-calc'); } catch (e) {}
-})();
 
 // --- Разбивка маршрутов по транспорту: раскрывается по кнопке ---
 (() => {
