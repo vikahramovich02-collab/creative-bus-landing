@@ -576,9 +576,17 @@ document.querySelectorAll('form.form').forEach(initLeadForm);
   document.querySelectorAll('.price-table').forEach((table) => {
     const heads = Array.from(table.querySelectorAll('thead th')).map((th) => th.textContent.trim());
     if (!heads.length) return;
+    // первую колонку может держать ячейка со снимком через rowspan —
+    // тогда в остальных строках группы отсчёт начинается со второй колонки
+    const hasPlace = !!table.querySelector('.price-place');
     table.querySelectorAll('tbody tr').forEach((tr) => {
-      Array.from(tr.children).forEach((td, i) => {
+      if (tr.classList.contains('price-table__group')) return;
+      const own = tr.querySelector('.price-place');
+      let i = hasPlace && !own ? 1 : 0;
+      Array.from(tr.children).forEach((td) => {
+        if (td.classList.contains('price-place')) { i++; return; }
         if (heads[i]) td.setAttribute('data-label', heads[i]);
+        i++;
       });
     });
   });

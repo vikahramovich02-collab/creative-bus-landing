@@ -2163,6 +2163,27 @@ body.menu-open .mobile-menu { opacity: 1; transform: none; pointer-events: auto;
     flex: 0 0 auto;
   }
   .price-table td.price-accent { color: var(--sky); font-weight: 500; }
+
+  /* ячейка со снимком — шапка группы на всю ширину */
+  .price-table .price-place {
+    width: 100%; padding: 4px 0 14px; border-right: 0; text-align: left;
+    display: grid; grid-template-columns: auto minmax(0, 1fr);
+    gap: 2px 14px; align-items: center;
+  }
+  .price-table .price-place .price-shot { grid-row: 1 / span 2; margin: 0; }
+  .price-table .price-place .price-place__name {
+    grid-column: 2; align-self: end; margin-top: 0; font-size: 15px;
+  }
+  .price-table .price-place .price-place__note {
+    grid-column: 2; align-self: start; display: block; margin-top: 0;
+  }
+  .price-table .price-row--group { padding-top: 20px; }
+  /* транспорт — заголовок строки и в первой строке группы тоже */
+  .price-table .price-place + td {
+    display: block; margin: 0 0 10px;
+    font: 500 15px/1.4 'Inter', sans-serif; color: var(--text);
+  }
+  .price-table .price-place + td::before { content: none; }
 }
 
 /* ===== Услуги — текстовое описание формата (SEO + польза читателю) ===== */
