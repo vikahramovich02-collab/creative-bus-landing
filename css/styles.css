@@ -1710,6 +1710,12 @@ mark.legal__fill { background: #FFF3C4; color: var(--text); padding: 0 4px; bord
 .price-place__note {
   display: block; font: 400 12.5px/1.4 'Inter', sans-serif; color: var(--gray); margin-top: 4px;
 }
+/* 3D-рендер формата в таблице */
+.price-table .price-place--shot { background: var(--white); }
+.price-shot {
+  display: block; width: 136px; height: auto; margin: 0 auto 2px;
+  mix-blend-mode: multiply;
+}
 .price-scheme { display: block; height: auto; }
 .price-scheme--side    { width: 150px; aspect-ratio: 452 / 162; }
 .price-scheme--rear    { width: 92px;  aspect-ratio: 232 / 186; }
