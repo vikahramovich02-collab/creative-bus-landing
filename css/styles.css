@@ -1730,7 +1730,7 @@ mark.legal__fill { background: #FFF3C4; color: var(--text); padding: 0 4px; bord
 .price-shot--side    { width: 178px; }
 .price-shot--rear    { width: 118px; }
 .price-shot--seat    { width: 92px; }
-.price-shot--leaflet { width: 150px; }
+.price-shot--leaflet { width: 160px; mix-blend-mode: normal; border-radius: 10px; }
 
 /* ===== Калькулятор стоимости ===== */
 .calc { margin-top: 56px; }
@@ -1992,7 +1992,7 @@ mark.legal__fill { background: #FFF3C4; color: var(--text); padding: 0 4px; bord
   .price-shot--side { width: 124px; }
   .price-shot--rear { width: 76px; }
   .price-shot--seat { width: 60px; }
-  .price-shot--leaflet { width: 100px; }
+  .price-shot--leaflet { width: 116px; }
   .price-place__note { display: none; }
   .price-table .price-place { padding: 14px 12px; }
   .geo__cards { grid-template-columns: 1fr; }

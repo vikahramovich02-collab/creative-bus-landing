@@ -691,8 +691,8 @@ document.querySelectorAll('form.form').forEach(initLeadForm);
       qtyLabel: 'Количество листовок',
       name: 'Листовки в салоне',
       options: [
-        { label: 'Листовка A4', group: 'Панель над окном', place: 200, print: 36, mount: 64, size: 'A4, 210×297', scene: 'leaflet', shot: 'fmt-leaflet' },
-        { label: 'Листовка A3', group: 'Панель над окном', place: 300, print: 64, mount: 86, size: 'A3, 297×420', scene: 'leaflet', shot: 'fmt-leaflet' },
+        { label: 'Листовка A4', group: 'Листовка в салоне', place: 200, print: 36, mount: 64, size: 'A4, 210×297', scene: 'leaflet', shot: 'fmt-leaflet' },
+        { label: 'Листовка A3', group: 'Листовка в салоне', place: 300, print: 64, mount: 86, size: 'A3, 297×420', scene: 'leaflet', shot: 'fmt-leaflet' },
       ],
       calc(o, m, q) {
         const place = o.place * m * q, print = o.print * q, mount = o.mount * q;
@@ -705,7 +705,7 @@ document.querySelectorAll('form.form').forEach(initLeadForm);
           ],
         };
       },
-      cap: o => '<b>Листовка ' + o.size + ' мм</b> — на панели над окном в салоне. Цены указаны за одну листовку.',
+      cap: o => '<b>Листовка ' + o.size + ' мм</b> — на простенке между окнами в салоне. Цены указаны за одну листовку.',
     },
   };
 
