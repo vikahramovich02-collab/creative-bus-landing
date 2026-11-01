@@ -1720,6 +1720,13 @@ mark.legal__fill { background: #FFF3C4; color: var(--text); padding: 0 4px; bord
   display: block; height: auto; margin: 0 auto;
   mix-blend-mode: multiply;      /* белый фон рендера сливается с подложкой */
 }
+.price-hint {
+  display: block; margin-top: 3px;
+  font: 400 12px/1.3 'Inter', sans-serif; color: var(--blue);
+}
+.calc__lines-note span {
+  font: 400 12.5px/1.45 'Inter', sans-serif; color: rgba(255,255,255,.55);
+}
 .price-shot--side    { width: 178px; }
 .price-shot--rear    { width: 118px; }
 .price-shot--seat    { width: 92px; }
