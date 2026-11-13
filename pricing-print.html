@@ -38,11 +38,12 @@
   thead th:nth-child(2){text-align:left;}
   tbody tr.grp > td{border-top:1px solid var(--border);}
   tbody tr.grp:first-child > td{border-top:0;}
-  td.place{width:150px;vertical-align:middle;text-align:left;padding:14px 16px 14px 4px;border-right:1px solid var(--border);}
+  td.place{width:196px;vertical-align:middle;text-align:left;padding:14px 16px 14px 4px;border-right:1px solid var(--border);}
   td.place + td{text-align:left;font-weight:600;color:var(--dark);}
   .place img{display:block;margin:0 auto 6px;mix-blend-mode:multiply;height:auto;}
-  .place .s-side{width:124px;} .place .s-rear{width:74px;}
-  .place .s-seat{width:58px;} .place .s-leaf{width:94px;}
+  .place .s-bus{height:44px;width:auto;} .place .s-side{width:150px;}
+  .place .s-rear{width:128px;} .place .s-rearpart{width:62px;}
+  .place .s-seat{width:62px;} .place .s-leaf{width:120px;}
   .place b{display:block;font:600 12px/1.3 'Inter';color:var(--dark);}
   .place i{display:block;font:400 11px/1.35 'Inter';color:var(--gray);font-style:normal;margin-top:2px;}
   .routes td:last-child{text-align:left;white-space:normal;line-height:1.5;}
@@ -67,13 +68,12 @@
     <table>
       <thead><tr><th>Место на транспорте</th><th>Транспорт</th><th>Аренда / мес</th><th>Площадь оклейки</th></tr></thead>
       <tbody>
-        <tr class="grp"><td class="place" rowspan="1"><img class="s-side" src="assets/img/fmt-side-bort.webp" alt=""><b>Боковой борт</b><i>Низ кузова под окнами</i></td><td>Автобус Мерседес</td><td>8 000 ₽</td><td class="acc">37 м²</td></tr>
-        <tr class="grp"><td class="place" rowspan="1"><img class="s-side" src="assets/img/fmt-side-small.webp" alt=""><b>Боковой борт</b><i>Низ кузова под окнами</i></td><td>Микроавтобус Хундай Каунти</td><td>5 000 ₽</td><td class="acc">16,5 м²</td></tr>
-        <tr class="grp"><td class="place" rowspan="1"><img class="s-side" src="assets/img/fmt-side-strip.webp" alt=""><b>Борт и полоса над окнами</b><i>Низ кузова плюс полоса 20 см над окнами</i></td><td>Автобус Мерседес</td><td>8 000 ₽</td><td class="acc">уточняется</td></tr>
-        <tr class="grp"><td class="place" rowspan="2"><img class="s-side" src="assets/img/fmt-side-full.webp" alt=""><b>Борт, стёкла и полоса</b><i>Вся боковая поверхность целиком</i></td><td>Автобус Мерседес</td><td>8 000 ₽</td><td class="acc">66 м²</td></tr>
-        <tr><td>Микроавтобус Хундай Каунти</td><td>5 000 ₽</td><td class="acc">30 м²</td></tr>
-        <tr class="grp"><td class="place" rowspan="1"><img class="s-side" src="assets/img/fmt-side-glass.webp" alt=""><b>Только стёкла</b><i>На КАВЗ плёнка клеится лишь на стёкла</i></td><td>Автобус КАВЗ</td><td>8 000 ₽</td><td class="acc">12 м²</td></tr>
-        <tr class="grp"><td class="place" rowspan="3"><img class="s-rear" src="assets/img/fmt-rear-full.webp" alt=""><b>Задняя часть</b><i>Задняя стенка целиком</i></td><td>Хундай Каунти, 2250×2250 мм</td><td>3 600 ₽</td><td class="acc">5 м²</td></tr>
+        <tr class="grp"><td class="place" rowspan="1"><img class="s-bus" src="assets/img/fmt-side-bort.webp" alt=""><b>Борт и полоса над окнами</b><i>Низ кузова и полоса над окнами, стёкла чистые</i></td><td>Автобус Мерседес</td><td>8 000 ₽</td><td class="acc">37 м²</td></tr>
+        <tr class="grp"><td class="place" rowspan="1"><img class="s-bus" src="assets/img/fmt-side-small.webp" alt=""><b>Борт и полоса над окнами</b><i>Низ кузова и полоса над окнами, стёкла чистые</i></td><td>Микроавтобус Хундай Каунти</td><td>5 000 ₽</td><td class="acc">16,5 м²</td></tr>
+        <tr class="grp"><td class="place" rowspan="1"><img class="s-bus" src="assets/img/fmt-side-full.webp" alt=""><b>Борт, стёкла и полоса</b><i>Вся боковая поверхность целиком</i></td><td>Автобус Мерседес</td><td>8 000 ₽</td><td class="acc">66 м²</td></tr>
+        <tr class="grp"><td class="place" rowspan="1"><img class="s-bus" src="assets/img/fmt-side-full-county.webp" alt=""><b>Борт, стёкла и полоса</b><i>Вся боковая поверхность целиком</i></td><td>Микроавтобус Хундай Каунти</td><td>5 000 ₽</td><td class="acc">30 м²</td></tr>
+        <tr class="grp"><td class="place" rowspan="1"><img class="s-bus" src="assets/img/fmt-side-glass.webp" alt=""><b>Только стёкла</b><i>На КАВЗ плёнка клеится только на стёкла</i></td><td>Автобус КАВЗ</td><td>8 000 ₽</td><td class="acc">12 м²</td></tr>
+        <tr class="grp"><td class="place" rowspan="3"><img class="s-rearpart" src="assets/img/fmt-rear-full.webp" alt=""><b>Задняя часть</b><i>Задняя стенка целиком</i></td><td>Хундай Каунти, 2250×2250 мм</td><td>3 600 ₽</td><td class="acc">5 м²</td></tr>
         <tr><td>Мерседес, 3000×2500 мм</td><td>3 600 ₽</td><td class="acc">6,5 м²</td></tr>
         <tr><td>ПАЗ, 2540×2370 мм</td><td>3 600 ₽</td><td class="acc">6 м²</td></tr>
       </tbody>
@@ -85,16 +85,16 @@
     <table>
       <thead><tr><th>Место на транспорте</th><th>Транспорт</th><th>Размер, мм</th><th>Размещение / мес</th><th>Печать + монтаж</th></tr></thead>
       <tbody>
-        <tr class="grp"><td class="place" rowspan="1"><img class="s-rear" src="assets/img/fmt-rear-universal.webp" alt=""><b>Универсальный размер</b><i>Подходит на заднее стекло любой модели, закрывает его частично</i></td><td>Любая модель</td><td>1300×530</td><td>1 800 ₽</td><td class="acc">1 800 ₽</td></tr>
-        <tr class="grp"><td class="place" rowspan="5"><img class="s-rear" src="assets/img/fmt-rear-window.webp" alt=""><b>Заднее окно целиком</b><i>Макет во всё стекло, размер под модель</i></td><td>Хундай</td><td>1600×530</td><td>1 800 ₽</td><td class="acc">2 300 ₽</td></tr>
+        <tr class="grp"><td class="place" rowspan="6"><img class="s-rear" src="assets/img/fmt-rear-window.webp" alt=""><b>Заднее окно</b><i>Макет во всё стекло. Универсальный размер 1300×530 закрывает часть стекла</i></td><td>Любая модель, универсальный размер</td><td>1300×530</td><td>1 800 ₽</td><td class="acc">1 800 ₽</td></tr>
+        <tr><td>Хундай</td><td>1600×530</td><td>1 800 ₽</td><td class="acc">2 300 ₽</td></tr>
         <tr><td>Мерседес</td><td>2130×890</td><td>1 800 ₽</td><td class="acc">5 100 ₽</td></tr>
         <tr><td>ПАЗ</td><td>1810×900</td><td>1 800 ₽</td><td class="acc">4 400 ₽</td></tr>
         <tr><td>КАВЗ</td><td>1590×600</td><td>1 800 ₽</td><td class="acc">2 610 ₽</td></tr>
         <tr><td>СИМАЗ</td><td>1900×1080</td><td>1 800 ₽</td><td class="acc">5 500 ₽</td></tr>
         <tr class="grp"><td class="place" rowspan="1"><img class="s-rear" src="assets/img/fmt-rear-under.webp" alt=""><b>Под задним окном</b><i>Крупный блок почти во всю заднюю часть</i></td><td>Любая модель</td><td>1300×530</td><td>1 300 ₽</td><td class="acc">1 800 ₽</td></tr>
-        <tr class="grp"><td class="place" rowspan="3"><img class="s-side" src="assets/img/fmt-side-window.webp" alt=""><b>Окно правого борта</b><i>Сторона тротуара и остановки</i></td><td>Хундай</td><td>1300×530</td><td>1 000 ₽</td><td class="acc">1 800 ₽</td></tr>
+        <tr class="grp"><td class="place" rowspan="2"><img class="s-side" src="assets/img/fmt-side-window.webp" alt=""><b>Окно правого борта</b><i>Сторона тротуара и остановки</i></td><td>Хундай</td><td>1300×530</td><td>1 000 ₽</td><td class="acc">1 800 ₽</td></tr>
         <tr><td>ПАЗ</td><td>1100×500</td><td>1 000 ₽</td><td class="acc">1 500 ₽</td></tr>
-        <tr><td>КАВЗ, увеличенное</td><td>1500×1350</td><td>2 700 ₽</td><td class="acc">5 500 ₽</td></tr>
+        <tr class="grp"><td class="place" rowspan="1"><img class="s-side" src="assets/img/fmt-side-window-kavz.webp" alt=""><b>Окно правого борта, увеличенное</b><i>Только на КАВЗ — наклейка во всё окно</i></td><td>КАВЗ</td><td>1500×1350</td><td>2 700 ₽</td><td class="acc">5 500 ₽</td></tr>
       </tbody>
     </table>
   </div>
