@@ -1732,7 +1732,7 @@ mark.legal__fill { background: #FFF3C4; color: var(--text); padding: 0 4px; bord
 .price-shot--rear     { width: 190px; }
 .price-shot--rearpart { width: 100px; }
 .price-shot--seat     { width: 100px; }
-.price-shot--leaflet  { width: 190px; mix-blend-mode: normal; border-radius: 10px; }
+.price-shot--leaflet  { width: 190px; }
 
 /* ===== Калькулятор стоимости ===== */
 .calc { margin-top: 56px; }
