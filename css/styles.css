@@ -1775,7 +1775,7 @@ mark.legal__fill { background: #FFF3C4; color: var(--text); padding: 0 4px; bord
 .pick__btn:hover { border-color: var(--blue); }
 .pick.is-open .pick__btn { border-color: var(--blue); }
 .pick__shot {
-  width: 92px; height: 44px; object-fit: contain; flex-shrink: 0;
+  width: 92px; height: 56px; object-fit: contain; flex-shrink: 0;
   mix-blend-mode: multiply;
 }
 .pick__text { display: flex; flex-direction: column; gap: 2px; min-width: 0; flex: 1; }
@@ -1789,7 +1789,7 @@ mark.legal__fill { background: #FFF3C4; color: var(--text); padding: 0 4px; bord
 
 .pick__menu {
   position: absolute; z-index: 20; top: calc(100% + 8px); left: 0; right: 0;
-  max-height: 340px; overflow-y: auto;
+  max-height: 380px; overflow-y: auto;
   background: var(--white); border: 1px solid var(--border);
   border-radius: 16px; padding: 8px;
   box-shadow: 0 18px 40px rgba(24,34,56,.14);
@@ -1813,7 +1813,7 @@ mark.legal__fill { background: #FFF3C4; color: var(--text); padding: 0 4px; bord
 .pick__opt[aria-selected="true"] { background: var(--light); }
 .pick__opt[aria-selected="true"] .pick__opt-name { color: var(--dark); font-weight: 600; }
 .pick__opt-shot {
-  width: 54px; height: 38px; object-fit: contain; flex-shrink: 0;
+  width: 60px; height: 46px; object-fit: contain; flex-shrink: 0;
   mix-blend-mode: multiply;
 }
 .pick__opt-name {
@@ -1878,8 +1878,8 @@ mark.legal__fill { background: #FFF3C4; color: var(--text); padding: 0 4px; bord
   .calc__main { padding: 20px 18px 24px; }
   .calc__row { grid-template-columns: 1fr; gap: 16px; }
   .calc__tab { padding: 9px 14px; font-size: 13px; }
-  .pick__shot { width: 52px; height: 36px; }
-  .pick__opt-shot { width: 46px; height: 32px; }
+  .pick__shot { width: 60px; height: 44px; }
+  .pick__opt-shot { width: 50px; height: 38px; }
   .pick__menu { max-height: 300px; }
   .scheme { padding: 14px 10px 12px; }
   .scheme__shot { max-height: 120px; }
@@ -1955,8 +1955,8 @@ mark.legal__fill { background: #FFF3C4; color: var(--text); padding: 0 4px; bord
   .calc__main { padding: 20px 18px 24px; }
   .calc__row { grid-template-columns: 1fr; gap: 16px; }
   .calc__tab { padding: 9px 14px; font-size: 13px; }
-  .pick__shot { width: 52px; height: 36px; }
-  .pick__opt-shot { width: 46px; height: 32px; }
+  .pick__shot { width: 60px; height: 44px; }
+  .pick__opt-shot { width: 50px; height: 38px; }
   .pick__menu { max-height: 300px; }
   .scheme { padding: 14px 10px 12px; }
   .scheme__shot { max-height: 120px; }
@@ -2038,7 +2038,7 @@ mark.legal__fill { background: #FFF3C4; color: var(--text); padding: 0 4px; bord
   background: var(--light); border-radius: 16px; padding: 12px 16px 12px 12px;
   margin-bottom: 22px;
 }
-.req__pick-shot { width: 92px; height: 46px; object-fit: contain; flex-shrink: 0; mix-blend-mode: multiply; }
+.req__pick-shot { width: 92px; height: 56px; object-fit: contain; flex-shrink: 0; mix-blend-mode: multiply; }
 .req__pick-text { display: flex; flex-direction: column; gap: 3px; min-width: 0; flex: 1; }
 .req__pick-name { font: 600 14px/1.3 'Inter', sans-serif; color: var(--dark); }
 .req__pick-terms { font: 400 12.5px/1.3 'Inter', sans-serif; color: var(--gray); }
@@ -2053,7 +2053,7 @@ mark.legal__fill { background: #FFF3C4; color: var(--text); padding: 0 4px; bord
   .req__box { padding: 26px 20px 22px; border-radius: 20px; max-height: calc(100vh - 24px); }
   .req__title { font-size: 23px; }
   .req__pick { gap: 10px; padding: 10px 12px; }
-  .req__pick-shot { width: 52px; height: 36px; }
+  .req__pick-shot { width: 60px; height: 44px; }
   .req__pick-sum { font-size: 15px; }
 }
 
