@@ -6,7 +6,7 @@
 //   1. положить backend/form.php в корень сайта
 //   2. в form.php указать свой ящик в $MAIL_TO и $MAIL_FROM
 //   3. сюда написать: const FORM_ENDPOINT = '/backend/form.php';
-const FORM_ENDPOINT = '';
+const FORM_ENDPOINT = '/backend/form.php';
 
 // ===== Creative Bus — лендинг =====
 

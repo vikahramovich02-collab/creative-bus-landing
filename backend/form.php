@@ -9,9 +9,9 @@
 
 // ── настройки ───────────────────────────────────────────────
 $MAIL_TO     = 'ra-taganrog@mail.ru';     // куда слать заявки
-$MAIL_FROM   = 'site@agvtrans.ru';        // ящик на вашем домене (создаётся в панели хостинга)
+$MAIL_FROM   = 'site@creativebus.ru';     // ящик на домене сайта (создаётся в панели хостинга)
 $SITE_NAME   = 'Creative Bus';
-$ALLOW_ORIGIN = '*';                      // после переезда укажите 'https://agvtrans.ru'
+$ALLOW_ORIGIN = '*';                      // форма ходит со своего же домена, CORS тут ничего не защищает
 // ────────────────────────────────────────────────────────────
 
 header('Access-Control-Allow-Origin: ' . $ALLOW_ORIGIN);
