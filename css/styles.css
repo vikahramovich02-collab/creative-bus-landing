@@ -1749,7 +1749,8 @@ mark.legal__fill { background: #FFF3C4; color: var(--text); padding: 0 4px; bord
 }
 .calc__controls { display: flex; flex-direction: column; gap: 18px; }
 .calc__field { display: flex; flex-direction: column; gap: 10px; }
-.calc__row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.calc__row { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 18px; }
+.calc__field[hidden] { display: none; }
 .calc__label {
   font: 600 11px/1.2 'Inter', sans-serif; color: var(--gray);
   text-transform: uppercase; letter-spacing: .06em;

@@ -687,21 +687,25 @@ document.querySelectorAll('form.form').forEach(initLeadForm);
         + (o.seats === 20 ? ', размещаем только на 31-м маршруте' : '') + '. Пассажир видит макет всю поездку.',
     },
     listovki: {
-      qtyLabel: 'Количество листовок',
+      qtyLabel: 'Листовок в салоне',
+      unitsLabel: 'Единиц транспорта',
       name: 'Листовки в салоне',
       options: [
         { label: 'Листовка A4', group: 'Листовка в салоне', place: 200, print: 36, mount: 64, size: 'A4, 210×297', scene: 'leaflet', shot: 'fmt-leaflet' },
         { label: 'Листовка A3', group: 'Листовка в салоне', place: 300, print: 64, mount: 86, size: 'A3, 297×420', scene: 'leaflet', shot: 'fmt-leaflet' },
       ],
-      calc(o, m, q) {
-        const place = o.place * m * q, print = o.print * q, mount = o.mount * q;
+      calc(o, m, q, u) {
+        const n = q * u;                     // всего листовок: в салоне × машин
+        const place = o.place * m * n, print = o.print * n, mount = o.mount * n;
+        const each = n > 1 ? ' × ' + n + ' шт.' : '';
         return {
           total: place + print + mount,
           lines: [
-            ['Размещение, ' + m + ' ' + months(m) + (q > 1 ? ' × ' + q + ' шт.' : ''), place],
-            ['Печать' + (q > 1 ? ' × ' + q + ' шт.' : ''), print],
-            ['Монтаж и демонтаж' + (q > 1 ? ' × ' + q + ' шт.' : ''), mount],
+            ['Размещение, ' + m + ' ' + months(m) + each, place],
+            ['Печать' + each, print],
+            ['Монтаж и демонтаж' + each, mount],
           ],
+          extra: u > 1 ? q + ' ' + (q === 1 ? 'листовка' : 'листовок') + ' в салоне × ' + u + ' ед. транспорта = ' + n + ' шт.' : '',
         };
       },
       cap: o => '<b>Листовка ' + o.size + ' мм</b> — на борту над окнами в салоне. Цены указаны за одну листовку.',
@@ -718,6 +722,8 @@ document.querySelectorAll('form.form').forEach(initLeadForm);
   const monthsIn = root.querySelector('#calc-months');
   const qtyIn    = root.querySelector('#calc-qty');
   const qtyLabel = root.querySelector('[data-qty-label]');
+  const unitsIn    = root.querySelector('#calc-units');
+  const unitsField = root.querySelector('[data-units-field]');
   const totalEl  = root.querySelector('#calc-total');
   const periodEl = root.querySelector('#calc-period');
   const linesEl  = root.querySelector('#calc-lines');
@@ -762,6 +768,7 @@ document.querySelectorAll('form.form').forEach(initLeadForm);
     });
     pickMenu.innerHTML = html;
     qtyLabel.textContent = svc.qtyLabel;
+    if (unitsField) unitsField.hidden = !svc.unitsLabel;
   }
 
   function syncPick(o) {
@@ -793,7 +800,8 @@ document.querySelectorAll('form.form').forEach(initLeadForm);
     const o = svc.options[index] || svc.options[0];
     const m = clamp(monthsIn, 1, 24);
     const q = clamp(qtyIn, 1, 200);
-    const { total, lines, extra } = svc.calc(o, m, q);
+    const u = svc.unitsLabel ? clamp(unitsIn, 1, 200) : 1;
+    const { total, lines, extra } = svc.calc(o, m, q, u);
 
     showScheme(o);
     syncPick(o);
@@ -803,16 +811,17 @@ document.querySelectorAll('form.form').forEach(initLeadForm);
     linesEl.innerHTML = lines.map(([n, v]) => '<li><span>' + n + '</span><b>' + fmt(v) + '</b></li>').join('')
       + (extra ? '<li class="calc__lines-note"><span>' + extra + '</span></li>' : '');
 
-    const unit = current === 'listovki' ? 'шт.' : 'ед. транспорта';
+    const unit = current === 'listovki' ? 'шт. в салоне' : 'ед. транспорта';
+    const units = svc.unitsLabel ? ', ' + u + ' ед. транспорта' : '';
     const text = svc.name + ' — ' + o.label + '. Срок: ' + m + ' ' + months(m)
-      + ', количество: ' + q + '. Ориентировочно ' + fmt(total) + '.';
+      + ', количество: ' + q + ' ' + unit + units + '. Ориентировочно ' + fmt(total) + '.';
     cta.setAttribute('aria-label', 'Отправить расчёт: ' + fmt(total));
 
     // то же самое — в плашку попапа заявки
     chosen = {
       shot: o.shot,
       name: svc.name + ' · ' + o.label,
-      terms: m + ' ' + months(m) + ', ' + q + ' ' + unit,
+      terms: m + ' ' + months(m) + ', ' + q + ' ' + unit + units,
       sum: fmt(total),
       text: text,
     };
@@ -874,7 +883,7 @@ document.querySelectorAll('form.form').forEach(initLeadForm);
   document.addEventListener('click', e => {
     if (!pickMenu.hidden && !pick.contains(e.target)) openMenu(false);
   });
-  [monthsIn, qtyIn].forEach(el => {
+  [monthsIn, qtyIn, unitsIn].filter(Boolean).forEach(el => {
     el.addEventListener('input', render);
     el.addEventListener('blur', () => {
       el.value = clamp(el, 1, el === monthsIn ? 24 : 200);
