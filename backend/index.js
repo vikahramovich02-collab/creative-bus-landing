@@ -9,7 +9,7 @@
  *   SMTP_USER  — ra-taganrog@mail.ru
  *   SMTP_PASS  — пароль внешнего приложения (НЕ пароль от почты)
  *   MAIL_TO    — куда слать заявки (можно несколько через запятую)
- *   ALLOW_ORIGIN — https://vikahramovich02-collab.github.io
+ *   ALLOW_ORIGIN — https://creativebus.ru
  */
 const nodemailer = require('nodemailer');
 
