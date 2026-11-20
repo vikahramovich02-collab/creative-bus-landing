@@ -353,8 +353,8 @@ img.header__logo-dark { display: none; }
   position: relative;
 }
 .hero__caption {
-  font: 500 16px/1.2 'Inter', sans-serif;
-  max-width: 378px;
+  font: 500 16px/1.35 'Inter', sans-serif;
+  max-width: 470px;
   text-shadow: 0 1px 16px rgba(0, 0, 0, .45);
 }
 .hero__scroll {
