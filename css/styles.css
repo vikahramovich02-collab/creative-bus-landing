@@ -169,7 +169,11 @@ img { display: block; max-width: 100%; }
 .hero__bg.is-active { opacity: 1; }
 .hero__overlay {
   position: absolute; inset: 0;
-  background: linear-gradient(180deg, rgba(0,0,0,.66) 0%, rgba(0,0,0,.5) 45%, rgba(0,0,0,.72) 100%);
+  /* два слоя: горизонтальный гасит светлые кадры салона под текстом слева,
+     вертикальный держит читаемость шапки сверху и подписи снизу */
+  background:
+    linear-gradient(100deg, rgba(0,0,0,.46) 0%, rgba(0,0,0,.3) 50%, rgba(0,0,0,.06) 88%),
+    linear-gradient(180deg, rgba(0,0,0,.68) 0%, rgba(0,0,0,.56) 45%, rgba(0,0,0,.74) 100%);
   z-index: -1;
 }
 
@@ -293,6 +297,7 @@ img.header__logo-dark { display: none; }
   margin-bottom: 10px;
 }
 .hero__format {
+  text-shadow: 0 1px 16px rgba(0, 0, 0, .45);
   display: inline-flex;
   align-self: flex-start;
   align-items: center;
@@ -318,6 +323,8 @@ img.header__logo-dark { display: none; }
   letter-spacing: -0.02em;
   max-width: 1253px;
   margin-bottom: 56px;
+  /* страховка на самых светлых кадрах: мягкая тень, не ореол */
+  text-shadow: 0 2px 28px rgba(0, 0, 0, .38);
 }
 .hero__cta {
   display: inline-flex;
@@ -348,6 +355,7 @@ img.header__logo-dark { display: none; }
 .hero__caption {
   font: 500 16px/1.2 'Inter', sans-serif;
   max-width: 378px;
+  text-shadow: 0 1px 16px rgba(0, 0, 0, .45);
 }
 .hero__scroll {
   position: absolute;
@@ -2006,6 +2014,12 @@ mark.legal__fill { background: #FFF3C4; color: var(--text); padding: 0 4px; bord
   .price-table--routes { min-width: 440px; }
   .price-table--routes td:first-child { width: 130px; }
 }
+
+/* ===== Калькулятор на главной ===== */
+.calc-section .calc { margin-top: 14px; }
+.calc-section .calc__lead a { color: var(--blue); text-decoration: none; border-bottom: 1px solid rgba(16,145,235,.35); }
+.calc-section .calc__lead a:hover { border-bottom-color: var(--blue); }
+.calc-section__foot { margin-top: 30px; }
 
 /* ===== Попап заявки по расчёту ===== */
 .req { position: fixed; inset: 0; z-index: 300; display: flex; align-items: center; justify-content: center; padding: 24px; }

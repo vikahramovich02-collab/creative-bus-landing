@@ -40,7 +40,60 @@
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="preload" as="image" href="assets/img/svc-listovki-wide.webp" fetchpriority="high">
-  <link rel="stylesheet" href="css/styles.css?v=151">
+  <link rel="stylesheet" href="css/styles.css?v=153">
+
+  <!-- структурированные данные: хлебные крошки и услуга -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Главная",
+        "item": "https://creativebus.ru/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Услуги",
+        "item": "https://creativebus.ru/services.html"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Листовки в салоне"
+      }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Листовки в салоне",
+    "description": "Листовки формата A4 и A3 на борту над окнами в салоне маршрутки. Работают на пассажиров всю поездку.",
+    "serviceType": "Реклама на общественном транспорте",
+    "url": "https://creativebus.ru/service-listovki.html",
+    "provider": {
+      "@type": "LocalBusiness",
+      "@id": "https://creativebus.ru/#business",
+      "name": "Creative Bus"
+    },
+    "areaServed": [
+      {
+        "@type": "City",
+        "name": "Таганрог"
+      },
+      {
+        "@type": "AdministrativeArea",
+        "name": "Ростовская область"
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
 
@@ -170,6 +223,6 @@
   </div>
 </footer>
 
-<script src="js/script.js?v=151" defer></script>
+<script src="js/script.js?v=153" defer></script>
 </body>
 </html>
