@@ -209,11 +209,9 @@ document.querySelectorAll('[data-accordion]').forEach((list) => {
     </nav>
     <div class="mobile-menu__bottom">
       <a href="contacts.html" class="btn btn--white mobile-menu__cta">Оставить заявку</a>
-      <a href="tel:+79610000000" class="mobile-menu__phone">+7 (961) 000-00-00</a>
+      <a href="tel:+79198816611" class="mobile-menu__phone">+7 (919) 881-66-11</a>
       <div class="mobile-menu__social">
-        <a href="#" rel="noopener">ВКонтакте</a>
-        <span aria-hidden="true">·</span>
-        <a href="#" rel="noopener">Telegram</a>
+        <a href="mailto:ra-taganrog@mail.ru">ra-taganrog@mail.ru</a>
       </div>
     </div>`;
   document.body.appendChild(menu);
