@@ -1,0 +1,13 @@
+# Creative Bus — правила сервера. Источник истины — этот репозиторий,
+# на хостинг попадает через ~/deploy.sh. Руками на хостинге не править.
+
+RewriteEngine On
+
+# Один адрес сайта для поисковиков: www.creativebus.ru → creativebus.ru (301)
+RewriteCond %{HTTP_HOST} ^www\.creativebus\.ru$ [NC]
+RewriteRule ^(.*)$ https://creativebus.ru/$1 [R=301,L]
+
+# Служебный README репозитория наружу не показываем
+<Files "README.md">
+  Require all denied
+</Files>
