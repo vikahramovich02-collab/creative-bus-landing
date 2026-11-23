@@ -6,6 +6,24 @@
 //   1. положить backend/form.php в корень сайта
 //   2. в form.php указать свой ящик в $MAIL_TO и $MAIL_FROM
 //   3. сюда написать: const FORM_ENDPOINT = '/backend/form.php';
+
+// Цели Яндекс.Метрики (счётчик 114585621). Если счётчик не загрузился
+// (блокировщик рекламы) — молча ничего не делаем, сайт работает как обычно.
+const YM_ID = 114585621;
+function goal(name, params) {
+  try { if (typeof window.ym === 'function') window.ym(YM_ID, 'reachGoal', name, params || {}); } catch (e) {}
+}
+
+// Клики по телефону, почте и скачивание прайса — одним делегированием,
+// чтобы ловить и ссылки, которые скрипт дорисовывает сам (мобильное меню, ошибки формы).
+document.addEventListener('click', (e) => {
+  const a = e.target.closest && e.target.closest('a[href]');
+  if (!a) return;
+  const href = a.getAttribute('href') || '';
+  if (href.startsWith('tel:')) goal('phone_click');
+  else if (href.startsWith('mailto:')) goal('email_click');
+  else if (/\.pdf($|\?)/i.test(href)) goal('price_pdf');
+}, true);
 const FORM_ENDPOINT = '/backend/form.php';
 
 // ===== Creative Bus — лендинг =====
@@ -490,7 +508,13 @@ function initLeadForm(form) {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload),
     })
-      .then((r) => finish(r.ok))
+      .then((r) => {
+        if (r.ok) {
+          goal('lead', { page: payload.page });
+          if (payload.calc) goal('lead_calc');
+        }
+        finish(r.ok);
+      })
       .catch(() => finish(false));
 
     function showError() {
@@ -910,6 +934,7 @@ document.querySelectorAll('form.form').forEach(initLeadForm);
 
     cta.addEventListener('click', () => {
       lastFocus = cta;
+      goal('calc_request_open');
       modal.hidden = false;
       document.body.style.overflow = 'hidden';
       // расчёт уходит скрытым полем — «Сообщение» остаётся человеку
