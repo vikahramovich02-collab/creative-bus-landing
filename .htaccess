@@ -1,6 +1,8 @@
 # Creative Bus — правила сервера. Источник истины — этот репозиторий,
 # на хостинг попадает через ~/deploy.sh. Руками на хостинге не править.
 
+ErrorDocument 404 /404.html
+
 RewriteEngine On
 
 # Один адрес сайта для поисковиков: www.creativebus.ru → creativebus.ru (301)
